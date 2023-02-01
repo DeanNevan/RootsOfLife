@@ -1,8 +1,8 @@
 extends Line2D
-class_name StemLine
+class_name RootsLine
 
-@onready var _SubStemLines = %SubStemLines
-@onready var _Leaves = %Leaves
+@onready var _SubRootsLines = %SubRootsLines
+@onready var _StorageRoots = %StorageRoots
 @onready var _AreaLine = %AreaLine
 
 # Called when the node enters the scene tree for the first time.
@@ -25,17 +25,17 @@ func init_area_line():
 		collision_shape.shape = segment_shape
 		_AreaLine.add_child(collision_shape)
 
-func add_sub_stem_line(sub_stem_line : StemLine):
-	_SubStemLines.add_child(sub_stem_line)
+func add_sub_roots_line(sub_roots_line : RootsLine):
+	_SubRootsLines.add_child(sub_roots_line)
 
-func add_leaf(leaf : Leaf):
-	_Leaves.add_child(leaf)
+func add_storage_roots(storage_roots : StorageRoots):
+	_StorageRoots.add_child(storage_roots)
 
-func get_sub_stem_line() -> Array:
-	return _SubStemLines.get_children()
+func get_sub_roots_lines() -> Array:
+	return _SubRootsLines.get_children()
 
-func get_leaves() -> Array:
-	return _Leaves.get_children()
+func get_storage_roots() -> Array:
+	return _StorageRoots.get_children()
 
 func _on_area_line_area_entered(area):
 	pass # Replace with function body.
