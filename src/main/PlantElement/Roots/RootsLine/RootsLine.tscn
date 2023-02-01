@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbhy77t3bastb"]
+
+[sub_resource type="Curve" id="Curve_080jw"]
+
+[node name="RootsLine" type="Line2D"]
+width_curve = SubResource("Curve_080jw")

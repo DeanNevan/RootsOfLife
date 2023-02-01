@@ -1,0 +1,2 @@
+extends PlantResource
+class_name Nutrition

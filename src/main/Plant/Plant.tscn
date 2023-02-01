@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://xuwq7s3v0fxd"]
+
+[ext_resource type="Script" path="res://src/main/Plant/Plant.gd" id="1_snymy"]
+[ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/PlantElement/Roots/Roots.tscn" id="2_8copk"]
+[ext_resource type="PackedScene" uid="uid://drbnlc7lon1kj" path="res://src/main/PlantElement/Stem/Stem.tscn" id="3_3i71b"]
+
+[node name="Plant" type="Node2D"]
+script = ExtResource("1_snymy")
+
+[node name="Roots" parent="." instance=ExtResource("2_8copk")]
+unique_name_in_owner = true
+
+[node name="Stem" parent="." instance=ExtResource("3_3i71b")]
+unique_name_in_owner = true
+
+[node name="Leaves" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="StorageRoots" type="Node2D" parent="."]
+unique_name_in_owner = true

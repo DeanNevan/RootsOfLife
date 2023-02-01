@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3oofaxeto63a"]
+
+[ext_resource type="PackedScene" uid="uid://bpcqc6bek6fgq" path="res://src/main/PlantElement/Leaf/Leaf.tscn" id="1_b5k5p"]
+[ext_resource type="Script" path="res://src/main/PlantElement/Leaf/LeafM/LeafM.gd" id="2_yjslb"]
+
+[node name="LeafM" instance=ExtResource("1_b5k5p")]
+script = ExtResource("2_yjslb")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://drbnlc7lon1kj"]
+
+[ext_resource type="PackedScene" uid="uid://b4r2oxwexlac6" path="res://src/main/PlantElement/PlantElement.tscn" id="1_o236n"]
+[ext_resource type="Script" path="res://src/main/PlantElement/Stem/Stem.gd" id="1_uua33"]
+
+[node name="Stem" instance=ExtResource("1_o236n")]
+script = ExtResource("1_uua33")

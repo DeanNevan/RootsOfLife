@@ -1,0 +1,2 @@
+extends Nutrition
+class_name NutritionN

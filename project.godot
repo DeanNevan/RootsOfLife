@@ -14,6 +14,11 @@ config/name="RootsOfLife"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://src/main/autoload/Global.gd"
+Data="*res://src/main/autoload/Data.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"

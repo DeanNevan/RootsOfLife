@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhjd1v0gl0hjt"]
+
+[ext_resource type="PackedScene" uid="uid://b4r2oxwexlac6" path="res://src/main/PlantElement/PlantElement.tscn" id="1_d7gvt"]
+[ext_resource type="Script" path="res://src/main/PlantElement/StorageRoots/StorageRoots.gd" id="1_k6ii0"]
+
+[node name="StorageRoots" instance=ExtResource("1_d7gvt")]
+script = ExtResource("1_k6ii0")
