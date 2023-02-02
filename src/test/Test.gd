@@ -13,3 +13,8 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	print("???")
 	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area):
+	print(area)
+	pass # Replace with function body.

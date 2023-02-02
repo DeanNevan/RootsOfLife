@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmx5rkb7w3r37"]
+[gd_scene load_steps=5 format=3 uid="uid://dmx5rkb7w3r37"]
 
 [ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/Roots/RootsLine.gd" id="1_leh04"]
 [ext_resource type="PackedScene" uid="uid://cor5raih46oms" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.tscn" id="1_tlcj8"]
 
+[sub_resource type="Curve" id="Curve_gryu4"]
+_data = [Vector2(0, 0.9), 0.0, 0.0, 0, 0, Vector2(0.829146, 0.563636), -0.417483, -0.417483, 0, 0, Vector2(1, 0.145455), -1.9297, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_s1a72"]
+_data = [Vector2(0, 0.9), 0.0, 0.0, 0, 0, Vector2(0.829146, 0.563636), -0.417483, -0.417483, 0, 0, Vector2(1, 0.145455), -1.9297, 0.0, 0, 0]
+point_count = 3
+
 [node name="RootsLine" instance=ExtResource("1_tlcj8")]
 script = ExtResource("1_leh04")
+
+[node name="LineTextureBorder" parent="." index="0"]
+points = PackedVector2Array(27, 108, 277, 160, 274, 3, 450, 75)
+width = 12.0
+width_curve = SubResource("Curve_gryu4")
+default_color = Color(0.384314, 0.301961, 0.27451, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="LineTexture" parent="." index="1"]
+points = PackedVector2Array(27, 108, 277, 160, 274, 3, 450, 75)
+width = 7.0
+width_curve = SubResource("Curve_s1a72")
+default_color = Color(0.552941, 0.443137, 0.376471, 1)
+begin_cap_mode = 1
+end_cap_mode = 1

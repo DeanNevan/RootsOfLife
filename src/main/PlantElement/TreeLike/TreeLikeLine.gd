@@ -6,6 +6,7 @@ var points := []
 @onready var _SubLines = %SubLines
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
+@onready var _PolygonTexture = %PolygonTexture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
