@@ -13,16 +13,28 @@ var status : Status = Status.BUILDING
 
 var parent_line : TreeLikeLine
 var child_lines := []
+var thickness = 0.0:
+	set(_thickness):
+		thickness = _thickness
+		self.width = calculate_width(_thickness)
+		_LineTexture.width = calculate_width(_thickness)
+		_LineTextureBorder.width = calculate_width(_thickness) + 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	default_color.a = 0
-	pass # Replace with function body.
+	var length = 0.0
+	for i in range(points.size() - 1):
+		length += points[i].distance_to(points[i + 1])
+	thickness = length
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func calculate_width(_length) -> float:
+	return pow(_length * 0.01, 0.75)
 
 func set_status(_status : Status):
 	status = _status
@@ -54,6 +66,16 @@ func build_new_point(_point : Vector2):
 		segment_shape.b = points[points.size() - 1]
 		collision_shape.shape = segment_shape
 		_AreaLine.add_child(collision_shape)
+	if points.size() > 1:
+		# 最后一个点和倒数第二个点连线长度
+		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
+		widen(length)
+
+func widen(added_thickness):
+	thickness = thickness + added_thickness
+	
+	if is_instance_valid(parent_line):
+		parent_line.widen(added_thickness)
 
 func init_line_area():
 	for i in _AreaLine.get_children():

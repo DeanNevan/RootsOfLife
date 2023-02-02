@@ -38,12 +38,16 @@ func split_line(line, new_point, split_point_a, split_point_b) -> Array: #返回
 	new_line_a.finish_build()
 	new_line_b.finish_build()
 	
+	new_line_a.parent_line = line.parent_line
 	if line.parent_line != null:
 		line.parent_line.child_lines.erase(line)
 		line.parent_line.child_lines.append(new_line_a)
 	new_line_a.register_child_line(new_line_b)
 	for child_line in line.child_lines:
 		new_line_b.register_child_line(child_line)
+	
+	new_line_a.thickness = line.thickness
+	new_line_b.thickness = line.thickness
 	
 	line.queue_free()
 	

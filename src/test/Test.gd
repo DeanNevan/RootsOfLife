@@ -76,6 +76,7 @@ func request_start_draw_roots_line():
 	is_drawing = true
 	drawing_type = DrawingType.ROOTS
 	drawing_line = scene_roots_line.instantiate()
+	drawing_line.parent_line = drawing_line_parent
 	_Roots.add_line(drawing_line)
 	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
