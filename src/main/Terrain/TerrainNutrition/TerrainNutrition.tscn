@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://vmji7hcgdgmu"]
+[gd_scene load_steps=5 format=3 uid="uid://vmji7hcgdgmu"]
 
 [ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_w7ljm"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutrition.gd" id="2_par73"]
+[ext_resource type="FontFile" uid="uid://314lq4fen53r" path="res://assets/art/font/HandWrite.ttf" id="3_cdxf7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fp3f"]
+font = ExtResource("3_cdxf7")
+font_size = 28
 
 [node name="TerrainNutrition" instance=ExtResource("1_w7ljm")]
 script = ExtResource("2_par73")
+
+[node name="LabelName" type="Label" parent="." index="3"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "123"
+label_settings = SubResource("LabelSettings_3fp3f")
+horizontal_alignment = 1
+vertical_alignment = 1

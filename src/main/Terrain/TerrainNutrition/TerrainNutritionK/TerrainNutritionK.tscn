@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bafrt4ph1e3w4"]
+[gd_scene load_steps=5 format=3 uid="uid://bafrt4ph1e3w4"]
 
 [ext_resource type="PackedScene" uid="uid://vmji7hcgdgmu" path="res://src/main/Terrain/TerrainNutrition/TerrainNutrition.tscn" id="1_d7als"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionK/TerrainNutritionK.gd" id="2_i6gb5"]
+[ext_resource type="FontFile" uid="uid://314lq4fen53r" path="res://assets/art/font/HandWrite.ttf" id="3_ywk78"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7oig"]
+font = ExtResource("3_ywk78")
+font_size = 28
+font_color = Color(1, 0.552941, 0.384314, 1)
+outline_size = 4
+outline_color = Color(0.45098, 0.215686, 0, 1)
 
 [node name="TerrainNutritionK" instance=ExtResource("1_d7als")]
 script = ExtResource("2_i6gb5")
+
+[node name="PolygonTexture" parent="." index="0"]
+color = Color(0.988235, 0.356863, 0, 0.470588)
+
+[node name="LabelName" parent="." index="3"]
+text = "K"
+label_settings = SubResource("LabelSettings_g7oig")
