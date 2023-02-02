@@ -47,7 +47,7 @@ func split_line(line, new_point, split_point_a, split_point_b) -> Array: #返回
 		new_line_b.register_child_line(child_line)
 	
 	new_line_a.thickness = line.thickness
-	new_line_b.thickness = line.thickness
+	new_line_b.thickness = line.thickness #截断处可能要重新计算粗细，但太麻烦
 	
 	line.queue_free()
 	

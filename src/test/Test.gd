@@ -23,7 +23,6 @@ var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLi
 @onready var _TimerDrawing = %TimerDrawing
 @onready var _RayDrawing = %RayDrawing
 
-
 func _ready():
 	$Roots/TreeLikeLines/RootsLine.finish_build()
 	$TerrainBarrier.init_all()
