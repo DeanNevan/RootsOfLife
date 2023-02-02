@@ -16,10 +16,10 @@ polygon = PackedVector2Array(64, -60.8, 64, 59, 59.6, 64, -60.1, 64, -64, 60.7, 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_72ykg")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="LayerBG" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="MainGameBG" parent="CanvasLayer" instance=ExtResource("3_pc0ol")]
+[node name="MainGameBG" parent="LayerBG" instance=ExtResource("3_pc0ol")]
 
 [node name="LayerUI" type="CanvasLayer" parent="."]
 layer = 2
