@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbal8eglc5wnr"]
+[gd_scene load_steps=7 format=3 uid="uid://cbal8eglc5wnr"]
 
 [ext_resource type="Script" path="res://src/test/Test.gd" id="1_ljoxw"]
 [ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/PlantElement/TreeLike/Roots/Roots.tscn" id="2_wyl0j"]
 [ext_resource type="PackedScene" uid="uid://dmx5rkb7w3r37" path="res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn" id="3_immfo"]
 [ext_resource type="PackedScene" uid="uid://jihoqu0f2lic" path="res://src/main/Terrain/TerrainBarrier/TerrainBarrier.tscn" id="4_ng7eu"]
+[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="5_72rtv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcgkk"]
 
@@ -34,6 +35,12 @@ collide_with_bodies = false
 [node name="TimerDrawing" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.05
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("5_72rtv")
+texture_scale = Vector2(0.345, 0.345)
+polygon = PackedVector2Array(-553, 428, 418, 592, 735, -100, -412, -265)
 
 [connection signal="area_entered" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_entered"]
 [connection signal="area_exited" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_exited"]
