@@ -43,10 +43,15 @@ func _physics_process(delta):
 
 func request_start_draw_roots_line():
 	var closet_distance : float = 999
+	var split_point_a : Vector2
+	var split_point_b : Vector2
 	var closet_point := Vector2()
 	drawing_line_parent = null
-	for i in tree_like_lines_shapes:
-		if i is RootsLine:
+	
+	for i in tree_like_lines_shapes.keys():
+		if !is_instance_valid(i):
+			tree_like_lines_shapes.erase(i)
+		elif i is RootsLine:
 			for j in tree_like_lines_shapes[i]:
 				if !is_instance_valid(j):
 					continue
@@ -58,13 +63,20 @@ func request_start_draw_roots_line():
 				)
 				var distance : float = (_point - get_global_mouse_position()).length()
 				if distance < closet_distance:
+					split_point_a = segment_shape.a
+					split_point_b = segment_shape.b
 					drawing_line_parent = i
 					closet_point = _point
 	if !is_instance_valid(drawing_line_parent):
 		return
+	
+	var line_ab = _Roots.split_line(drawing_line_parent, closet_point, split_point_a, split_point_b)
+	drawing_line_parent = line_ab[0] #line_a
+	
 	is_drawing = true
 	drawing_type = DrawingType.ROOTS
 	drawing_line = scene_roots_line.instantiate()
+	drawing_line.parent_line = drawing_line_parent
 	_Roots.add_line(drawing_line)
 	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
@@ -133,7 +145,8 @@ func _on_timer_drawing_timeout():
 		if is_instance_valid(drawing_line):
 			if drawing_line.points.size() <= 1:
 				drawing_safe_position = get_global_mouse_position()
-				drawing_line.build_new_point(drawing_safe_position)
+				if drawing_line.points[0].distance_to(drawing_safe_position) > 10:
+					drawing_line.build_new_point(drawing_safe_position)
 			else:
 				if !is_drawing_meet_collision:
 					var vector : Vector2 = get_global_mouse_position() - _RayDrawing.global_position
