@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmx5rkb7w3r37"]
+
+[ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/Roots/RootsLine.gd" id="1_leh04"]
+[ext_resource type="PackedScene" uid="uid://cor5raih46oms" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.tscn" id="1_tlcj8"]
+
+[node name="RootsLine" instance=ExtResource("1_tlcj8")]
+script = ExtResource("1_leh04")

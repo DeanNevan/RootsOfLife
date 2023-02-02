@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ybyo2j6leko"]
+
+[ext_resource type="PackedScene" uid="uid://cor5raih46oms" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.tscn" id="1_n64tk"]
+[ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/Stem/StemLine.gd" id="2_82qby"]
+
+[node name="StemLine" instance=ExtResource("1_n64tk")]
+script = ExtResource("2_82qby")

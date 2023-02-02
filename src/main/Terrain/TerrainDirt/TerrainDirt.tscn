@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://344r26p5gvys"]
+
+[ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_snhym"]
+[ext_resource type="Script" path="res://src/main/Terrain/TerrainDirt/TerrainDirt.gd" id="2_v4yr5"]
+[ext_resource type="Texture2D" uid="uid://dot8k5egfl6pf" path="res://src/test/Test3D/dirt_floor_diff_1k.png" id="3_jhkqs"]
+
+[node name="TerrainDirt" instance=ExtResource("1_snhym")]
+script = ExtResource("2_v4yr5")
+
+[node name="PolygonTexture" parent="." index="0"]
+texture_repeat = 2
+texture = ExtResource("3_jhkqs")

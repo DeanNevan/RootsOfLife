@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cor5raih46oms"]
+
+[ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.gd" id="1_oac7p"]
+[ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_0daqk"]
+
+[node name="TreeLikeLine" type="Line2D"]
+script = ExtResource("1_oac7p")
+
+[node name="LineTexture" type="Line2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SubLines" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AreaLine" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_0daqk")
+object_node_path = NodePath("..")
+
+[connection signal="mouse_entered" from="AreaLine" to="." method="_on_area_line_mouse_entered"]

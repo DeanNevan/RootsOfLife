@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://clmnyh5sc1auk"]
+
+[ext_resource type="Script" path="res://src/test/Test3D/Test3D.gd" id="1_b1wwx"]
+[ext_resource type="Texture2D" uid="uid://dot8k5egfl6pf" path="res://src/test/Test3D/dirt_floor_diff_1k.png" id="2_u42q8"]
+[ext_resource type="Texture2D" uid="uid://chfqlywj2tt7l" path="res://src/test/Test3D/dirt_floor_nor_gl_1k.png" id="3_iy081"]
+[ext_resource type="Texture2D" uid="uid://ce04v0p8o71ew" path="res://src/test/Test3D/dirt_floor_rough_1k.png" id="4_353v6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bcdgr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3btft"]
+albedo_texture = ExtResource("2_u42q8")
+roughness = 0.25
+roughness_texture = ExtResource("4_353v6")
+normal_enabled = true
+normal_scale = 6.0
+normal_texture = ExtResource("3_iy081")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ov3f"]
+
+[sub_resource type="Sky" id="Sky_82gec"]
+sky_material = SubResource("ProceduralSkyMaterial_5ov3f")
+
+[sub_resource type="Environment" id="Environment_wx6to"]
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_82gec")
+ambient_light_energy = 0.0
+
+[node name="Test3D" type="Node3D"]
+script = ExtResource("1_b1wwx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_bcdgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3btft")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("PlaneMesh_bcdgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3btft")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+mesh = SubResource("PlaneMesh_bcdgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3btft")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("PlaneMesh_bcdgr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3btft")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.698711, -1.00014)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wx6to")
