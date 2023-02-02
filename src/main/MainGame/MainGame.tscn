@@ -1,18 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg1gnkmrk67fb"]
+[gd_scene load_steps=9 format=3 uid="uid://bg1gnkmrk67fb"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
-[ext_resource type="Texture2D" uid="uid://q41h87x551s3" path="res://src/test/_{B]O3ZV[IALZSGIBR35E}I.png" id="2_xkwmd"]
-[ext_resource type="PackedScene" uid="uid://dxl8sqwqrlnng" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
+[ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
+[ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
+[ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
+[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="4_5k00o"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_brmlh"]
+font_size = 64
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4flbw"]
+polygon = PackedVector2Array(64, -60.8, 64, 59, 59.6, 64, -60.1, 64, -64, 60.7, -64, -59, -59, -63.8, 59.1, -64)
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_72ykg")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
+[node name="LayerBG" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="{b]o3zv[ialzsgibr35e}i" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(556, 223)
-texture = ExtResource("2_xkwmd")
+[node name="MainGameBG" parent="LayerBG" instance=ExtResource("3_pc0ol")]
 
-[node name="MainGameUI" parent="." instance=ExtResource("3_6e0bd")]
+[node name="LayerUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LabelTest" type="Label" parent="LayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_brmlh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainGameUI" parent="LayerUI" instance=ExtResource("3_6e0bd")]
+mouse_filter = 2
+
+[node name="LabelFPS" type="Label" parent="LayerUI"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_2lsnb")
+
+[node name="LayerWorld" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="LayerWorld"]
+position = Vector2(203, 307)
+texture = ExtResource("4_5k00o")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LayerWorld/Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_4flbw")
+
+[node name="CameraOrigin" type="Node2D" parent="."]
+
+[node name="MainCamera" type="Camera2D" parent="CameraOrigin"]
+position_smoothing_speed = 50.0
+script = ExtResource("5_lvrwb")
+MAX_ZOOM = 1.5
+MIN_ZOOM = 0.4

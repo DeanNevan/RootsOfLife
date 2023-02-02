@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0pxhecmjbdx6"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.gd" id="1_mf3i8"]
+
+[node name="ContainerSunlight" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_mf3i8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "光照等级："
+
+[node name="LabelSunlight" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "999"

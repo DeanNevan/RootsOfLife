@@ -1,4 +1,21 @@
-[gd_scene format=3 uid="uid://dxl8sqwqrlnng"]
+[gd_scene load_steps=8 format=3 uid="uid://bbk15m06vn7sr"]
+
+[ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
+[ext_resource type="PackedScene" uid="uid://nnulrro51ke" path="res://src/main/MainGame/MainGameUI/Plate/Plate.tscn" id="1_lv8eo"]
+[ext_resource type="PackedScene" uid="uid://w36hti3p8leb" path="res://src/main/MainGame/MainGameUI/ContainerWater/ContainerWater.tscn" id="2_akg3e"]
+[ext_resource type="PackedScene" uid="uid://cro81a2vap03y" path="res://src/main/MainGame/MainGameUI/ContainerEnergy/ContainerEnergy.tscn" id="3_1847h"]
+[ext_resource type="PackedScene" uid="uid://c81lb03lbh715" path="res://src/main/MainGame/MainGameUI/ContainerNutrition/ContainerNutrition.tscn" id="4_oycl3"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yle5d"]
+color = Color(0.745098, 0.745098, 0.745098, 1)
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 2
+vertical = true
+
+[sub_resource type="Theme" id="Theme_0fe4v"]
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource("StyleBoxLine_yle5d")
 
 [node name="MainGameUI" type="Control"]
 layout_mode = 3
@@ -7,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_0fe4v")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 64)
@@ -18,39 +36,63 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainerDayNight" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Plate" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_lv8eo")]
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
+color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="ContainerSunlight" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer" instance=ExtResource("1_7dmyl")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "光照等级："
-
-[node name="LabelSunlight" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "999"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="ContainerWater" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_akg3e")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ContainerEnergy" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer" instance=ExtResource("3_1847h")]
+layout_mode = 2
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ContainerNutrition" parent="MarginContainer/HBoxContainer/MarginContainer2/MarginContainer/HBoxContainer" instance=ExtResource("4_oycl3")]
+layout_mode = 2
+
+[node name="MarginContainerScore" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainerScore"]
+layout_mode = 2
+
+[node name="ButtonSettings" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "设置"
+
+[node name="ButtonStatistics" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "统计"

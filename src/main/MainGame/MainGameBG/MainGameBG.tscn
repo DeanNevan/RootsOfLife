@@ -1,0 +1,106 @@
+[gd_scene load_steps=20 format=3 uid="uid://bvm1hp8yogdeq"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameBG/MainGameBG.gd" id="1_flx2d"]
+[ext_resource type="Texture2D" uid="uid://nkpjjfuh5a13" path="res://assets/art/white_pixel.png" id="2_cyenq"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameBG/BGModulate.gd" id="3_66dls"]
+[ext_resource type="PackedScene" uid="uid://dertftfump4lr" path="res://src/main/MainGame/MainGameBG/Sun.tscn" id="3_qtrcy"]
+[ext_resource type="PackedScene" uid="uid://23ex0tfe7x4j" path="res://src/main/MainGame/MainGameBG/Moon.tscn" id="4_sa3n3"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameBG/Stars.gd" id="5_5vdvh"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameBG/Clouds.gd" id="6_0odt2"]
+[ext_resource type="Texture2D" uid="uid://br3mxukoo221l" path="res://assets/art/star_04.png" id="7_hdbu6"]
+[ext_resource type="Texture2D" uid="uid://xtgpoy88bmfm" path="res://assets/art/star_02.png" id="8_yhpmc"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_e6l2p"]
+
+[sub_resource type="Sky" id="Sky_6cu4f"]
+sky_material = SubResource("PhysicalSkyMaterial_e6l2p")
+
+[sub_resource type="Environment" id="Environment_wo2yc"]
+background_mode = 2
+sky = SubResource("Sky_6cu4f")
+
+[sub_resource type="Gradient" id="Gradient_nr54s"]
+offsets = PackedFloat32Array(0, 0.207317, 0.256098, 0.481707, 0.737805, 0.780488, 1)
+colors = PackedColorArray(0.109868, 0.127616, 0.207827, 1, 0.109868, 0.127616, 0.207827, 1, 0.760784, 0.843137, 0.952941, 1, 0.573996, 0.808484, 0.965682, 1, 0.760784, 0.843137, 0.952941, 1, 0.109868, 0.127616, 0.207827, 1, 0.109868, 0.127616, 0.207827, 1)
+
+[sub_resource type="Gradient" id="Gradient_drxjo"]
+offsets = PackedFloat32Array(0, 0.176829, 0.237805, 0.737805, 0.786585, 1)
+colors = PackedColorArray(0.859244, 0.920483, 0.98966, 1, 0.859244, 0.920483, 0.98966, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.859244, 0.920483, 0.98966, 1, 0.859244, 0.920483, 0.98966, 1)
+
+[sub_resource type="Gradient" id="Gradient_rg4ig"]
+offsets = PackedFloat32Array(0, 0.20122, 0.256098, 0.460526, 0.730263, 0.782895, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 0.901961, 0.752941, 1, 0.99931, 0.948633, 0.881653, 1, 1, 0.901961, 0.752941, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_s2dei"]
+offsets = PackedFloat32Array(0, 0.0731707, 0.231707, 0.743902, 0.908537, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yry1"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_oitmn"]
+_data = [Vector2(0, 0.281818), 0.0, 1.06597, 0, 0, Vector2(0.625731, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.709091), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_r17eh"]
+offsets = PackedFloat32Array(0, 0.221429, 0.721429, 0.992857)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="MainGameBG" type="Node2D"]
+script = ExtResource("1_flx2d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wo2yc")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.760784, 0.843137, 0.952941, 1)
+show_behind_parent = true
+scale = Vector2(10000, 10000)
+texture = ExtResource("2_cyenq")
+metadata/_edit_lock_ = true
+
+[node name="BGModulate" type="CanvasModulate" parent="."]
+script = ExtResource("3_66dls")
+gradient = SubResource("Gradient_nr54s")
+
+[node name="Moon" parent="." instance=ExtResource("4_sa3n3")]
+gradient = SubResource("Gradient_drxjo")
+
+[node name="Sun" parent="." instance=ExtResource("3_qtrcy")]
+gradient = SubResource("Gradient_rg4ig")
+
+[node name="Stars" type="Node2D" parent="."]
+script = ExtResource("5_5vdvh")
+gradient = SubResource("Gradient_s2dei")
+
+[node name="ParticlesStar1" type="CPUParticles2D" parent="Stars"]
+material = SubResource("CanvasItemMaterial_8yry1")
+position = Vector2(576, 324)
+lifetime = 10.0
+texture = ExtResource("7_hdbu6")
+emission_shape = 3
+emission_rect_extents = Vector2(576, 324)
+gravity = Vector2(0, 0)
+angle_max = 90.0
+scale_amount_min = 0.11
+scale_amount_max = 0.19
+scale_amount_curve = SubResource("Curve_oitmn")
+color_ramp = SubResource("Gradient_r17eh")
+
+[node name="ParticlesStar2" type="CPUParticles2D" parent="Stars"]
+material = SubResource("CanvasItemMaterial_8yry1")
+position = Vector2(576, 324)
+lifetime = 10.0
+texture = ExtResource("8_yhpmc")
+emission_shape = 3
+emission_rect_extents = Vector2(576, 324)
+gravity = Vector2(0, 0)
+angle_max = 90.0
+scale_amount_min = 0.08
+scale_amount_max = 0.12
+scale_amount_curve = SubResource("Curve_oitmn")
+color_ramp = SubResource("Gradient_r17eh")
+
+[node name="Clouds" type="Node2D" parent="."]
+script = ExtResource("6_0odt2")
