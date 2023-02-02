@@ -13,6 +13,7 @@ var status : Status = Status.BUILDING
 @onready var _LineTextureBorder = %LineTextureBorder
 
 var parent_line : TreeLikeLine
+var children_line := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,9 +67,10 @@ func init_line_area():
 		collision_shape.shape = segment_shape
 		_AreaLine.add_child(collision_shape)
 
-func add_sub_line(sub_line : TreeLikeLine):
-	_SubLines.add_child(sub_line)
+func register_sub_line(sub_line : TreeLikeLine):
+#	_SubLines.add_child(sub_line)
 	sub_line.parent_line = self
+	self.children_line.append(sub_line)
 
 func get_sub_lines() -> Array:
 	return _SubLines.get_children()

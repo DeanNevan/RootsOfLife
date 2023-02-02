@@ -22,6 +22,7 @@ var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLi
 @onready var _TimerDrawing = %TimerDrawing
 @onready var _RayDrawing = %RayDrawing
 
+
 func _ready():
 	$Roots/TreeLikeLines/RootsLine.finish_build()
 	$TerrainBarrier.init_all()
@@ -63,7 +64,7 @@ func request_start_draw_roots_line():
 	is_drawing = true
 	drawing_type = DrawingType.ROOTS
 	drawing_line = scene_roots_line.instantiate()
-	add_child(drawing_line)
+	$Roots/TreeLikeLines.add_child(drawing_line)
 	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
 	drawing_safe_position = closet_point
@@ -82,7 +83,7 @@ func request_stop_draw_roots_line():
 			return
 		drawing_line.finish_build()
 		remove_child(drawing_line)
-		drawing_line_parent.add_sub_line(drawing_line)
+		drawing_line_parent.register_sub_line(drawing_line)
 	drawing_line = null
 	drawing_line_parent = null
 	pass
