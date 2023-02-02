@@ -1,16 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cor5raih46oms"]
+[gd_scene load_steps=4 format=3 uid="uid://cor5raih46oms"]
 
 [ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.gd" id="1_oac7p"]
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_0daqk"]
 
+[sub_resource type="Curve" id="Curve_sag5m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995261, 0.1), 0.0639393, 0.0, 0, 0]
+point_count = 2
+
 [node name="TreeLikeLine" type="Line2D"]
 script = ExtResource("1_oac7p")
 
-[node name="LineTextureBorder" type="Line2D" parent="."]
-unique_name_in_owner = true
-
 [node name="LineTexture" type="Line2D" parent="."]
 unique_name_in_owner = true
+width_curve = SubResource("Curve_sag5m")
+
+[node name="LineTextureBorder" type="Line2D" parent="LineTexture"]
+unique_name_in_owner = true
+show_behind_parent = true
+width = 15.0
+width_curve = SubResource("Curve_sag5m")
 
 [node name="SubLines" type="Node2D" parent="."]
 unique_name_in_owner = true

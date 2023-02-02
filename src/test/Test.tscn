@@ -1,28 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbal8eglc5wnr"]
+[gd_scene load_steps=5 format=3 uid="uid://cbal8eglc5wnr"]
 
 [ext_resource type="Script" path="res://src/test/Test.gd" id="1_ljoxw"]
+[ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/PlantElement/TreeLike/Roots/Roots.tscn" id="2_wyl0j"]
+[ext_resource type="PackedScene" uid="uid://dmx5rkb7w3r37" path="res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn" id="3_immfo"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_sbbde"]
-b = Vector2(133, 165)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_swrjk"]
-b = Vector2(-101, 155)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gcgkk"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ljoxw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Roots" parent="." instance=ExtResource("2_wyl0j")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("SegmentShape2D_sbbde")
+[node name="RootsLine" parent="Roots/TreeLikeLines" index="0" instance=ExtResource("3_immfo")]
+points = PackedVector2Array(0, 0, 20, 40, 65, 46, 102, 85)
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="AreaMouseDrawer" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(62, 49)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(135, 6)
-shape = SubResource("SegmentShape2D_swrjk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMouseDrawer"]
+shape = SubResource("CircleShape2D_gcgkk")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(142, 315, 142, 315, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 331, 234, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140, 208, 140)
+[connection signal="area_entered" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_entered"]
+[connection signal="area_exited" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_exited"]
+[connection signal="area_shape_entered" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_shape_entered"]
+[connection signal="area_shape_exited" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_shape_exited"]
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[editable path="Roots"]
