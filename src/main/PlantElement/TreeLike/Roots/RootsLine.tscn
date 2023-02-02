@@ -14,3 +14,5 @@ end_cap_mode = 1
 [node name="LineTextureBorder" parent="LineTexture" index="0"]
 z_index = -1
 default_color = Color(0.384314, 0.301961, 0.27451, 1)
+begin_cap_mode = 1
+end_cap_mode = 1

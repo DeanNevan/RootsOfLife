@@ -7,6 +7,8 @@ enum Status {
 }
 var status : Status = Status.BUILDING
 
+
+@onready var _FogSprite = get_node("/root/Test/FogSprite")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
@@ -23,18 +25,29 @@ var thickness = 0.0:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	default_color.a = 0
-	var length = 0.0
-	for i in range(points.size() - 1):
-		length += points[i].distance_to(points[i + 1])
-	thickness = length
+	
+	thickness = calculate_length()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func defog(): #似乎不行，没有有效的在image上绘制的手段
+	for i in range(points.size() - 1):
+		var point_a = points[i]
+		var point_b = points[i + 1]
+		#_FogSprite.fog_image
+	_FogSprite.update_image()
+
 func calculate_width(_length) -> float:
 	return pow(_length * 0.01, 0.75)
+
+func calculate_length() -> float:
+	var _length = 0.0
+	for i in range(points.size() - 1):
+		_length += points[i].distance_to(points[i + 1])
+	return _length
 
 func set_status(_status : Status):
 	status = _status
