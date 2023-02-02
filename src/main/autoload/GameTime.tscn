@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvpwynx5cd3m"]
+
+[ext_resource type="Script" path="res://src/main/autoload/GameTime.gd" id="1_bbt11"]
+
+[node name="GameTime" type="Node"]
+script = ExtResource("1_bbt11")
