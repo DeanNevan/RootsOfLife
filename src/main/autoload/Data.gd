@@ -15,3 +15,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func init_all():
+	sunlight.value = 0
+	energy.value = 0
+	water.value = 0
+	nutrition_n.value = 0
+	nutrition_p.value = 0
+	nutrition_k.value = 0
+	pass
