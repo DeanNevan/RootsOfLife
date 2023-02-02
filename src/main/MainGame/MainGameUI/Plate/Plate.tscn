@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://nnulrro51ke"]
+[gd_scene load_steps=5 format=3 uid="uid://nnulrro51ke"]
 
 [ext_resource type="Texture2D" uid="uid://cnnj511084uyp" path="res://assets/art/plate/plate.png" id="1_dpvw4"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/Plate/Plate.gd" id="1_ucl86"]
 [ext_resource type="Texture2D" uid="uid://cckhli4aadtio" path="res://assets/art/plate/pointer.png" id="2_gcj0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb21i"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 160
+corner_radius_top_right = 160
+corner_radius_bottom_right = 160
+corner_radius_bottom_left = 160
 
 [node name="Plate" type="MarginContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -12,6 +25,17 @@ script = ExtResource("1_ucl86")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb21i")
 
 [node name="Plate" type="TextureRect" parent="Control"]
 unique_name_in_owner = true
