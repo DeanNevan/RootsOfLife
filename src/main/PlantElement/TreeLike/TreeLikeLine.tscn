@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_0daqk"]
 
 [sub_resource type="Curve" id="Curve_sag5m"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995261, 0.1), 0.0639393, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, -0.323849, 0, 0, Vector2(0.85782, 0.536364), -0.586111, -0.586111, 0, 0, Vector2(1, 0.154545), -1.91818, 0.0, 0, 0]
+point_count = 3
 
 [node name="TreeLikeLine" type="Line2D"]
 script = ExtResource("1_oac7p")

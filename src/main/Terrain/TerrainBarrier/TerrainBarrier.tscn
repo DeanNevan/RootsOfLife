@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://jihoqu0f2lic"]
+
+[ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_asu6v"]
+[ext_resource type="Script" path="res://src/main/Terrain/TerrainBarrier/TerrainBarrier.gd" id="2_tibk6"]
+
+[node name="TerrainBarrier" instance=ExtResource("1_asu6v")]
+script = ExtResource("2_tibk6")

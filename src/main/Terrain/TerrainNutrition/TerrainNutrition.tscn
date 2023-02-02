@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmji7hcgdgmu"]
+
+[ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_w7ljm"]
+[ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutrition.gd" id="2_par73"]
+
+[node name="TerrainNutrition" instance=ExtResource("1_w7ljm")]
+script = ExtResource("2_par73")

@@ -1,2 +1,2 @@
 extends TreeLikeLine
-class_name StemLine
+class_name RootsLine
