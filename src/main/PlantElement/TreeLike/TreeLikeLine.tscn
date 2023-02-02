@@ -20,9 +20,6 @@ show_behind_parent = true
 width = 15.0
 width_curve = SubResource("Curve_sag5m")
 
-[node name="SubLines" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="AreaLine" type="Area2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_0daqk")

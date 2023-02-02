@@ -2,6 +2,7 @@ extends PlantElement
 class_name TreeLike
 
 @onready var _Origin = %Origin
+@onready var _TreeLikeLines = %TreeLikeLines
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +15,6 @@ func _process(delta):
 
 func get_origin() -> Marker2D:
 	return _Origin
+
+func add_line(line : TreeLikeLine):
+	_TreeLikeLines.add_child(line)

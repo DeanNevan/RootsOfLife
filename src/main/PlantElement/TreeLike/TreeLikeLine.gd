@@ -7,13 +7,12 @@ enum Status {
 }
 var status : Status = Status.BUILDING
 
-@onready var _SubLines = %SubLines
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
 
 var parent_line : TreeLikeLine
-var children_line := []
+var child_lines := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,24 +66,20 @@ func init_line_area():
 		collision_shape.shape = segment_shape
 		_AreaLine.add_child(collision_shape)
 
-func register_sub_line(sub_line : TreeLikeLine):
+func register_child_line(child_line : TreeLikeLine):
 #	_SubLines.add_child(sub_line)
-	sub_line.parent_line = self
-	self.children_line.append(sub_line)
+	child_line.parent_line = self
+	self.child_lines.append(child_line)
 
-func get_sub_lines() -> Array:
-	return _SubLines.get_children()
-
-func get_all_sub_lines() -> Array:
+func get_all_child_lines() -> Array:
 	var nodes := []
-	_step_get_all_sub_lines(self, nodes)
+	_step_get_all_child_lines(self, nodes)
 	return nodes
 
-func _step_get_all_sub_lines(node : Node, nodes : Array):
-	for i in node.get_sub_lines():
+func _step_get_all_child_lines(node : Node, nodes : Array):
+	for i in node.child_lines:
 		nodes.append(i)
-		_step_get_all_sub_lines(i, nodes)
+		_step_get_all_child_lines(i, nodes)
 
 func _on_area_line_mouse_entered():
-	print("!!!")
 	pass # Replace with function body.

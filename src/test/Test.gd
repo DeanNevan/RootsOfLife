@@ -18,6 +18,7 @@ var tree_like_lines_shapes := {}
 
 var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn")
 
+@onready var _Roots = %Roots
 @onready var _AreaMouseDrawer = %AreaMouseDrawer
 @onready var _TimerDrawing = %TimerDrawing
 @onready var _RayDrawing = %RayDrawing
@@ -64,7 +65,7 @@ func request_start_draw_roots_line():
 	is_drawing = true
 	drawing_type = DrawingType.ROOTS
 	drawing_line = scene_roots_line.instantiate()
-	$Roots/TreeLikeLines.add_child(drawing_line)
+	_Roots.add_line(drawing_line)
 	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
 	drawing_safe_position = closet_point
@@ -82,8 +83,7 @@ func request_stop_draw_roots_line():
 			drawing_line.queue_free()
 			return
 		drawing_line.finish_build()
-		remove_child(drawing_line)
-		drawing_line_parent.register_sub_line(drawing_line)
+		drawing_line_parent.register_child_line(drawing_line)
 	drawing_line = null
 	drawing_line_parent = null
 	pass
