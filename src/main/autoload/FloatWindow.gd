@@ -78,5 +78,7 @@ func inactivate(_asker : Object):
 	var tween : Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.15)
 	await tween.finished
-	hide()
+	if is_instance_valid(current_asker):
+		if current_asker == _asker:
+			hide()
 	pass
