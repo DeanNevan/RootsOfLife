@@ -18,6 +18,9 @@ var enable_texture := true:
 @export var border_color := Color(1, 1, 1, 0)
 @export var texture_color_override := false
 
+var hint_title := "区域"
+var hint_content := "NULL"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enable_texture = true
@@ -74,11 +77,8 @@ func init_polygon_texture():
 		_PolygonTexture.color = color
 
 func _on_area_terrain_mouse_entered():
-	print(self)
-	GUI._FloatWindow.activate(self, str(self), str(self))
-	pass # Replace with function body.
+	GUI._FloatWindow.activate(self, hint_title, hint_content)
 
 
 func _on_area_terrain_mouse_exited():
 	GUI._FloatWindow.inactivate(self)
-	pass # Replace with function body.

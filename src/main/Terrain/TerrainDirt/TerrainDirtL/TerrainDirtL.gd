@@ -1,5 +1,8 @@
 extends TerrainDirt
 
+func _init():
+	hint_title = "深层泥土"
+	hint_content = "有比较多水分\n你可以在这里建造根系"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

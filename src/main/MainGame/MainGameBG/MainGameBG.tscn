@@ -56,7 +56,8 @@ environment = SubResource("Environment_wo2yc")
 [node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.760784, 0.843137, 0.952941, 1)
 show_behind_parent = true
-scale = Vector2(5000, 5000)
+z_index = -1
+scale = Vector2(10000, 10000)
 texture = ExtResource("2_cyenq")
 metadata/_edit_lock_ = true
 
@@ -65,10 +66,15 @@ script = ExtResource("3_66dls")
 gradient = SubResource("Gradient_nr54s")
 
 [node name="Moon" parent="." instance=ExtResource("4_sa3n3")]
+visible = false
 gradient = SubResource("Gradient_drxjo")
 
 [node name="Sun" parent="." instance=ExtResource("3_qtrcy")]
+visible = false
 gradient = SubResource("Gradient_rg4ig")
+
+[node name="Clouds" type="Node2D" parent="."]
+script = ExtResource("6_0odt2")
 
 [node name="Stars" type="Node2D" parent="."]
 script = ExtResource("5_5vdvh")
@@ -76,7 +82,7 @@ gradient = SubResource("Gradient_s2dei")
 
 [node name="ParticlesStar1" type="CPUParticles2D" parent="Stars"]
 material = SubResource("CanvasItemMaterial_8yry1")
-position = Vector2(576, 324)
+amount = 32
 lifetime = 10.0
 texture = ExtResource("7_hdbu6")
 emission_shape = 3
@@ -90,7 +96,7 @@ color_ramp = SubResource("Gradient_r17eh")
 
 [node name="ParticlesStar2" type="CPUParticles2D" parent="Stars"]
 material = SubResource("CanvasItemMaterial_8yry1")
-position = Vector2(576, 324)
+amount = 32
 lifetime = 10.0
 texture = ExtResource("8_yhpmc")
 emission_shape = 3
@@ -101,6 +107,3 @@ scale_amount_min = 0.08
 scale_amount_max = 0.12
 scale_amount_curve = SubResource("Curve_oitmn")
 color_ramp = SubResource("Gradient_r17eh")
-
-[node name="Clouds" type="Node2D" parent="."]
-script = ExtResource("6_0odt2")

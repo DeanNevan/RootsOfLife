@@ -3,6 +3,7 @@ class_name MainGame
 
 @export var game_world_node_path : NodePath
 @onready var game_world : GameWorld = get_node(game_world_node_path)
+@onready var _MainCamera : Camera2D = %MainCamera
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

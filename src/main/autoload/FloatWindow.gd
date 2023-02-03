@@ -39,20 +39,31 @@ func get_safe_origin() -> Vector2:
 		origin = Vector2(pos.x - sx, pos.y)
 	return origin
 
-#func update():
-#	current_asker = null
-#	for i in askers:
-#		if i is Terrain
-#	pass
+func update():
+	current_asker = null
+	for i in askers:
+		if i is Terrain:
+			if !is_instance_valid(current_asker):
+				current_asker = i
+			elif i.get_index() > current_asker.get_index():
+				current_asker = i
+		else:
+			current_asker = i
+	if is_instance_valid(current_asker):
+		_LabelTitle.text = askers_data[current_asker][0]
+		_LabelContent.text = askers_data[current_asker][1]
 
 func activate(_asker : Object, title := "", content := ""):
 	if !askers.has(_asker):
 		askers_data[_asker] = [title, content]
 		askers.append(_asker)
 	is_active = true
-	_LabelTitle.text = title
-	_LabelContent.text = content
-	create_tween().tween_property(self, "modulate:a", 1, 0.5)
+	update()
+	show()
+	var tween : Tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1, 0.4)
+	
+	
 
 
 func inactivate(_asker : Object):
@@ -61,9 +72,11 @@ func inactivate(_asker : Object):
 	askers.erase(_asker)
 	askers_data.erase(_asker)
 	if askers.size() > 0:
-		_LabelTitle.text = askers_data[askers[0]][0]
-		_LabelContent.text = askers_data[askers[0]][1]
+		update()
 		return
 	is_active = false
-	create_tween().tween_property(self, "modulate:a", 0, 0.25)
+	var tween : Tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0, 0.15)
+	await tween.finished
+	hide()
 	pass

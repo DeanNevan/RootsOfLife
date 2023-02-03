@@ -13,6 +13,7 @@ config_version=5
 config/name="RootsOfLife"
 run/main_scene="res://src/main/MainGame/MainGame.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
 
 [autoload]

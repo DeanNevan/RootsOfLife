@@ -49,6 +49,7 @@ script = ExtResource("3_2lsnb")
 [node name="CameraOrigin" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="CameraOrigin"]
+unique_name_in_owner = true
 position_smoothing_speed = 50.0
 script = ExtResource("5_lvrwb")
 MAX_ZOOM = 5.0

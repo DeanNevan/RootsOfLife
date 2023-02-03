@@ -9,3 +9,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _process(delta):
+	var camera : Camera2D = get_viewport().get_camera_2d()
+	if is_instance_valid(camera):
+		global_position = camera.global_position
+		scale.x = 1 / camera.zoom.x
+		scale.y = 1 / camera.zoom.y
+		
+

@@ -1,6 +1,10 @@
 extends TerrainNutrition
 class_name TerrainNutritionP
 
+func _init():
+	hint_title = "磷"
+	hint_content = "提供营养元素-磷，但储量有限"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
