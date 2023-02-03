@@ -15,5 +15,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print("%d:%d" % [GameTime.get_day(), GameTime.get_hour_in_day()])
+#	var screen_coord := Global.convert_target_position2(
+#		$MainGameBG.get_viewport_transform(), 
+#		$MainGameBG.global_transform, 
+#		Vector2()
+#	)
+#	$MainGameBG.position = screen_coord
+#	print(screen_coord)
 	pass

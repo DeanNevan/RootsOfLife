@@ -1,5 +1,11 @@
 extends Node
 
+func convert_target_position(target : Node2D, local_pos : Vector2 = Vector2()) -> Vector2:
+	return convert_target_position2(target.get_viewport_transform(), target.get_global_transform(), local_pos)
+
+func convert_target_position2(target_viewport_transform : Transform2D, target_global_transform : Transform2D, local_pos : Vector2 = Vector2()) -> Vector2:
+	var result : Vector2 = target_viewport_transform * (target_global_transform * local_pos)
+	return result
 
 func is_points_in_rect2(rect : Rect2, points : Array) -> bool:
 	for i in points:

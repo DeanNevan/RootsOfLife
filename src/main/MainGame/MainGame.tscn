@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvuqeam713wd4"]
+[gd_scene load_steps=8 format=3 uid="uid://dvuqeam713wd4"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
 [ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
 [ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
-[ext_resource type="Script" path="res://src/main/utils/ToolPolygonOptimizer.gd" id="6_4c2ah"]
 [ext_resource type="PackedScene" uid="uid://cp0hpvpqcv20m" path="res://src/main/MainGame/GameWorld/instances/Test/GameWorldTest.tscn" id="6_wqi6f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_brmlh"]
@@ -13,12 +12,9 @@ font_size = 64
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_72ykg")
-game_world_node_path = NodePath("LayerWorld/GameWorldTest")
+game_world_node_path = NodePath("GameWorldTest")
 
-[node name="LayerBG" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="MainGameBG" parent="LayerBG" instance=ExtResource("3_pc0ol")]
+[node name="MainGameBG" parent="." instance=ExtResource("3_pc0ol")]
 
 [node name="LayerUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -48,13 +44,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_2lsnb")
 
-[node name="LayerWorld" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="ToolPolygonOptimizer" type="Node" parent="LayerWorld"]
-script = ExtResource("6_4c2ah")
-
-[node name="GameWorldTest" parent="LayerWorld" instance=ExtResource("6_wqi6f")]
+[node name="GameWorldTest" parent="." instance=ExtResource("6_wqi6f")]
 
 [node name="CameraOrigin" type="Node2D" parent="."]
 

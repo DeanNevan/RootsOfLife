@@ -39,11 +39,11 @@ func get_safe_origin() -> Vector2:
 		origin = Vector2(pos.x - sx, pos.y)
 	return origin
 
-func update():
-	current_asker = null
-	for i in askers:
-		if i is Terrain
-	pass
+#func update():
+#	current_asker = null
+#	for i in askers:
+#		if i is Terrain
+#	pass
 
 func activate(_asker : Object, title := "", content := ""):
 	if !askers.has(_asker):
