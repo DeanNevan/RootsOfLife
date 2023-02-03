@@ -33,7 +33,20 @@ func get_optimized_points(points : PackedVector2Array) -> PackedVector2Array:
 	return result
 
 func get_center_position_in_polygon(polygon : PackedVector2Array) -> Vector2:
-	var vector := Vector2()
-	for i in polygon:
-		vector += i
-	return vector / polygon.size()
+	var total_moment = Vector2.ZERO
+	var total_mass = 0
+	
+	for i in range(polygon.size()):
+		var point1 = polygon[i]
+		var point2
+		if i < polygon.size() - 1:
+			point2 = polygon[i + 1]
+		else:
+			point2 = polygon[0]
+		
+		var triangle_mass = (point1.x * point2.y - point2.x * point1.y) * 0.5
+		
+		total_moment += (point1 + point2) * triangle_mass
+		total_mass += triangle_mass
+	
+	return total_moment / total_mass / 3.0
