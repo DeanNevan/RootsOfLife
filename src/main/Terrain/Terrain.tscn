@@ -29,8 +29,6 @@ width = 3.0
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 2
 
 [connection signal="mouse_entered" from="AreaTerrain" to="." method="_on_area_terrain_mouse_entered"]
