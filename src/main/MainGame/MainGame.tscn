@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg1gnkmrk67fb"]
+[gd_scene load_steps=12 format=3 uid="uid://bg1gnkmrk67fb"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
 [ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
 [ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="4_5k00o"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
+[ext_resource type="Script" path="res://src/main/MainGame/ToolPolygonOptimizer.gd" id="6_8c1qn"]
+[ext_resource type="PackedScene" uid="uid://vifwxdhmx1cx" path="res://src/main/Terrain/TerrainDirt/TerrainDirtS/TerrainDirtS.tscn" id="6_fyqec"]
+[ext_resource type="PackedScene" path="res://src/main/Terrain/TerrainDirt/TerrainDirtM/TerrainDirtM.tscn" id="8_nwoxj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_brmlh"]
 font_size = 64
@@ -52,16 +55,39 @@ script = ExtResource("3_2lsnb")
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="LayerWorld"]
+visible = false
 position = Vector2(203, 307)
 texture = ExtResource("4_5k00o")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="LayerWorld/Sprite2D"]
 occluder = SubResource("OccluderPolygon2D_4flbw")
 
+[node name="ToolPolygonOptimizer" type="Node" parent="LayerWorld"]
+script = ExtResource("6_8c1qn")
+
+[node name="World" type="Node2D" parent="LayerWorld"]
+unique_name_in_owner = true
+
+[node name="Terrains" type="Node2D" parent="LayerWorld/World"]
+unique_name_in_owner = true
+
+[node name="TerrainDirts" type="Node2D" parent="LayerWorld/World/Terrains"]
+unique_name_in_owner = true
+
+[node name="TerrainDirtS" parent="LayerWorld/World/Terrains/TerrainDirts" instance=ExtResource("6_fyqec")]
+polygon = PackedVector2Array(-210, 595, 66, 510, 432, 608, 968, 519, 1273, 557, 1495, 653, 1806, 548, 2178, 675, 2185, 761, 1983, 798, 1746, 751, 1496, 829, 1228, 757, 1012, 818, 822, 791, 732, 801, 550, 845, 338, 852, 110, 790, -307, 687)
+
+[node name="TerrainDirtM" parent="LayerWorld/World/Terrains/TerrainDirts" instance=ExtResource("8_nwoxj")]
+polygon = PackedVector2Array(825, 771, 1281, 728, 1680, 746, 2190, 743, 2091, 1788, 1584, 1343, 773, 1259, 235, 1313, -24, 1741, -334, 1663, -315, 675, 305, 839)
+
+[node name="TerrainNutritions" type="Node2D" parent="LayerWorld/World/Terrains"]
+
+[node name="TerrainWater" type="Node2D" parent="LayerWorld/World/Terrains"]
+
 [node name="CameraOrigin" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="CameraOrigin"]
 position_smoothing_speed = 50.0
 script = ExtResource("5_lvrwb")
-MAX_ZOOM = 1.5
-MIN_ZOOM = 0.4
+MAX_ZOOM = 5.0
+MIN_ZOOM = 0.3

@@ -115,6 +115,3 @@ func _step_get_all_child_lines(node : Node, nodes : Array):
 	for i in node.child_lines:
 		nodes.append(i)
 		_step_get_all_child_lines(i, nodes)
-
-func _on_area_line_mouse_entered():
-	pass # Replace with function body.

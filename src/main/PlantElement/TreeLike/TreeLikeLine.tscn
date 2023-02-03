@@ -17,7 +17,6 @@ width = 15.0
 
 [node name="AreaLine" type="Area2D" parent="."]
 unique_name_in_owner = true
+monitoring = false
 script = ExtResource("2_0daqk")
 object_node_path = NodePath("..")
-
-[connection signal="mouse_entered" from="AreaLine" to="." method="_on_area_line_mouse_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqstmeaf71y03"]
+
+[ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_qal58"]
+[ext_resource type="Script" path="res://src/main/Terrain/TerrainWater/TerrainWater.gd" id="2_23iiw"]
+
+[node name="TerrainWater" instance=ExtResource("1_qal58")]
+color = Color(0.431373, 0.862745, 0.964706, 0.588235)
+script = ExtResource("2_23iiw")
+
+[node name="PolygonTexture" parent="." index="1"]
+color = Color(0.431373, 0.862745, 0.964706, 0.588235)
+
+[node name="LineBorder" parent="." index="3"]
+default_color = Color(0.431373, 0.862745, 0.964706, 1)

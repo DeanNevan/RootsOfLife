@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvxdv67d6qxaa"]
+[gd_scene load_steps=4 format=3 uid="uid://dvxdv67d6qxaa"]
 
 [ext_resource type="Script" path="res://src/main/Terrain/Terrain.gd" id="1_8gv04"]
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_bawp8"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mblcm"]
+
 [node name="Terrain" type="Polygon2D"]
 script = ExtResource("1_8gv04")
+
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
+unique_name_in_owner = true
+occluder = SubResource("OccluderPolygon2D_mblcm")
 
 [node name="PolygonTexture" type="Polygon2D" parent="."]
 unique_name_in_owner = true
@@ -16,4 +22,11 @@ object_node_path = NodePath("..")
 
 [node name="LineBorder" type="Line2D" parent="."]
 unique_name_in_owner = true
-width = 8.0
+width = 3.0
+
+[node name="Label" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

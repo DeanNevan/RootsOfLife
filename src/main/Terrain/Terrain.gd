@@ -12,10 +12,13 @@ var enable_texture := true:
 @onready var _AreaTerrain = %AreaTerrain
 @onready var _PolygonTexture = %PolygonTexture
 @onready var _LineBorder = %LineBorder
+@onready var _Label = %Label
+@onready var _LightOccluder = %LightOccluder
+
+@export var texture_color_override := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	color.a = 0
 	enable_texture = true
 	pass # Replace with function body.
 
@@ -25,10 +28,21 @@ func _process(delta):
 	pass
 
 func init_all():
+	color.a = 0
 	polygon = Global.get_optimized_points(polygon)
 	init_area_terrain()
 	init_line_border()
 	init_polygon_texture()
+	init_label()
+	init_light_occluder()
+
+func init_light_occluder():
+	_LightOccluder.occluder.polygon = polygon
+	
+
+func init_label():
+	_Label.position = Global.get_center_position_in_polygon(polygon)
+	pass
 
 func init_area_terrain():
 	for i in _AreaTerrain.get_children():
@@ -44,3 +58,5 @@ func init_line_border():
 
 func init_polygon_texture():
 	_PolygonTexture.polygon = polygon
+	if texture_color_override:
+		_PolygonTexture.color = color

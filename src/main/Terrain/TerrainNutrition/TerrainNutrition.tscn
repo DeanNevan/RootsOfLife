@@ -4,19 +4,18 @@
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutrition.gd" id="2_par73"]
 [ext_resource type="FontFile" uid="uid://314lq4fen53r" path="res://assets/art/font/HandWrite.ttf" id="3_cdxf7"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3fp3f"]
+[sub_resource type="LabelSettings" id="LabelSettings_h5di2"]
 font = ExtResource("3_cdxf7")
 font_size = 28
 
 [node name="TerrainNutrition" instance=ExtResource("1_w7ljm")]
 script = ExtResource("2_par73")
 
-[node name="LabelName" type="Label" parent="." index="3"]
-unique_name_in_owner = true
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="LabelName" type="Label" parent="Label" index="0"]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 39.0
 text = "123"
-label_settings = SubResource("LabelSettings_3fp3f")
+label_settings = SubResource("LabelSettings_h5di2")
 horizontal_alignment = 1
 vertical_alignment = 1

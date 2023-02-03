@@ -18,3 +18,9 @@ func get_optimized_points(points : PackedVector2Array) -> PackedVector2Array:
 			result.append(i)
 		last_vector = i
 	return result
+
+func get_center_position_in_polygon(polygon : PackedVector2Array) -> Vector2:
+	var vector := Vector2()
+	for i in polygon:
+		vector += i
+	return vector / polygon.size()

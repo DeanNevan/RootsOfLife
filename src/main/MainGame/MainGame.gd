@@ -1,10 +1,18 @@
 extends Node2D
 class_name MainGame
 
+@onready var _World = %World
+@onready var _TerrainDirts = %TerrainDirts
+@onready var _Terrain = %Terrains
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameTime.start()
 	Data.init_all()
+	
+	for i in Global.get_all_children(_Terrain):
+		if i is Terrain:
+			i.init_all()
 	pass # Replace with function body.
 
 

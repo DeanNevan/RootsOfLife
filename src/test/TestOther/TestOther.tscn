@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgofg710nps3q"]
+
+[ext_resource type="Script" path="res://src/test/TestOther/TestOther.gd" id="1_16t6k"]
+[ext_resource type="PackedScene" uid="uid://bafrt4ph1e3w4" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionK/TerrainNutritionK.tscn" id="2_fedf2"]
+
+[node name="TestOther" type="Node2D"]
+script = ExtResource("1_16t6k")
+
+[node name="TerrainNutritionK" parent="." instance=ExtResource("2_fedf2")]
+polygon = PackedVector2Array(427, 273, 262, 503, 1085, 538, 785, 166, 574, 166)

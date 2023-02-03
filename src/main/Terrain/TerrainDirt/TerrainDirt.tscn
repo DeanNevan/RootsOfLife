@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://344r26p5gvys"]
+[gd_scene load_steps=3 format=3 uid="uid://cfrslkhweko36"]
 
 [ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_snhym"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainDirt/TerrainDirt.gd" id="2_v4yr5"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_amaas"]
-load_path = "res://.godot/imported/dirt_floor_diff_1k.png-34739de07ae343e1a133da017d56e1f2.s3tc.ctex"
-
 [node name="TerrainDirt" instance=ExtResource("1_snhym")]
 script = ExtResource("2_v4yr5")
 
-[node name="PolygonTexture" parent="." index="0"]
+[node name="PolygonTexture" parent="." index="1"]
 texture_repeat = 2
-texture = SubResource("CompressedTexture2D_amaas")
+
+[node name="LineBorder" parent="." index="3"]
+visible = false

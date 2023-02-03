@@ -4,19 +4,23 @@
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionP/TerrainNutritionP.gd" id="2_t5bu4"]
 [ext_resource type="FontFile" uid="uid://314lq4fen53r" path="res://assets/art/font/HandWrite.ttf" id="3_bqunn"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_wkx5g"]
+[sub_resource type="LabelSettings" id="LabelSettings_cflsa"]
 font = ExtResource("3_bqunn")
 font_size = 28
 font_color = Color(1, 0.301961, 0.956863, 1)
 outline_size = 4
-outline_color = Color(0.612664, 0.00083401, 0.712363, 1)
+outline_color = Color(0.73477, 0.000297833, 0.704117, 1)
 
 [node name="TerrainNutritionP" instance=ExtResource("1_0lert")]
+color = Color(1, 0.301961, 0.956863, 1)
 script = ExtResource("2_t5bu4")
 
-[node name="PolygonTexture" parent="." index="0"]
+[node name="PolygonTexture" parent="." index="1"]
 color = Color(1, 0.301961, 0.956863, 0.470588)
 
-[node name="LabelName" parent="." index="3"]
+[node name="LineBorder" parent="." index="3"]
+default_color = Color(1, 0.301961, 0.956863, 1)
+
+[node name="LabelName" parent="Label" index="0"]
 text = "P"
-label_settings = SubResource("LabelSettings_wkx5g")
+label_settings = SubResource("LabelSettings_cflsa")
