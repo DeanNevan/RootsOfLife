@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gp7qbjvc2y3"]
+
+[ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_mcfga"]
+[ext_resource type="Script" path="res://src/main/autoload/FloatWindow.gd" id="2_m8xc0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jcwn8"]
+font_size = 24
+
+[node name="FloatWindow" type="MarginContainer"]
+custom_minimum_size = Vector2(75, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -995.0
+offset_bottom = -479.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_mcfga")
+script = ExtResource("2_m8xc0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "地块信息"
+label_settings = SubResource("LabelSettings_jcwn8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelContent" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true

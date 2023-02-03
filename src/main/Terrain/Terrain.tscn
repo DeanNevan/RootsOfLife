@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_bawp8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mblcm"]
+resource_local_to_scene = true
 
 [node name="Terrain" type="Polygon2D"]
 script = ExtResource("1_8gv04")
@@ -30,3 +31,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="AreaTerrain" to="." method="_on_area_terrain_mouse_entered"]
+[connection signal="mouse_exited" from="AreaTerrain" to="." method="_on_area_terrain_mouse_exited"]

@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgofg710nps3q"]
+[gd_scene load_steps=6 format=3 uid="uid://cgofg710nps3q"]
 
 [ext_resource type="Script" path="res://src/test/TestOther/TestOther.gd" id="1_16t6k"]
-[ext_resource type="PackedScene" uid="uid://bafrt4ph1e3w4" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionK/TerrainNutritionK.tscn" id="2_fedf2"]
+[ext_resource type="Texture2D" uid="uid://c8rd1fg8yxxut" path="res://assets/art/circle_light.png" id="2_2yob8"]
+[ext_resource type="Texture2D" uid="uid://nkpjjfuh5a13" path="res://assets/art/white_pixel.png" id="3_oydbg"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nskbx"]
+polygon = PackedVector2Array(111, 99, 111, 99, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 169, 208, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x13s1"]
+polygon = PackedVector2Array(111, 99, 111, 99, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 103, 163, 173, 172, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 235, 167, 219, 77, 165, 74, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110, 215, 110)
 
 [node name="TestOther" type="Node2D"]
 script = ExtResource("1_16t6k")
 
-[node name="TerrainNutritionK" parent="." instance=ExtResource("2_fedf2")]
-polygon = PackedVector2Array(427, 273, 262, 503, 1085, 538, 785, 166, 574, 166)
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_nskbx")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(449, 166)
+occluder = SubResource("OccluderPolygon2D_x13s1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.376471, 0.376471, 0.376471, 1)
+scale = Vector2(10000, 10000)
+texture = ExtResource("3_oydbg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(406, 156)
+shadow_enabled = true
+texture = ExtResource("2_2yob8")

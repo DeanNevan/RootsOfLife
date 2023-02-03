@@ -5,9 +5,9 @@ var enable_texture := true:
 	set(_enable_texture):
 		enable_texture = _enable_texture
 		if enable_texture:
-			_PolygonTexture.color.a = 1
+			self_modulate.a = 1
 		else:
-			_PolygonTexture.color.a = 0
+			self_modulate.a = 0
 
 @onready var _AreaTerrain = %AreaTerrain
 @onready var _PolygonTexture = %PolygonTexture
@@ -15,6 +15,7 @@ var enable_texture := true:
 @onready var _Label = %Label
 @onready var _LightOccluder = %LightOccluder
 
+@export var border_color := Color(1, 1, 1, 0)
 @export var texture_color_override := false
 
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +29,19 @@ func _process(delta):
 	pass
 
 func init_all():
-	color.a = 0
+	self_modulate.a = 0
 	polygon = Global.get_optimized_points(polygon)
+	assert(polygon.size() >= 2)
+	var offset_polygon := PackedVector2Array()
+	for i in polygon.size():
+		var pos : Vector2 = polygon[i]
+		pos.x *= scale.x
+		pos.y *= scale.y
+		pos += global_position
+		offset_polygon.append(pos)
+	polygon = offset_polygon
+	global_position = Vector2()
+	global_scale = Vector2.ONE
 	init_area_terrain()
 	init_line_border()
 	init_polygon_texture()
@@ -38,7 +50,6 @@ func init_all():
 
 func init_light_occluder():
 	_LightOccluder.occluder.polygon = polygon
-	
 
 func init_label():
 	_Label.position = Global.get_center_position_in_polygon(polygon)
@@ -52,6 +63,7 @@ func init_area_terrain():
 	_AreaTerrain.add_child(collision_shape)
 
 func init_line_border():
+	_LineBorder.default_color = border_color
 	_LineBorder.points = polygon
 	if _LineBorder.points.size() != 0:
 		_LineBorder.add_point(_LineBorder.points[0])
@@ -60,3 +72,13 @@ func init_polygon_texture():
 	_PolygonTexture.polygon = polygon
 	if texture_color_override:
 		_PolygonTexture.color = color
+
+func _on_area_terrain_mouse_entered():
+	print(self)
+	GUI._FloatWindow.activate(self, str(self), str(self))
+	pass # Replace with function body.
+
+
+func _on_area_terrain_mouse_exited():
+	GUI._FloatWindow.inactivate(self)
+	pass # Replace with function body.

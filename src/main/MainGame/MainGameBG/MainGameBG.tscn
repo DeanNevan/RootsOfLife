@@ -56,7 +56,7 @@ environment = SubResource("Environment_wo2yc")
 [node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.760784, 0.843137, 0.952941, 1)
 show_behind_parent = true
-scale = Vector2(10000, 10000)
+scale = Vector2(5000, 5000)
 texture = ExtResource("2_cyenq")
 metadata/_edit_lock_ = true
 

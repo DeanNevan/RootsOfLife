@@ -9,4 +9,3 @@ script = ExtResource("2_s2jqq")
 
 [node name="PolygonTexture" parent="." index="1"]
 color = Color(0.858824, 0.74902, 0.529412, 1)
-texture = null

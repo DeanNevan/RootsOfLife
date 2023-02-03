@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk24qfoku12qf"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/GameWorld/WorldArea.gd" id="1_1jvx2"]
+[ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_ht35j"]
+
+[node name="WorldArea" type="Polygon2D"]
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_1jvx2")
+
+[node name="WorldBorder" type="Line2D" parent="."]
+default_color = Color(0, 0, 0, 1)
+
+[node name="AreaWorld" type="Area2D" parent="."]
+script = ExtResource("2_ht35j")
+object_node_path = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaWorld"]

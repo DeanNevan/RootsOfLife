@@ -8,6 +8,3 @@ script = ExtResource("2_v4yr5")
 
 [node name="PolygonTexture" parent="." index="1"]
 texture_repeat = 2
-
-[node name="LineBorder" parent="." index="3"]
-visible = false

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bafrt4ph1e3w4"]
+[gd_scene load_steps=6 format=3 uid="uid://bafrt4ph1e3w4"]
 
 [ext_resource type="PackedScene" uid="uid://vmji7hcgdgmu" path="res://src/main/Terrain/TerrainNutrition/TerrainNutrition.tscn" id="1_d7als"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionK/TerrainNutritionK.gd" id="2_i6gb5"]
 [ext_resource type="FontFile" uid="uid://314lq4fen53r" path="res://assets/art/font/HandWrite.ttf" id="3_ywk78"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4lf2g"]
+resource_local_to_scene = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_af4ac"]
 font = ExtResource("3_ywk78")
@@ -12,8 +15,12 @@ outline_size = 4
 outline_color = Color(0.881197, 0.319665, 8.85606e-06, 1)
 
 [node name="TerrainNutritionK" instance=ExtResource("1_d7als")]
-color = Color(0.478431, 0.623529, 0.956863, 1)
+color = Color(1, 0.552941, 0.384314, 1)
 script = ExtResource("2_i6gb5")
+border_color = Color(1, 0.552941, 0.384314, 1)
+
+[node name="LightOccluder" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_4lf2g")
 
 [node name="PolygonTexture" parent="." index="1"]
 color = Color(0.988235, 0.356863, 0, 0.470588)

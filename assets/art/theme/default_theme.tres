@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bu5yug4nxd3a2"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ir23o"]
+color = Color(0.745098, 0.745098, 0.745098, 1)
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yle5d"]
+color = Color(0.745098, 0.745098, 0.745098, 1)
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 2
+vertical = true
+
+[resource]
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = SubResource("StyleBoxLine_ir23o")
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource("StyleBoxLine_yle5d")

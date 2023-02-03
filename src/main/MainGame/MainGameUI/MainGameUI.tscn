@@ -1,21 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbk15m06vn7sr"]
+[gd_scene load_steps=10 format=3 uid="uid://bbk15m06vn7sr"]
 
 [ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
+[ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_fdex0"]
 [ext_resource type="PackedScene" uid="uid://nnulrro51ke" path="res://src/main/MainGame/MainGameUI/Plate/Plate.tscn" id="1_lv8eo"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/MainGameUI.gd" id="1_n0mog"]
 [ext_resource type="PackedScene" uid="uid://w36hti3p8leb" path="res://src/main/MainGame/MainGameUI/ContainerWater/ContainerWater.tscn" id="2_akg3e"]
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/LabelDayHour.gd" id="2_v2msx"]
 [ext_resource type="PackedScene" uid="uid://cro81a2vap03y" path="res://src/main/MainGame/MainGameUI/ContainerEnergy/ContainerEnergy.tscn" id="3_1847h"]
 [ext_resource type="PackedScene" uid="uid://c81lb03lbh715" path="res://src/main/MainGame/MainGameUI/ContainerNutrition/ContainerNutrition.tscn" id="4_oycl3"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_yle5d"]
-color = Color(0.745098, 0.745098, 0.745098, 1)
-grow_begin = 2.0
-grow_end = 2.0
-thickness = 2
-vertical = true
-
-[sub_resource type="Theme" id="Theme_0fe4v"]
-VSeparator/constants/separation = 4
-VSeparator/styles/separator = SubResource("StyleBoxLine_yle5d")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu7ao"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
@@ -36,7 +28,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_0fe4v")
+theme = ExtResource("1_fdex0")
+script = ExtResource("1_n0mog")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 64)
@@ -48,9 +41,18 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Plate" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_lv8eo")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Plate" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_lv8eo")]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+
+[node name="LabelDayHour" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_v2msx")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

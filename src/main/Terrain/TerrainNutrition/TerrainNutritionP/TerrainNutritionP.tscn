@@ -14,6 +14,7 @@ outline_color = Color(0.73477, 0.000297833, 0.704117, 1)
 [node name="TerrainNutritionP" instance=ExtResource("1_0lert")]
 color = Color(1, 0.301961, 0.956863, 1)
 script = ExtResource("2_t5bu4")
+border_color = Color(1, 0.301961, 0.956863, 1)
 
 [node name="PolygonTexture" parent="." index="1"]
 color = Color(1, 0.301961, 0.956863, 0.470588)

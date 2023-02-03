@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7ydo4yk6g7y"]
+
+[ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_dbarc"]
+[ext_resource type="Script" path="res://src/main/autoload/GUI.gd" id="1_tp8et"]
+[ext_resource type="PackedScene" uid="uid://b0gp7qbjvc2y3" path="res://src/main/autoload/FloatWindow.tscn" id="3_p0u5q"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_dbarc")
+script = ExtResource("1_tp8et")
+
+[node name="LayerUI" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="FloatWindow" parent="LayerUI" instance=ExtResource("3_p0u5q")]
+unique_name_in_owner = true

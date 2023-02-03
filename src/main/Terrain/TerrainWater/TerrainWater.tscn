@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqstmeaf71y03"]
+[gd_scene load_steps=4 format=3 uid="uid://dqstmeaf71y03"]
 
 [ext_resource type="PackedScene" uid="uid://dvxdv67d6qxaa" path="res://src/main/Terrain/Terrain.tscn" id="1_qal58"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainWater/TerrainWater.gd" id="2_23iiw"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q3v5u"]
+resource_local_to_scene = true
+
 [node name="TerrainWater" instance=ExtResource("1_qal58")]
 color = Color(0.431373, 0.862745, 0.964706, 0.588235)
 script = ExtResource("2_23iiw")
+
+[node name="LightOccluder" parent="." index="0"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_q3v5u")
+occluder_light_mask = 0
 
 [node name="PolygonTexture" parent="." index="1"]
 color = Color(0.431373, 0.862745, 0.964706, 0.588235)

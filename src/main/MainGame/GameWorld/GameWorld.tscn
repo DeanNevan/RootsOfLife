@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm8b0hi7iv4ac"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/GameWorld/GameWorld.gd" id="1_lq7a4"]
+[ext_resource type="Script" path="res://src/main/utils/ToolPolygonOptimizer.gd" id="2_5xbta"]
+[ext_resource type="PackedScene" uid="uid://bk24qfoku12qf" path="res://src/main/MainGame/GameWorld/WorldArea.tscn" id="2_obmsw"]
+[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="4_b73us"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oqnli"]
+font_size = 24
+font_color = Color(0.886275, 0, 0.141176, 1)
+outline_size = 2
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_lq7a4")
+
+[node name="ToolPolygonOptimizer" type="Node" parent="."]
+script = ExtResource("2_5xbta")
+
+[node name="Terrains" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldArea" parent="." instance=ExtResource("2_obmsw")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_b73us")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -59.0
+offset_top = -19.0
+offset_right = 59.0
+offset_bottom = 18.0
+text = "这是128px"
+label_settings = SubResource("LabelSettings_oqnli")

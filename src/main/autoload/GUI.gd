@@ -1,5 +1,6 @@
-extends Node2D
+extends Control
 
+@onready var _FloatWindow = %FloatWindow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

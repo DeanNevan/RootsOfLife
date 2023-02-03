@@ -1,5 +1,12 @@
 extends Node
 
+
+func is_points_in_rect2(rect : Rect2, points : Array) -> bool:
+	for i in points:
+		if !rect.has_point(i):
+			return false
+	return true
+
 func get_all_children(node : Node) -> Array:
 	var nodes := []
 	_step_get_children(node, nodes)
