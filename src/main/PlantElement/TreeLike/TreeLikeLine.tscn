@@ -7,13 +7,16 @@
 width = 0.0
 script = ExtResource("1_oac7p")
 
+[node name="LineTextureBorder" type="Line2D" parent="."]
+unique_name_in_owner = true
+width = 15.0
+begin_cap_mode = 1
+end_cap_mode = 1
+
 [node name="LineTexture" type="Line2D" parent="."]
 unique_name_in_owner = true
-
-[node name="LineTextureBorder" type="Line2D" parent="LineTexture"]
-unique_name_in_owner = true
-show_behind_parent = true
-width = 15.0
+begin_cap_mode = 1
+end_cap_mode = 1
 
 [node name="AreaLine" type="Area2D" parent="."]
 unique_name_in_owner = true

@@ -55,8 +55,8 @@ func update():
 
 func activate(_asker : Object, title := "", content := ""):
 	if !askers.has(_asker):
-		askers_data[_asker] = [title, content]
 		askers.append(_asker)
+	askers_data[_asker] = [title, content]
 	is_active = true
 	update()
 	show()

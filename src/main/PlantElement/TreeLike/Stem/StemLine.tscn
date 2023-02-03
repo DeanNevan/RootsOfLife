@@ -5,3 +5,9 @@
 
 [node name="StemLine" instance=ExtResource("1_n64tk")]
 script = ExtResource("2_82qby")
+
+[node name="LineTextureBorder" parent="." index="0"]
+default_color = Color(0.247059, 0.611765, 0.345098, 1)
+
+[node name="LineTexture" parent="." index="1"]
+default_color = Color(0.394446, 0.867345, 0.474844, 1)

@@ -10,6 +10,7 @@ var enable_texture := true:
 			self_modulate.a = 0
 
 @onready var _AreaTerrain = %AreaTerrain
+@onready var _StaticBody = %StaticBody
 @onready var _PolygonTexture = %PolygonTexture
 @onready var _LineBorder = %LineBorder
 @onready var _Label = %Label
@@ -50,6 +51,7 @@ func init_all():
 	init_polygon_texture()
 	init_label()
 	init_light_occluder()
+	init_static_body()
 
 func init_light_occluder():
 	_LightOccluder.occluder.polygon = polygon
@@ -64,6 +66,13 @@ func init_area_terrain():
 	var collision_shape := CollisionPolygon2D.new()
 	collision_shape.polygon = polygon
 	_AreaTerrain.add_child(collision_shape)
+
+func init_static_body():
+	for i in _StaticBody.get_children():
+		i.queue_free()
+	var collision_shape := CollisionPolygon2D.new()
+	collision_shape.polygon = polygon
+	_StaticBody.add_child(collision_shape)
 
 func init_line_border():
 	_LineBorder.default_color = border_color

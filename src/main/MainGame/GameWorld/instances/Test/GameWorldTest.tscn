@@ -75,3 +75,6 @@ polygon = PackedVector2Array(-997, 1060, -997, 1060, -894, 1227, -894, 1227, -89
 
 [node name="TerrainNutritionN2" parent="Terrains" index="15" instance=ExtResource("8_721ef")]
 polygon = PackedVector2Array(-120, 974, -127, 1031, 33, 1110, 115, 1053)
+
+[node name="Sprite2D" parent="." index="3"]
+visible = false

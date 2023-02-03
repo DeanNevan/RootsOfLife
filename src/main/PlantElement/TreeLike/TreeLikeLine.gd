@@ -8,7 +8,7 @@ enum Status {
 var status : Status = Status.BUILDING
 
 
-@onready var _FogSprite = get_node("/root/Test/FogSprite")
+#@onready var _FogSprite = get_node("/root/Test/FogSprite")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
@@ -18,9 +18,9 @@ var child_lines := []
 var thickness = 0.0:
 	set(_thickness):
 		thickness = _thickness
-		self.width = calculate_width(_thickness)
-		_LineTexture.width = calculate_width(_thickness)
-		_LineTextureBorder.width = calculate_width(_thickness) + 5
+		self.width = clamp(calculate_width(_thickness), 5, 1000)
+		_LineTexture.width = self.width
+		_LineTextureBorder.width = self.width + 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,12 +33,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func defog(): #似乎不行，没有有效的在image上绘制的手段
-	for i in range(points.size() - 1):
-		var point_a = points[i]
-		var point_b = points[i + 1]
-		#_FogSprite.fog_image
-	_FogSprite.update_image()
+#func defog(): #似乎不行，没有有效的在image上绘制的手段
+#	for i in range(points.size() - 1):
+#		var point_a = points[i]
+#		var point_b = points[i + 1]
+#		#_FogSprite.fog_image
+#	_FogSprite.update_image()
 
 func calculate_width(_length) -> float:
 	return pow(_length * 0.01, 0.75)
@@ -78,7 +78,7 @@ func build_new_point(_point : Vector2):
 		segment_shape.a = points[points.size() - 2]
 		segment_shape.b = points[points.size() - 1]
 		collision_shape.shape = segment_shape
-		_AreaLine.add_child(collision_shape)
+		_AreaLine.call_deferred("add_child", collision_shape)
 	if points.size() > 1:
 		# 最后一个点和倒数第二个点连线长度
 		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
@@ -99,7 +99,7 @@ func init_line_area():
 		segment_shape.a = points[i]
 		segment_shape.b = points[i + 1]
 		collision_shape.shape = segment_shape
-		_AreaLine.add_child(collision_shape)
+		_AreaLine.call_deferred("add_child", collision_shape)
 
 func register_child_line(child_line : TreeLikeLine):
 #	_SubLines.add_child(sub_line)

@@ -13,6 +13,7 @@ font_size = 28
 
 [node name="TerrainNutrition" instance=ExtResource("1_w7ljm")]
 script = ExtResource("2_par73")
+max_capacity = 10000
 
 [node name="LightOccluder" parent="." index="0"]
 visible = false

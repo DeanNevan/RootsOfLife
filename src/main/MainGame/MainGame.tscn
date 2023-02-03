@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvuqeam713wd4"]
+[gd_scene load_steps=11 format=3 uid="uid://dvuqeam713wd4"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
+[ext_resource type="PackedScene" uid="uid://diih20og4coqe" path="res://src/main/MainGame/Seed/Seed.tscn" id="2_sdm1l"]
 [ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
 [ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
 [ext_resource type="PackedScene" uid="uid://cp0hpvpqcv20m" path="res://src/main/MainGame/GameWorld/instances/Test/GameWorldTest.tscn" id="6_wqi6f"]
+[ext_resource type="PackedScene" uid="uid://xuwq7s3v0fxd" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vffmr"]
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_brmlh"]
 font_size = 64
@@ -14,10 +19,51 @@ font_size = 64
 script = ExtResource("1_72ykg")
 game_world_node_path = NodePath("GameWorldTest")
 
+[node name="Seed" parent="." instance=ExtResource("2_sdm1l")]
+unique_name_in_owner = true
+
 [node name="MainGameBG" parent="." instance=ExtResource("3_pc0ol")]
 
 [node name="LayerUI" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="LabelSeed" type="Label" parent="LayerUI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "按下Space释放种子"
+label_settings = SubResource("LabelSettings_vffmr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelSeedRE" type="Label" parent="LayerUI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "按下Space回收种子，重新释放"
+label_settings = SubResource("LabelSettings_vffmr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelTest" type="Label" parent="LayerUI"]
 visible = false
@@ -46,6 +92,9 @@ script = ExtResource("3_2lsnb")
 
 [node name="GameWorldTest" parent="." instance=ExtResource("6_wqi6f")]
 
+[node name="Plant" parent="." instance=ExtResource("7_3m3eh")]
+unique_name_in_owner = true
+
 [node name="CameraOrigin" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="CameraOrigin"]
@@ -54,3 +103,5 @@ position_smoothing_speed = 50.0
 script = ExtResource("5_lvrwb")
 MAX_ZOOM = 5.0
 MIN_ZOOM = 0.3
+
+[connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]

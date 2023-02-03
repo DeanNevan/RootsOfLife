@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://diih20og4coqe"]
+
+[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="1_te7h3"]
+[ext_resource type="Script" path="res://src/main/MainGame/Seed/Seed.gd" id="1_viyfa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a88c"]
+radius = 16.1245
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rn2pv"]
+radius = 24.0208
+
+[node name="Seed" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_viyfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_te7h3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7a88c")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rn2pv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
