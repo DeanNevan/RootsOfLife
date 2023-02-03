@@ -5,6 +5,10 @@ class_name Plant
 @onready var _Stem = %Stem
 @onready var _Leaves = %Leaves
 @onready var _StorageRoots = %StorageRoots
+@onready var _AreaMouseDrawer = %AreaMouseDrawer
+@onready var _TimerDrawing = %TimerDrawing
+@onready var _RayDrawing = %RayDrawing
+@onready var _SpriteMouseDrawer = %SpriteMouseDrawer
 
 var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn")
 var scene_stem_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Stem/StemLine.tscn")
@@ -15,13 +19,112 @@ var scene_storage_roots_s : PackedScene = preload("res://src/main/PlantElement/S
 var scene_storage_roots_m : PackedScene = preload("res://src/main/PlantElement/StorageRoots/StorageRootsM/StorageRootsM.tscn")
 var scene_storage_roots_l : PackedScene = preload("res://src/main/PlantElement/StorageRoots/StorageRootsL/StorageRootsL.tscn")
 
+var build_type := Global.BuildingType.NONE
+var build_size := Global.BuildingSize.NONE
+var is_building := false
+
+var drawing_line_parent : TreeLikeLine
+var drawing_line : TreeLikeLine
+var is_drawing := false
+var drawing_safe_position := Vector2()
+var is_drawing_meet_collision := false
+var drawing_unsafe_objects := []
+var objects_in_mouse_area := []
+var tree_like_lines_shapes := {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func _unhandled_input(event):
+	if is_building:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
+						request_start_draw_treelike_line()
+				else:
+					if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
+						request_stop_draw_treelike_line()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	_AreaMouseDrawer.global_position = get_global_mouse_position()
+	pass
+
+func start_building():
+	is_building = true
+	pass
+
+func stop_building():
+	is_building = false
+	pass
+
+func request_start_draw_treelike_line():
+	var closet_distance : float = 999
+	var split_point_a : Vector2
+	var split_point_b : Vector2
+	var closet_point := Vector2()
+	drawing_line_parent = null
+	for i in tree_like_lines_shapes.keys():
+		if !is_instance_valid(i):
+			tree_like_lines_shapes.erase(i)
+		elif (i is RootsLine and build_type == Global.BuildingType.ROOTS_LINE) or (i is StemLine and build_type == Global.BuildingType.STEM_LINE):
+			for j in tree_like_lines_shapes[i]:
+				if !is_instance_valid(j):
+					continue
+				var segment_shape : SegmentShape2D = j.shape
+				var _point : Vector2 = Geometry2D.get_closest_point_to_segment(
+					get_global_mouse_position(),
+					segment_shape.a,
+					segment_shape.b
+				)
+				var distance : float = (_point - get_global_mouse_position()).length()
+				if distance < closet_distance:
+					split_point_a = segment_shape.a
+					split_point_b = segment_shape.b
+					drawing_line_parent = i
+					closet_point = _point
+	if !is_instance_valid(drawing_line_parent):
+		return
+	
+	
+	if build_type == Global.BuildingType.ROOTS_LINE:
+		drawing_line = scene_roots_line.instantiate()
+	elif build_type == Global.BuildingType.STEM_LINE:
+		drawing_line = scene_stem_line.instantiate()
+	else:
+		return
+	
+	var line_ab = _Roots.split_line(drawing_line_parent, closet_point, split_point_a, split_point_b)
+	drawing_line_parent = line_ab[0] #line_a
+	is_drawing = true
+	drawing_line.parent_line = drawing_line_parent
+	_Roots.add_line(drawing_line)
+	drawing_line.build_new_point(closet_point)
+	drawing_line.begin_build()
+	drawing_safe_position = closet_point
+	_TimerDrawing.start()
+	_AreaMouseDrawer.get_node("CollisionShape2D").shape.radius = 5
+	pass
+
+func request_stop_draw_treelike_line():
+	if !is_drawing:
+		return
+	_AreaMouseDrawer.get_node("CollisionShape2D").shape.radius = 10
+	is_drawing = false
+	if is_instance_valid(drawing_line):
+		if !is_instance_valid(drawing_line_parent):
+			drawing_line.queue_free()
+			return
+		drawing_line.finish_build()
+		drawing_line_parent.register_child_line(drawing_line)
+	drawing_line = null
+	drawing_line_parent = null
 	pass
 
 func seed_ok(pos : Vector2, normal : Vector2):
@@ -43,3 +146,43 @@ func seed_ok(pos : Vector2, normal : Vector2):
 	stem_line.finish_build()
 	
 	pass
+
+func _on_area_mouse_drawer_area_entered(area):
+	var object = area
+	if area is DetectArea2D:
+		object = area.object
+	objects_in_mouse_area.append(area)
+	if object is TerrainBarrier or object is TreeLikeLine:
+		drawing_unsafe_objects.append(object)
+		is_drawing_meet_collision = true
+	pass # Replace with function body.
+
+
+func _on_area_mouse_drawer_area_exited(area):
+	var object = area
+	if area is DetectArea2D:
+		object = area.object
+	objects_in_mouse_area.erase(area)
+	if drawing_unsafe_objects.has(object):
+		drawing_unsafe_objects.erase(object)
+		if drawing_unsafe_objects.size() == 0:
+			is_drawing_meet_collision = false
+	pass # Replace with function body.
+
+
+func _on_area_mouse_drawer_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if area is DetectArea2D:
+		if area.object is TreeLikeLine:
+			if tree_like_lines_shapes.get(area.object) == null:
+				tree_like_lines_shapes[area.object] = []
+			tree_like_lines_shapes[area.object].append(area.get_child(area_shape_index))
+	pass # Replace with function body.
+
+
+func _on_area_mouse_drawer_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	if area is DetectArea2D:
+		if area.object is TreeLikeLine:
+			if tree_like_lines_shapes.get(area.object) != null:
+				tree_like_lines_shapes[area.object].erase(area.get_child(area_shape_index))
+	pass # Replace with function body.
+

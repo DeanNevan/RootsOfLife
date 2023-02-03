@@ -1,5 +1,19 @@
 extends Node
 
+enum BuildingType {
+	ROOTS_LINE,
+	STORAGE_ROOTS,
+	STEM_LINE,
+	LEAF,
+	NONE
+}
+enum BuildingSize {
+	S,
+	M,
+	L,
+	NONE
+}
+
 func convert_target_position(target : Node2D, local_pos : Vector2 = Vector2()) -> Vector2:
 	return convert_target_position2(target.get_viewport_transform(), target.get_global_transform(), local_pos)
 

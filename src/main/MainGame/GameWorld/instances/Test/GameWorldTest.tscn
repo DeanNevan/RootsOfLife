@@ -25,7 +25,7 @@ polygon = PackedVector2Array(-1500, 304, 1087, 344, 1337, 472, 1467, 499, 1480, 
 
 [node name="TerrainDirtL" parent="Terrains" index="2" instance=ExtResource("5_6ndi5")]
 position = Vector2(10.7015, -815.968)
-polygon = PackedVector2Array(-1511.7, 1332.97, 1474.3, 1714.97, 1467.3, 1944.97, -249.702, 1629.97)
+polygon = PackedVector2Array(-1511.7, 1332.97, 1474.3, 1714.97, 1467.3, 1944.97, -249.702, 1629.97, -1509.7, 1350.97)
 
 [node name="TerrainDirtXL" parent="Terrains" index="3" instance=ExtResource("6_4d64d")]
 position = Vector2(10.7015, -815.968)

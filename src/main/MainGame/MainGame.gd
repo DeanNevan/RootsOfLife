@@ -50,15 +50,14 @@ func start_seed():
 	pass
 
 func release_seed():
-	_Seed.release()
-	is_seeding = false
-	_LabelSeed.hide()
-	_LabelSeedRE.show()
+	if (_Seed.release()):
+		is_seeding = false
+		_LabelSeed.hide()
+		_LabelSeedRE.show()
 	pass
 
 
 func _on_seed_seed_ok(pos, normal):
-	print(pos, normal)
 	is_seed_ok = true
 	is_seeding = false
 	_LabelSeed.hide()
@@ -66,3 +65,21 @@ func _on_seed_seed_ok(pos, normal):
 	_Seed.hide()
 	_Plant.seed_ok(pos, normal)
 	pass # Replace with function body.
+
+
+func _on_main_game_ui_building_requested(build_type, build_size):
+	if is_instance_valid(_Plant):
+		_Plant.build_type = build_type
+		_Plant.build_size = build_size
+		_Plant.start_building()
+	pass # Replace with function body.
+
+
+func _on_main_game_ui_building_canceled():
+	if is_instance_valid(_Plant):
+		_Plant.build_type = Global.BuildingType.NONE
+		_Plant.build_size = Global.BuildingSize.NONE
+		_Plant.stop_building()
+	pass # Replace with function body.
+
+

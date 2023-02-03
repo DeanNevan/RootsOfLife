@@ -103,5 +103,8 @@ position_smoothing_speed = 50.0
 script = ExtResource("5_lvrwb")
 MAX_ZOOM = 5.0
 MIN_ZOOM = 0.3
+movement_gesture = 2
 
 [connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]
+[connection signal="building_canceled" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_canceled"]
+[connection signal="building_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_requested"]

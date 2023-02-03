@@ -12,7 +12,6 @@ var drawing_type := DrawingType.ROOTS
 var drawing_safe_position := Vector2()
 var is_drawing_meet_collision := false
 var drawing_unsafe_objects := []
-
 var areas := []
 var tree_like_lines_shapes := {}
 
