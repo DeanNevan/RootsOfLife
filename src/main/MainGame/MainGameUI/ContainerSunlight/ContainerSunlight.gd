@@ -20,7 +20,7 @@ func _on_mouse_entered():
 	GUI._FloatWindow.activate(
 		self, 
 		"光照等级", 
-		"-无法储存\n-影响光合作用速率\n-你的叶子与日光接触面积越大，光照越强"
+		"-无法储存\n-影响光合作用速率\n-你的叶子与日光(月光也会提供少量光照)接触面积越大，光照越强"
 	)
 	pass # Replace with function body.
 

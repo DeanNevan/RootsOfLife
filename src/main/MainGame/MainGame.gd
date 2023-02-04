@@ -49,6 +49,9 @@ func _process(_delta):
 	pass
 
 func start_seed():
+	_Seed.rotation = 0
+	_Seed.linear_velocity = Vector2()
+	_Seed.angular_velocity = 0
 	_Seed.start()
 	is_seeding = true
 	_LabelSeed.show()

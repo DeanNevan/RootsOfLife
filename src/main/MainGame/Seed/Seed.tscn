@@ -14,7 +14,6 @@ gravity_scale = 0.0
 script = ExtResource("1_viyfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 11)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ap2lw")
 
