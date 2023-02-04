@@ -7,7 +7,7 @@
 script = ExtResource("1_voddl")
 
 [node name="Light" type="PointLight2D" parent="."]
-energy = 0.15
+energy = 0.5
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 1.0

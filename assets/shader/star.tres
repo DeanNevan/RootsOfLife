@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cuv7k53h3ypdo"]
+
+[sub_resource type="Shader" id="Shader_g6usg"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_add,unshaded,skip_vertex_transform;
+
+uniform vec2 camera_zoom = vec2(1.0);
+
+void vertex() {
+	VERTEX /= camera_zoom * 4.0;
+	VERTEX = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+}"
+
+[resource]
+shader = SubResource("Shader_g6usg")
+shader_parameter/camera_zoom = Vector2(1, 1)
