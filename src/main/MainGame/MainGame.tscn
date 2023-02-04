@@ -139,7 +139,7 @@ polygon = PackedVector2Array(-747, 13, -1322, 11, -1286, -605, -926, -1192, -258
 
 [node name="Line2D" type="Line2D" parent="MainGameFog"]
 z_as_relative = false
-width = 200.0
+width = 100.0
 default_color = Color(0.498039, 0.498039, 0.498039, 1)
 begin_cap_mode = 1
 end_cap_mode = 1
