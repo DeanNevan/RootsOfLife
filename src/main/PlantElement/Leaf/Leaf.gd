@@ -1,14 +1,8 @@
 extends PlantElement
 class_name Leaf
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. '_delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _init():
+	texture_color_invalid = Color(1, 0, 0.01568627543747)
 
 func check_origin_valid() -> bool:
 	for i in in_origin_area_objects:
@@ -17,7 +11,8 @@ func check_origin_valid() -> bool:
 	return false
 
 func check_building_collsion() -> bool:
+	print(in_detect_area_objects)
 	for i in in_detect_area_objects:
-		if !(i is TerrainDirt):
+		if i is StemLine or i is TerrainBarrier or i is RootsLine or i is Leaf or i is StorageRoots:
 			return false
 	return true

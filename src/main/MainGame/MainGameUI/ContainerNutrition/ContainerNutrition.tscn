@@ -34,6 +34,7 @@ layout_mode = 2
 [node name="ContainerN" type="HBoxContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/ContainerN"]
 visible = false
@@ -96,6 +97,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 [node name="ContainerP" type="HBoxContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/ContainerP"]
 visible = false
@@ -158,6 +160,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 [node name="ContainerK" type="HBoxContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/ContainerK"]
 visible = false

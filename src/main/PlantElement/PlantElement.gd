@@ -20,16 +20,25 @@ var is_building_collision_valid := false
 var in_detect_area_objects := []
 var in_origin_area_objects := []
 var is_rotating := false
+var rotation_speed := 10.0
+
+var energy_cost := 1.0
+
+var texture_color_invalid := Color.RED
 
 func _unhandled_input(event):
 	if status == Status.BUILDING:
 		if event is InputEventKey:
-			if event.keycode == KEY_R:
+			if event.keycode == KEY_E:
 				is_rotating = event.pressed
+				rotation_speed = 100.0
+			elif event.keycode == KEY_Q:
+				is_rotating = event.pressed
+				rotation_speed = -100.0
 
 func _process(_delta):
 	if is_rotating and status == Status.BUILDING:
-		rotation_degrees += _delta * 1.0
+		rotation_degrees += _delta * rotation_speed
 
 func set_status(_status : Status):
 	status = _status
@@ -39,18 +48,18 @@ func set_status(_status : Status):
 		modulate.a = 1
 
 func begin_build():
+	_OriginAreaTexture.show()
 	_DetectArea.monitoring = true
 	_OriginArea.monitoring = true
 	set_status(Status.BUILDING)
 	update_building_view()
 
 func finish_build():
+	_OriginAreaTexture.hide()
 	_DetectArea.monitoring = false
 	_OriginArea.monitoring = false
 	set_status(Status.NORMAL)
 	_Texture.modulate = Color.WHITE
-	_OriginAreaTexture.modulate = Color.WHITE
-	_LightOccluder.occluder.polygon = _PolygonTexture.polygon
 
 func can_build() -> bool:
 	return is_building_collision_valid && is_building_origin_valid
@@ -63,13 +72,13 @@ func check_building_collsion() -> bool:
 
 func update_building_view():
 	if is_building_collision_valid:
-		_Texture.modulate = Color.GREEN
+		_Texture.modulate = Color.WHITE
 	else:
-		_Texture.modulate = Color.RED
+		_Texture.modulate = texture_color_invalid
 	if is_building_origin_valid:
-		_OriginAreaTexture.modulate = Color.GREEN
+		_OriginAreaTexture.modulate = Color.WHITE
 	else:
-		_OriginAreaTexture.modulate = Color.RED
+		_OriginAreaTexture.modulate = texture_color_invalid
 
 func _on_origin_area_area_entered(area):
 	if status != Status.BUILDING:
