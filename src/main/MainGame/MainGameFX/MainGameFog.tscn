@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn0k7nhdqt3jr"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/MainGameFX/MainGameFog.gd" id="1_2xyge"]
+
+[node name="MainGameFog" type="SubViewport"]
+script = ExtResource("1_2xyge")
+
+[node name="Camera2D" type="Camera2D" parent="."]

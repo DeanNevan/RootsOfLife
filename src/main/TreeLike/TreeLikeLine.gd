@@ -8,10 +8,12 @@ enum Status {
 var status : Status = Status.BUILDING
 
 
-#@onready var _FogSprite = get_node("/root/Test/FogSprite")
+@onready var _Fog = get_node("/root/MainGame/MainGameFog")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
+@onready var _LineTextureOccluder = %LineTextureOccluder
+@onready var _LineTextureOccluder2 = %LineTextureOccluder2
 
 var parent_line : TreeLikeLine
 var child_lines := []
@@ -21,12 +23,17 @@ var thickness = 0.0:
 		self.width = clamp(calculate_width(_thickness), 1, 1000)
 		_LineTexture.width = self.width
 		_LineTextureBorder.width = self.width + 5
+		_LineTextureOccluder.width = self.width + 200
+		_LineTextureOccluder2.width = self.width + 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	default_color.a = 0
 	
 	thickness = calculate_length()
+	
+	self.remove_child(_LineTextureOccluder)
+	_Fog.add_child(_LineTextureOccluder)
 
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
@@ -67,6 +74,8 @@ func finish_build():
 func update_line_texture():
 	_LineTexture.points = points
 	_LineTextureBorder.points = points
+	_LineTextureOccluder.points = points
+	_LineTextureOccluder2.points = points
 	pass
 
 func get_length() -> float:
