@@ -9,6 +9,7 @@ var enable_texture := true:
 		else:
 			self_modulate.a = 0
 
+@onready var _Fog = get_node("/root/MainGame/MainGameFog/FogTileMap")
 @onready var _AreaTerrain = %AreaTerrain
 @onready var _StaticBody = %StaticBody
 @onready var _PolygonTexture = %PolygonTexture
@@ -86,7 +87,8 @@ func init_polygon_texture():
 		_PolygonTexture.color = color
 
 func _on_area_terrain_mouse_entered():
-	GUI._FloatWindow.activate(self, hint_title, hint_content)
+	if _Fog.get_cell_source_id(0, _Fog.local_to_map(get_global_mouse_position())) == -1:
+		GUI._FloatWindow.activate(self, hint_title, hint_content)
 
 
 func _on_area_terrain_mouse_exited():
