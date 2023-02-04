@@ -39,6 +39,8 @@ func _physics_process(delta):
 	_AreaMouseDrawer.global_position = get_global_mouse_position()
 	pass
 
+func 
+
 func request_start_draw_roots_line():
 	var closet_distance : float = 999
 	var split_point_a : Vector2

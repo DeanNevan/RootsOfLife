@@ -18,6 +18,10 @@ var STAGE_TO_COLOR := {
 	Stage.LOW : Color.RED,
 }
 
+@onready var _ContainerN = %ContainerN
+@onready var _ContainerK = %ContainerK
+@onready var _ContainerP = %ContainerP
+
 @onready var _UnitsN = %UnitsN
 @onready var _Unit1N = %Unit1N
 @onready var _Unit2N = %Unit2N
@@ -113,3 +117,46 @@ func _on_nutrition_p_data_changed():
 			_Unit2P.modulate.a = 1
 			_Unit3P.modulate.a = 1
 	pass
+
+
+func _on_container_n_mouse_entered():
+	var content := ""
+	GUI._FloatWindow.activate(
+		_ContainerN, 
+		"氮", 
+		"-"
+	)
+	pass # Replace with function body.
+
+
+func _on_container_n_mouse_exited():
+	GUI._FloatWindow.inactivate(_ContainerN)
+	pass # Replace with function body.
+
+
+func _on_container_p_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ContainerP, 
+		"能量", 
+		"-即碳水化合物\n-由光合作用产生，消耗一单位水分，产生一单位能量\n建造储藏根来增加最大容量"
+	)
+	pass # Replace with function body.
+
+
+func _on_container_p_mouse_exited():
+	GUI._FloatWindow.inactivate(_ContainerP)
+	pass # Replace with function body.
+
+
+func _on_container_k_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ContainerK, 
+		"能量", 
+		"-即碳水化合物\n-由光合作用产生，消耗一单位水分，产生一单位能量\n建造储藏根来增加最大容量"
+	)
+	pass # Replace with function body.
+
+
+func _on_container_k_mouse_exited():
+	GUI._FloatWindow.inactivate(_ContainerK)
+	pass # Replace with function body.

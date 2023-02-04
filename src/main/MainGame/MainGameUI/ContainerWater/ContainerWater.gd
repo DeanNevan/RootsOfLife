@@ -22,3 +22,17 @@ func _on_water_data_changed():
 		change_speed_str
 	]
 	_LabelWaterCapacity.text = str(Data.water.capacity)
+
+
+func _on_mouse_entered():
+	GUI._FloatWindow.activate(
+		self, 
+		"水分", 
+		"-光合作用消耗\n-消耗量等同光照强度\n-你的根系在泥土中越长，水分增长越快\n-注意不同的泥土有不同的水分"
+	)
+	pass # Replace with function body.
+
+
+func _on_mouse_exited():
+	GUI._FloatWindow.inactivate(self)
+	pass # Replace with function body.

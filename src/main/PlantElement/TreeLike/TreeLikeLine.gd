@@ -69,7 +69,22 @@ func update_line_texture():
 	_LineTextureBorder.points = points
 	pass
 
-func build_new_point(_point : Vector2):
+func get_length() -> float:
+	var length := 0.0
+	for i in points.size() - 1:
+		length += (points[i + 1] - points[i]).length()
+	return length
+
+# 建造需要消耗能量，能量足够返回true
+func build_new_point(_point : Vector2, _check_cost := false) -> bool:
+	if _check_cost:
+		if points.size() >= 1:
+			var last_point : Vector2 = points[points.size() - 2]
+			var distance : float = (_point - last_point).length()
+			var cost : float = Data.energy.calculate_roots_line_cost(distance)
+			var result : bool = Data.energy.try_consume(cost)
+			if !result:
+				return false
 	add_point(_point)
 	update_line_texture()
 	if points.size() > 1:
@@ -83,6 +98,7 @@ func build_new_point(_point : Vector2):
 		# 最后一个点和倒数第二个点连线长度
 		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
 		widen(length)
+	return true
 
 func widen(added_thickness):
 	thickness = thickness + added_thickness

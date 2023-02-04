@@ -28,137 +28,147 @@ script = ExtResource("1_3ug8y")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="ContainerN" type="HBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/ContainerN"]
 layout_mode = 2
 text = "氮："
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerN"]
 layout_mode = 2
 
-[node name="BG" type="Panel" parent="HBoxContainer/HBoxContainer/MarginContainer"]
+[node name="BG" type="Panel" parent="HBoxContainer/ContainerN/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f300g")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerN/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="UnitsN" type="VBoxContainer" parent="HBoxContainer/HBoxContainer/MarginContainer/MarginContainer"]
+[node name="UnitsN" type="VBoxContainer" parent="HBoxContainer/ContainerN/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Unit1N" type="Panel" parent="HBoxContainer/HBoxContainer/MarginContainer/MarginContainer/UnitsN"]
+[node name="Unit1N" type="Panel" parent="HBoxContainer/ContainerN/MarginContainer/MarginContainer/UnitsN"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit2N" type="Panel" parent="HBoxContainer/HBoxContainer/MarginContainer/MarginContainer/UnitsN"]
+[node name="Unit2N" type="Panel" parent="HBoxContainer/ContainerN/MarginContainer/MarginContainer/UnitsN"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit3N" type="Panel" parent="HBoxContainer/HBoxContainer/MarginContainer/MarginContainer/UnitsN"]
+[node name="Unit3N" type="Panel" parent="HBoxContainer/ContainerN/MarginContainer/MarginContainer/UnitsN"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+[node name="ContainerP" type="HBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/ContainerP"]
 layout_mode = 2
 text = "磷："
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerP"]
 layout_mode = 2
 
-[node name="BG" type="Panel" parent="HBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="BG" type="Panel" parent="HBoxContainer/ContainerP/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f300g")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerP/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="UnitsP" type="VBoxContainer" parent="HBoxContainer/HBoxContainer2/MarginContainer/MarginContainer"]
+[node name="UnitsP" type="VBoxContainer" parent="HBoxContainer/ContainerP/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Unit1P" type="Panel" parent="HBoxContainer/HBoxContainer2/MarginContainer/MarginContainer/UnitsP"]
+[node name="Unit1P" type="Panel" parent="HBoxContainer/ContainerP/MarginContainer/MarginContainer/UnitsP"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit2P" type="Panel" parent="HBoxContainer/HBoxContainer2/MarginContainer/MarginContainer/UnitsP"]
+[node name="Unit2P" type="Panel" parent="HBoxContainer/ContainerP/MarginContainer/MarginContainer/UnitsP"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit3P" type="Panel" parent="HBoxContainer/HBoxContainer2/MarginContainer/MarginContainer/UnitsP"]
+[node name="Unit3P" type="Panel" parent="HBoxContainer/ContainerP/MarginContainer/MarginContainer/UnitsP"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer"]
+[node name="ContainerK" type="HBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="HBoxContainer/ContainerK"]
 layout_mode = 2
 text = "钾："
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerK"]
 layout_mode = 2
 
-[node name="BG" type="Panel" parent="HBoxContainer/HBoxContainer3/MarginContainer"]
+[node name="BG" type="Panel" parent="HBoxContainer/ContainerK/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f300g")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HBoxContainer3/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ContainerK/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="UnitsK" type="VBoxContainer" parent="HBoxContainer/HBoxContainer3/MarginContainer/MarginContainer"]
+[node name="UnitsK" type="VBoxContainer" parent="HBoxContainer/ContainerK/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Unit1K" type="Panel" parent="HBoxContainer/HBoxContainer3/MarginContainer/MarginContainer/UnitsK"]
+[node name="Unit1K" type="Panel" parent="HBoxContainer/ContainerK/MarginContainer/MarginContainer/UnitsK"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit2K" type="Panel" parent="HBoxContainer/HBoxContainer3/MarginContainer/MarginContainer/UnitsK"]
+[node name="Unit2K" type="Panel" parent="HBoxContainer/ContainerK/MarginContainer/MarginContainer/UnitsK"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
 
-[node name="Unit3K" type="Panel" parent="HBoxContainer/HBoxContainer3/MarginContainer/MarginContainer/UnitsK"]
+[node name="Unit3K" type="Panel" parent="HBoxContainer/ContainerK/MarginContainer/MarginContainer/UnitsK"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmuyp")
+
+[connection signal="mouse_entered" from="HBoxContainer/ContainerN" to="." method="_on_container_n_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/ContainerN" to="." method="_on_container_n_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/ContainerP" to="." method="_on_container_p_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/ContainerP" to="." method="_on_container_p_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/ContainerK" to="." method="_on_container_k_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/ContainerK" to="." method="_on_container_k_mouse_exited"]

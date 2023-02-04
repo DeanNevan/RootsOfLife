@@ -8,7 +8,7 @@ script = ExtResource("1_ms7rr")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "碳水能量："
+text = "能量："
 
 [node name="LabelEnergy" type="Label" parent="."]
 unique_name_in_owner = true
@@ -23,3 +23,6 @@ text = "/"
 unique_name_in_owner = true
 layout_mode = 2
 text = "999"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -13,15 +13,24 @@ signal building_requested(build_type : Global.BuildingType, build_size : Global.
 @onready var _ContainerBuildingSize = %ContainerBuildingSize
 @onready var _ContainerBuildingType = %ContainerBuildingType
 @onready var _ButtonExpandBuildingMenu = %ButtonExpandBuildingMenu
+@onready var _ButtonExpandGrowthPoint = %ButtonExpandGrowthPoint
+@onready var _ContainerGrowthPoint = %ContainerGrowthPoint
+@onready var _ProgressBarRootsGrowthPoint = %ProgressBarRootsGrowthPoint
+@onready var _LabelRootsGrowthPoint = %LabelRootsGrowthPoint
+@onready var _ProgressBarStemGrowthPoint = %ProgressBarStemGrowthPoint
+@onready var _LabelStemGrowthPoint = %LabelStemGrowthPoint
 
 var build_type := Global.BuildingType.NONE
 var build_size := Global.BuildingSize.NONE
 
 var is_showing_building_menu := false
+var is_showing_growth_point := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_ui()
+	Data.connect("roots_growth_point_changed", _on_roots_growth_point_changed)
+	Data.connect("stem_growth_point_changed", _on_stem_growth_point_changed)
 	pass # Replace with function body.
 
 
@@ -30,6 +39,20 @@ func _process(delta):
 	pass
 
 func update_ui():
+	update_ui_growth_point()
+	update_ui_building_menu()
+	_on_roots_growth_point_changed()
+	_on_stem_growth_point_changed()
+
+func update_ui_growth_point():
+	if is_showing_growth_point:
+		_ContainerGrowthPoint.show()
+		_ButtonExpandGrowthPoint.icon = preload("res://assets/art/icon/up.png")
+	else:
+		_ContainerGrowthPoint.hide()
+		_ButtonExpandGrowthPoint.icon = preload("res://assets/art/icon/down.png")
+
+func update_ui_building_menu():
 	emit_signal("building_canceled")
 	if !is_showing_building_menu:
 		_ButtonExpandBuildingMenu.icon = preload("res://assets/art/icon/up.png")
@@ -73,12 +96,12 @@ func _on_button_expand_building_menu_pressed():
 		build_type = Global.BuildingType.NONE
 		build_size = Global.BuildingSize.NONE
 		emit_signal("building_canceled")
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 func _on_button_roots_line_pressed():
 	build_type = Global.BuildingType.ROOTS_LINE
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
@@ -88,13 +111,13 @@ func _on_button_storage_roots_pressed():
 	_ButtonM.button_pressed = false
 	_ButtonL.button_pressed = false
 	build_size = Global.BuildingSize.NONE
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
 func _on_button_stem_line_pressed():
 	build_type = Global.BuildingType.STEM_LINE
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
@@ -104,13 +127,13 @@ func _on_button_leaf_pressed():
 	_ButtonM.button_pressed = false
 	_ButtonL.button_pressed = false
 	build_size = Global.BuildingSize.NONE
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
 func _on_button_s_pressed():
 	build_size = Global.BuildingSize.S
-	update_ui()
+	update_ui_growth_point()
 	pass # Replace with function body.
 
 
@@ -124,3 +147,23 @@ func _on_button_l_pressed():
 	build_size = Global.BuildingSize.L
 	update_ui()
 	pass # Replace with function body.
+
+
+func _on_button_expand_growth_point_pressed():
+	is_showing_growth_point = !is_showing_growth_point
+	update_ui()
+	pass # Replace with function body.
+
+func _on_roots_growth_point_changed():
+	_ProgressBarRootsGrowthPoint.value = _ProgressBarRootsGrowthPoint.max_value * (Data.roots_growth_point / Data.roots_goal)
+	_LabelRootsGrowthPoint.text = "%d/%d" % [
+		Data.roots_growth_point,
+		Data.roots_goal
+	]
+
+func _on_stem_growth_point_changed():
+	_ProgressBarStemGrowthPoint.value = _ProgressBarStemGrowthPoint.max_value * (Data.stem_growth_point / Data.stem_goal)
+	_LabelStemGrowthPoint.text = "%d/%d" % [
+		Data.stem_growth_point,
+		Data.stem_goal
+	]

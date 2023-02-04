@@ -22,3 +22,17 @@ func _on_energy_data_changed():
 		change_speed_str
 	]
 	_LabelEnergyCapacity.text = str(Data.energy.capacity)
+
+
+func _on_mouse_entered():
+	GUI._FloatWindow.activate(
+		self, 
+		"能量", 
+		"-即碳水化合物\n-由光合作用产生，消耗1单位水分，产生1单位能量\n-建造储藏根来增加最大容量\n-植物成长值越大，日常消耗越大，当前消耗:%d" % Data.energy.decrease_speed
+	)
+	pass # Replace with function body.
+
+
+func _on_mouse_exited():
+	GUI._FloatWindow.inactivate(self)
+	pass # Replace with function body.

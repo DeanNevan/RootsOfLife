@@ -1,6 +1,11 @@
 extends Node2D
 class_name Plant
 
+signal new_roots_line_built(roots_line)
+signal new_stem_line_built(stem_line)
+signal new_leaf_built(leaf)
+signal new_storage_roots_built(storage_roots)
+
 @onready var _Roots = %Roots
 @onready var _Stem = %Stem
 @onready var _Leaves = %Leaves
@@ -35,6 +40,7 @@ var tree_like_lines_shapes := {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stop_building()
+	Data.plant = self
 	pass # Replace with function body.
 
 func _unhandled_input(event):
@@ -119,8 +125,8 @@ func request_start_draw_treelike_line():
 		_Roots.add_line(drawing_line)
 	elif build_type == Global.BuildingType.STEM_LINE:
 		_Stem.add_line(drawing_line)
-	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
+	drawing_line.build_new_point(closet_point, false)
 	drawing_safe_position = closet_point
 	_TimerDrawing.start()
 	_AreaMouseDrawer.get_node("CollisionShape2D").shape.radius = 5
@@ -137,6 +143,10 @@ func request_stop_draw_treelike_line():
 			return
 		drawing_line.finish_build()
 		drawing_line_parent.register_child_line(drawing_line)
+		if drawing_line is RootsLine:
+			emit_signal("new_roots_line_built", drawing_line)
+		if drawing_line is StemLine:
+			emit_signal("new_stem_line_built", drawing_line)
 	drawing_line = null
 	drawing_line_parent = null
 	pass
@@ -150,15 +160,21 @@ func seed_ok(pos : Vector2, normal : Vector2):
 	roots_line.begin_build()
 	stem_line.begin_build()
 	
-	roots_line.build_new_point(pos)
-	roots_line.build_new_point(pos - normal * 10)
+	roots_line.build_new_point(pos, false)
+	roots_line.build_new_point(pos - normal * 10, false)
 	
-	stem_line.build_new_point(pos)
-	stem_line.build_new_point(pos + normal * 10)
+	stem_line.build_new_point(pos, false)
+	stem_line.build_new_point(pos + normal * 10, false)
 	
 	roots_line.finish_build()
 	stem_line.finish_build()
 	
+	emit_signal("new_roots_line_built", roots_line)
+	emit_signal("new_stem_line_built", stem_line)
+	
+	pass
+
+func alert_cost_fail():
 	pass
 
 func _on_area_mouse_drawer_area_entered(area):
@@ -207,10 +223,14 @@ func _on_area_mouse_drawer_area_shape_exited(area_rid, area, area_shape_index, l
 func _on_timer_drawing_timeout():
 	if is_drawing:
 		if is_instance_valid(drawing_line):
+			_TimerDrawing.start()
 			if drawing_line.points.size() <= 1:
 				drawing_safe_position = get_global_mouse_position()
 				if drawing_line.points[0].distance_to(drawing_safe_position) > 10:
-					drawing_line.build_new_point(drawing_safe_position)
+					var result : bool = drawing_line.build_new_point(drawing_safe_position, true)
+					if !result:
+						alert_cost_fail()
+						return
 			else:
 				if !is_drawing_meet_collision:
 					var vector : Vector2 = get_global_mouse_position() - _RayDrawing.global_position
@@ -227,6 +247,8 @@ func _on_timer_drawing_timeout():
 							is_safe = false
 					if is_safe:
 						drawing_safe_position = get_global_mouse_position()
-						drawing_line.build_new_point(drawing_safe_position)
-		_TimerDrawing.start()
+						var result : bool = drawing_line.build_new_point(drawing_safe_position, true)
+						if !result:
+							alert_cost_fail()
+							return
 	pass # Replace with function body.
