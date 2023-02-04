@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvuqeam713wd4"]
+[gd_scene load_steps=15 format=3 uid="uid://dvuqeam713wd4"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
 [ext_resource type="PackedScene" uid="uid://diih20og4coqe" path="res://src/main/MainGame/Seed/Seed.tscn" id="2_sdm1l"]
@@ -7,13 +7,33 @@
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
 [ext_resource type="PackedScene" uid="uid://cp0hpvpqcv20m" path="res://src/main/MainGame/GameWorld/instances/Test/GameWorldTest.tscn" id="6_wqi6f"]
-[ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
+[ext_resource type="PackedScene" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
+[ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vffmr"]
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_brmlh"]
 font_size = 64
+
+[sub_resource type="Shader" id="Shader_3uikh"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+void fragment() {
+	COLOR.a = 1.0;
+	float a = texture(TEXTURE, UV).r;
+	COLOR.a = 1.0 - a;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3r8k"]
+shader = SubResource("Shader_3uikh")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s3j1u"]
+viewport_path = NodePath("MainGameFog")
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_72ykg")
@@ -104,6 +124,37 @@ script = ExtResource("5_lvrwb")
 MAX_ZOOM = 5.0
 MIN_ZOOM = 0.3
 movement_gesture = 2
+
+[node name="MainGameFog" parent="." instance=ExtResource("9_03237")]
+disable_3d = true
+transparent_bg = true
+initial_visibility_path = NodePath("Polygon2D2")
+following_camera_path = NodePath("../CameraOrigin/MainCamera")
+
+[node name="Polygon2D2" type="Polygon2D" parent="MainGameFog"]
+z_index = 1
+z_as_relative = false
+position = Vector2(-68, 126)
+polygon = PackedVector2Array(-747, 13, -1322, 11, -1286, -605, -926, -1192, -258, -1441, 310, -1438, 902, -1219, 1356, -728, 812, -477, 652, -323, 555, 7.00002, 363, 10)
+
+[node name="Line2D" type="Line2D" parent="MainGameFog"]
+z_as_relative = false
+width = 200.0
+default_color = Color(0.498039, 0.498039, 0.498039, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="Node" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Node"]
+material = SubResource("ShaderMaterial_j3r8k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_s3j1u")
 
 [connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]
 [connection signal="building_canceled" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_canceled"]

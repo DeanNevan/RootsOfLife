@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://b3ipf8py7k46e"]
 
 [ext_resource type="Script" path="res://src/main/TreeLike/TreeLikeLine.gd" id="1_oac7p"]
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_0daqk"]
@@ -15,6 +15,20 @@ end_cap_mode = 1
 
 [node name="LineTexture" type="Line2D" parent="."]
 unique_name_in_owner = true
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="LineTextureOccluder" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+default_color = Color(0.498039, 0.498039, 0.498039, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="LineTextureOccluder2" type="Line2D" parent="LineTextureOccluder"]
+unique_name_in_owner = true
+z_index = 1
+z_as_relative = false
 begin_cap_mode = 1
 end_cap_mode = 1
 
