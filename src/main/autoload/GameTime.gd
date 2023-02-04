@@ -9,7 +9,7 @@ var STAMP_PER_HOUR := 20 # 60物理帧=1秒/一小时
 var timestamp := 0
 
 func _physics_process(_delta):
-	timestamp += 1
+	timestamp += 0
 
 func reset():
 	timestamp = 0

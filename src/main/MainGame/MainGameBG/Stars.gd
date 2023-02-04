@@ -12,10 +12,15 @@ func _ready():
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	modulate = gradient.sample(GameTime.get_percent_in_day())
+	
+	var camera : Camera2D = get_viewport().get_camera_2d()
+	if is_instance_valid(camera):
+#		var new_amount = int(100.0 / camera.zoom.x / camera.zoom.y)
+#		if new_amount != $ParticlesStar1.amount:
+#			$ParticlesStar1.amount = new_amount
+		$ParticlesStar1.material.set_shader_parameter("camera_zoom", camera.zoom)
 
 func _on_viewport_size_changed():
 	var size : Vector2 = get_viewport_rect().size
 	$ParticlesStar1.emission_rect_extents = size / 2
-	$ParticlesStar1.position = size / 2
 	$ParticlesStar2.emission_rect_extents = size / 2
-	$ParticlesStar2.position = size / 2
