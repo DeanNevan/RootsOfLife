@@ -1,14 +1,15 @@
 extends PlantElement
 class_name StorageRoots
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var capacity_bonus := 1.0
 
+func _init():
+	texture_color_invalid = Color(1, 0.16000002622604, 0.17399978637695)
 
-# Called every frame. '_delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func finish_build():
+	super.finish_build()
+	Data.energy.capacity += capacity_bonus
+	
 
 func check_origin_valid() -> bool:
 	for i in in_origin_area_objects:
@@ -17,7 +18,8 @@ func check_origin_valid() -> bool:
 	return false
 
 func check_building_collsion() -> bool:
+	print(in_detect_area_objects)
 	for i in in_detect_area_objects:
-		if !(i is TerrainDirt):
+		if i is StemLine or i is TerrainBarrier or i is RootsLine or i is Leaf or i is StorageRoots:
 			return false
 	return true

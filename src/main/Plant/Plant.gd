@@ -68,6 +68,17 @@ func _unhandled_input(event):
 									request_building_leaf()
 								else:
 									alert_cost_fail()
+					if build_type == Global.BuildingType.STORAGE_ROOTS:
+						if is_instance_valid(building_plant_element):
+							var result : bool = building_plant_element.can_build()
+							if result:
+								if Data.energy.try_consume(building_plant_element.energy_cost):
+									building_plant_element.finish_build()
+									emit_signal("new_storage_roots_built", building_plant_element)
+									building_plant_element = null
+									request_building_storage_roots()
+								else:
+									alert_cost_fail()
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -94,6 +105,20 @@ func request_building_leaf():
 		is_building_plant_element = true
 		building_plant_element.begin_build()
 
+func request_building_storage_roots():
+	if is_instance_valid(building_plant_element):
+		building_plant_element.queue_free()
+	if build_size == Global.BuildingSize.S:
+		building_plant_element = scene_storage_roots_s.instantiate()
+	if build_size == Global.BuildingSize.M:
+		building_plant_element = scene_storage_roots_m.instantiate()
+	if build_size == Global.BuildingSize.L:
+		building_plant_element = scene_storage_roots_l.instantiate()
+	if is_instance_valid(building_plant_element):
+		_Leaves.add_child(building_plant_element)
+		is_building_plant_element = true
+		building_plant_element.begin_build()
+
 func start_building():
 	is_building = true
 	if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
@@ -102,6 +127,8 @@ func start_building():
 	else:
 		if build_type == Global.BuildingType.LEAF:
 			request_building_leaf()
+		if build_type == Global.BuildingType.STORAGE_ROOTS:
+			request_building_storage_roots()
 		_AreaMouseDrawer.hide()
 	pass
 

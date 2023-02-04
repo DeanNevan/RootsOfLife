@@ -24,8 +24,8 @@ occluder = SubResource("OccluderPolygon2D_j2whp")
 
 [node name="PolygonBorder" type="Line2D" parent="Texture"]
 unique_name_in_owner = true
-begin_cap_mode = 1
-end_cap_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="PolygonTexture" type="Polygon2D" parent="Texture"]
 unique_name_in_owner = true
