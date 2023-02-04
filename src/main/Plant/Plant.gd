@@ -34,6 +34,7 @@ var tree_like_lines_shapes := {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	stop_building()
 	pass # Replace with function body.
 
 func _unhandled_input(event):
@@ -58,10 +59,16 @@ func _physics_process(delta):
 
 func start_building():
 	is_building = true
+	if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
+		_SpriteMouseDrawer.modulate = Color.SADDLE_BROWN if build_type == Global.BuildingType.ROOTS_LINE else Color.GREEN
+		_AreaMouseDrawer.show()
+	else:
+		_AreaMouseDrawer.hide()
 	pass
 
 func stop_building():
 	is_building = false
+	_AreaMouseDrawer.hide()
 	pass
 
 func request_start_draw_treelike_line():
