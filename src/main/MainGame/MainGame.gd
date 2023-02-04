@@ -18,9 +18,6 @@ func _ready():
 	Data.init_all()
 	game_world.init_all()
 	start_seed()
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
 	pass # Replace with function body.
 
 func _unhandled_input(event):
@@ -84,5 +81,3 @@ func _on_main_game_ui_building_canceled():
 		_Plant.build_size = Global.BuildingSize.NONE
 		_Plant.stop_building()
 	pass # Replace with function body.
-
-

@@ -45,6 +45,7 @@ var building_plant_element : PlantElement
 func _ready():
 	stop_building()
 	Data.plant = self
+	GameTime.connect("hour_passed", _on_hour_passed)
 	pass # Replace with function body.
 
 func _unhandled_input(event):
@@ -319,4 +320,48 @@ func _on_timer_drawing_timeout():
 func _on_leaf_fall_requested(leaf : Leaf):
 	emit_signal("leaf_fallen", leaf)
 	leaf.fall()
+	pass
+
+func _on_hour_passed():
+	Data.water.update()
+	
+	var sunlight_level : float = Data.sunlight.value
+	var consumed_water := 0.0
+	if Data.water.value >= sunlight_level:
+		if Data.is_neglect_energy_capacity:
+			Data.water.value -= sunlight_level
+			consumed_water = sunlight_level
+		else:
+			var temp : float = Data.energy.capacity - Data.energy.value
+			if temp < 0:
+				temp = 0
+			if sunlight_level <= temp:
+				Data.water.value -= sunlight_level
+				consumed_water = sunlight_level
+			else:
+				Data.water.value -= temp
+				consumed_water = temp
+	else:
+		if Data.is_neglect_energy_capacity:
+			consumed_water = Data.water.value
+			Data.water.value = 0
+		else:
+			var temp : float = Data.energy.capacity - Data.energy.value
+			if temp < 0:
+				temp = 0
+			if sunlight_level <= temp:
+				consumed_water = Data.water.value
+				Data.water.value = 0
+			else:
+				Data.water.value -= temp
+				consumed_water = temp
+	
+	Data.energy.value += consumed_water * Data.photosynthesis_effeciency
+	
+	Data.water.update()
+	Data.energy.update()
+	Data.nutrition_n.update()
+	Data.nutrition_k.update()
+	Data.nutrition_p.update()
+	
 	pass

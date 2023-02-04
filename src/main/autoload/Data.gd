@@ -11,7 +11,10 @@ var nutrition_n := NutritionN.new()
 var nutrition_p := NutritionP.new()
 var nutrition_k := NutritionK.new()
 
+var photosynthesis_effeciency := 1.0
+
 var is_pause_leaf_fall := false 
+var is_neglect_energy_capacity := false 
 
 #根系成长值(1米=100像素=1成长值，S/M/L储藏根=3/6/9成长值)
 var roots_growth_point := 0.0:
@@ -66,7 +69,7 @@ func init_all():
 	energy.capacity = 100
 	energy.value = 100
 	water.capacity = 100
-	water.value = 0
+	water.value = 100
 	nutrition_n.capacity = 100
 	nutrition_n.value = 0
 	nutrition_p.capacity = 100
