@@ -56,8 +56,6 @@ func update():
 
 func activate(_asker : Object, title := "", content := ""):
 	is_asker_unchanged = false
-	print("activate")
-	print(_asker)
 	if !askers.has(_asker):
 		askers.append(_asker)
 	askers_data[_asker] = [title, content]
@@ -71,8 +69,6 @@ func activate(_asker : Object, title := "", content := ""):
 
 
 func inactivate(_asker : Object):
-	print("inactivate")
-	print(_asker)
 	if !askers.has(_asker):
 		return
 	askers.erase(_asker)
