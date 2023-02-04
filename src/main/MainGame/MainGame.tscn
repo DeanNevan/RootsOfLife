@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cp0hpvpqcv20m" path="res://src/main/MainGame/GameWorld/instances/Test/GameWorldTest.tscn" id="6_wqi6f"]
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
-[ext_resource type="PackedScene" uid="uid://f6cl7tnsorts" path="res://src/main/MainGame/MainGameFX/FogTileMap.tscn" id="10_utkpj"]
+[ext_resource type="PackedScene" path="res://src/main/MainGame/MainGameFX/FogTileMap.tscn" id="10_utkpj"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameFX/FogTileMap.gd" id="11_em57f"]
 [ext_resource type="Texture2D" uid="uid://delfuqh5vh08v" path="res://assets/art/effect/fog_tileset.png" id="11_jowp8"]
 
@@ -163,6 +163,8 @@ disable_3d = true
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
+tilemap_path = NodePath("FogTileMap")
+texturerect_path = NodePath("../Node/TextureRect")
 following_camera_path = NodePath("../CameraOrigin/MainCamera")
 
 [node name="FogTileMap" parent="MainGameFog" instance=ExtResource("10_utkpj")]
