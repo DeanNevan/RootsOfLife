@@ -18,7 +18,7 @@ var child_lines := []
 var thickness = 0.0:
 	set(_thickness):
 		thickness = _thickness
-		self.width = clamp(calculate_width(_thickness), 5, 1000)
+		self.width = clamp(calculate_width(_thickness), 1, 1000)
 		_LineTexture.width = self.width
 		_LineTextureBorder.width = self.width + 5
 
@@ -62,7 +62,7 @@ func begin_build():
 func finish_build():
 	set_status(Status.NORMAL)
 	update_line_texture()
-	init_line_area()
+	#init_line_area()
 
 func update_line_texture():
 	_LineTexture.points = points

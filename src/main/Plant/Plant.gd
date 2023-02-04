@@ -65,6 +65,7 @@ func stop_building():
 	pass
 
 func request_start_draw_treelike_line():
+	print(tree_like_lines_shapes)
 	var closet_distance : float = 999
 	var split_point_a : Vector2
 	var split_point_b : Vector2
@@ -93,18 +94,24 @@ func request_start_draw_treelike_line():
 		return
 	
 	
+	var line_ab
 	if build_type == Global.BuildingType.ROOTS_LINE:
 		drawing_line = scene_roots_line.instantiate()
+		line_ab = _Roots.split_line(drawing_line_parent, closet_point, split_point_a, split_point_b)
 	elif build_type == Global.BuildingType.STEM_LINE:
 		drawing_line = scene_stem_line.instantiate()
+		line_ab = _Stem.split_line(drawing_line_parent, closet_point, split_point_a, split_point_b)
 	else:
 		return
 	
-	var line_ab = _Roots.split_line(drawing_line_parent, closet_point, split_point_a, split_point_b)
 	drawing_line_parent = line_ab[0] #line_a
 	is_drawing = true
 	drawing_line.parent_line = drawing_line_parent
-	_Roots.add_line(drawing_line)
+	
+	if build_type == Global.BuildingType.ROOTS_LINE:
+		_Roots.add_line(drawing_line)
+	elif build_type == Global.BuildingType.STEM_LINE:
+		_Stem.add_line(drawing_line)
 	drawing_line.build_new_point(closet_point)
 	drawing_line.begin_build()
 	drawing_safe_position = closet_point
@@ -184,5 +191,35 @@ func _on_area_mouse_drawer_area_shape_exited(area_rid, area, area_shape_index, l
 		if area.object is TreeLikeLine:
 			if tree_like_lines_shapes.get(area.object) != null:
 				tree_like_lines_shapes[area.object].erase(area.get_child(area_shape_index))
+			if tree_like_lines_shapes[area.object].size() == 0:
+				tree_like_lines_shapes.erase(area.object)
 	pass # Replace with function body.
 
+
+
+func _on_timer_drawing_timeout():
+	if is_drawing:
+		if is_instance_valid(drawing_line):
+			if drawing_line.points.size() <= 1:
+				drawing_safe_position = get_global_mouse_position()
+				if drawing_line.points[0].distance_to(drawing_safe_position) > 10:
+					drawing_line.build_new_point(drawing_safe_position)
+			else:
+				if !is_drawing_meet_collision:
+					var vector : Vector2 = get_global_mouse_position() - _RayDrawing.global_position
+					_RayDrawing.global_position = drawing_safe_position + vector.normalized()
+					_RayDrawing.target_position = get_global_mouse_position() - _RayDrawing.global_position
+					_RayDrawing.force_raycast_update()
+					var is_safe := true
+					if _RayDrawing.is_colliding():
+						var area = _RayDrawing.get_collider()
+						var object = area
+						if area is DetectArea2D:
+							object = area.object
+						if object is TerrainBarrier or object is TreeLikeLine:
+							is_safe = false
+					if is_safe:
+						drawing_safe_position = get_global_mouse_position()
+						drawing_line.build_new_point(drawing_safe_position)
+		_TimerDrawing.start()
+	pass # Replace with function body.

@@ -47,3 +47,4 @@ wait_time = 0.05
 [connection signal="area_exited" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_exited"]
 [connection signal="area_shape_entered" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_shape_entered"]
 [connection signal="area_shape_exited" from="AreaMouseDrawer" to="." method="_on_area_mouse_drawer_area_shape_exited"]
+[connection signal="timeout" from="TimerDrawing" to="." method="_on_timer_drawing_timeout"]
