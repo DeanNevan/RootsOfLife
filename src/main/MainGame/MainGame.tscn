@@ -163,8 +163,6 @@ disable_3d = true
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
-tilemap_path = NodePath("FogTileMap")
-texturerect_path = NodePath("../Node/TextureRect")
 following_camera_path = NodePath("../CameraOrigin/MainCamera")
 
 [node name="FogTileMap" parent="MainGameFog" instance=ExtResource("10_utkpj")]
