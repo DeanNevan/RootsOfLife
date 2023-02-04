@@ -151,7 +151,7 @@ func _on_button_l_pressed():
 
 func _on_button_expand_growth_point_pressed():
 	is_showing_growth_point = !is_showing_growth_point
-	update_ui_building_menu()
+	update_ui_growth_point()
 	pass # Replace with function body.
 
 func _on_roots_growth_point_changed():
