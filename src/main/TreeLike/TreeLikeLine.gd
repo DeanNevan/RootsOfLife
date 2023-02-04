@@ -10,7 +10,7 @@ enum Status {
 var status : Status = Status.BUILDING
 
 
-@onready var _Fog = get_node("/root/MainGame/FogTileMap")
+@onready var _Fog = get_node("/root/MainGame/MainGameFog/FogTileMap")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
