@@ -8,7 +8,7 @@ enum Status {
 var status : Status = Status.BUILDING
 
 
-@onready var _Fog = get_node("/root/MainGame/MainGameFog")
+@onready var _Fog = get_node("/root/MainGame/FogTileMap")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
@@ -23,8 +23,8 @@ var thickness = 0.0:
 		self.width = clamp(calculate_width(_thickness), 1, 1000)
 		_LineTexture.width = self.width
 		_LineTextureBorder.width = self.width + 5
-		_LineTextureOccluder.width = self.width + 200
-		_LineTextureOccluder2.width = self.width + 100
+#		_LineTextureOccluder.width = self.width + Global.fog_thickness * 2.0
+#		_LineTextureOccluder2.width = self.width + Global.fog_thickness
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,8 +32,8 @@ func _ready():
 	
 	thickness = calculate_length()
 	
-	self.remove_child(_LineTextureOccluder)
-	_Fog.add_child(_LineTextureOccluder)
+#	self.remove_child(_LineTextureOccluder)
+#	_Fog.add_child(_LineTextureOccluder)
 
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
@@ -74,8 +74,8 @@ func finish_build():
 func update_line_texture():
 	_LineTexture.points = points
 	_LineTextureBorder.points = points
-	_LineTextureOccluder.points = points
-	_LineTextureOccluder2.points = points
+#	_LineTextureOccluder.points = points
+#	_LineTextureOccluder2.points = points
 	pass
 
 func get_length() -> float:
@@ -107,6 +107,7 @@ func build_new_point(_point : Vector2, _check_cost := false) -> bool:
 		# 最后一个点和倒数第二个点连线长度
 		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
 		widen(length)
+		_Fog.defog(points)
 	return true
 
 func widen(added_thickness):

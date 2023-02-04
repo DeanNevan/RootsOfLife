@@ -21,6 +21,7 @@ func _ready():
 		points.append(points[0])
 		new_line.points = points
 		self.add_child(new_line)
+		$Line2D.width = Global.fog_thickness
 
 func _on_viewport_size_changed():
 	size = get_parent().get_viewport().size
