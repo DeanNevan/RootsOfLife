@@ -14,8 +14,8 @@ var status : Status = Status.BUILDING
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
-@onready var _LineTextureOccluder = %LineTextureOccluder
-@onready var _LineTextureOccluder2 = %LineTextureOccluder2
+#@onready var _LineTextureOccluder = %LineTextureOccluder
+#@onready var _LineTextureOccluder2 = %LineTextureOccluder2
 
 var parent_line : TreeLikeLine
 var child_lines := []

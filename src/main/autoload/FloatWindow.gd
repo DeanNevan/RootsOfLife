@@ -8,6 +8,7 @@ var is_active := false
 var askers := []
 var askers_data := {}
 
+var is_asker_unchanged := false
 var current_asker : Object
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +55,9 @@ func update():
 		_LabelContent.text = askers_data[current_asker][1]
 
 func activate(_asker : Object, title := "", content := ""):
+	is_asker_unchanged = false
+	print("activate")
+	print(_asker)
 	if !askers.has(_asker):
 		askers.append(_asker)
 	askers_data[_asker] = [title, content]
@@ -67,6 +71,8 @@ func activate(_asker : Object, title := "", content := ""):
 
 
 func inactivate(_asker : Object):
+	print("inactivate")
+	print(_asker)
 	if !askers.has(_asker):
 		return
 	askers.erase(_asker)
@@ -77,8 +83,8 @@ func inactivate(_asker : Object):
 	is_active = false
 	var tween : Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.15)
+	is_asker_unchanged = true
 	await tween.finished
-	if is_instance_valid(current_asker):
-		if current_asker == _asker:
-			hide()
+	if is_asker_unchanged:
+		hide()
 	pass

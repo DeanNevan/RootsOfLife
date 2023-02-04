@@ -7,7 +7,7 @@ enum Period{
 	
 }
 
-var STAMP_PER_HOUR := 20 # 60物理帧=1秒/一小时
+var STAMP_PER_HOUR := 120 # 60物理帧=1秒/一小时
 
 var timestamp := 0
 

@@ -3,7 +3,7 @@ class_name TerrainNutrition
 
 var SPEED := 5
 
-@export var max_capacity := 10000
+@export var max_capacity := 200
 @onready var capacity : int = max_capacity:
 	set(_capacity):
 		capacity = _capacity

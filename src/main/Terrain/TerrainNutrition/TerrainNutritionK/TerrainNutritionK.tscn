@@ -17,6 +17,7 @@ outline_color = Color(0.881197, 0.319665, 8.85606e-06, 1)
 [node name="TerrainNutritionK" instance=ExtResource("1_d7als")]
 color = Color(1, 0.552941, 0.384314, 1)
 script = ExtResource("2_i6gb5")
+max_capacity = 200
 border_color = Color(1, 0.552941, 0.384314, 1)
 
 [node name="LightOccluder" parent="." index="0"]

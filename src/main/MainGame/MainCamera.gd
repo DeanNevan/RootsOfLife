@@ -27,9 +27,6 @@ func _set_position(p):
 		return false
 
 	position = p
-	
-	print(position_max_limit)
-	print(position_min_limit)
 
 	if(position.x > position_max_limit.x):
 		position.x = position_max_limit.x

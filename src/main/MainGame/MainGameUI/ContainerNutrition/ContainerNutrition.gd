@@ -148,6 +148,7 @@ func _on_container_p_mouse_exited():
 
 
 func _on_container_k_mouse_entered():
+	print("!!!")
 	GUI._FloatWindow.activate(
 		_ContainerK, 
 		"钾", 
@@ -157,5 +158,6 @@ func _on_container_k_mouse_entered():
 
 
 func _on_container_k_mouse_exited():
+	print("???")
 	GUI._FloatWindow.inactivate(_ContainerK)
 	pass # Replace with function body.

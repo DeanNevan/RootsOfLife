@@ -159,6 +159,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+mouse_filter = 0
 
 [node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2"]
 layout_mode = 2

@@ -24,6 +24,11 @@ GameTime="*res://src/main/autoload/GameTime.tscn"
 InputManager="*res://src/main/autoload/InputManager.gd"
 GUI="*res://src/main/autoload/GUI.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [input]
 
 ui_accept={
