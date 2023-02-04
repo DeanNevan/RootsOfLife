@@ -167,3 +167,16 @@ func _on_stem_growth_point_changed():
 		Data.stem_growth_point,
 		Data.stem_goal
 	]
+
+func _on_container_growth_point_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ContainerGrowthPoint, 
+		"成长值", 
+		"-发展你的根系和茎叶可以增加成长值\n-根、茎成长值均满时达成游戏目标"
+	)
+	pass # Replace with function body.
+
+
+func _on_container_growth_point_mouse_exited():
+	GUI._FloatWindow.inactivate(_ContainerGrowthPoint)
+	pass # Replace with function body.

@@ -42,6 +42,8 @@ var plant : Plant:
 			plant.connect("new_leaf_built", _on_new_leaf_built)
 		if !plant.is_connected("new_storage_roots_built", _on_new_storage_roots_built):
 			plant.connect("new_storage_roots_built", _on_new_storage_roots_built)
+		if !plant.is_connected("leaf_fallen", _on_leaf_fallen):
+			plant.connect("leaf_fallen", _on_leaf_fallen)
 		emit_signal("plant_changed")
 
 # Called when the node enters the scene tree for the first time.
@@ -95,3 +97,11 @@ func _on_new_storage_roots_built(storage_roots : StorageRoots):
 	if storage_roots is StorageRootsL:
 		roots_growth_point += 9
 
+func _on_leaf_fallen(leaf : Leaf):
+	if leaf is LeafS:
+		stem_growth_point -= 3
+	if leaf is LeafM:
+		stem_growth_point -= 6
+	if leaf is LeafL:
+		stem_growth_point -= 9
+	pass

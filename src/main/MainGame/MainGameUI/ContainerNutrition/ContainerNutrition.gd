@@ -120,11 +120,10 @@ func _on_nutrition_p_data_changed():
 
 
 func _on_container_n_mouse_entered():
-	var content := ""
 	GUI._FloatWindow.activate(
 		_ContainerN, 
 		"氮", 
-		"-"
+		"-分为缺少、普通、丰富三级\n-普通：增效光合作用50%%\n-丰富：叶子暂停脱落\n-当前：%s" % Data.nutrition_n.get_level_str()
 	)
 	pass # Replace with function body.
 
@@ -137,8 +136,8 @@ func _on_container_n_mouse_exited():
 func _on_container_p_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerP, 
-		"能量", 
-		"-即碳水化合物\n-由光合作用产生，消耗一单位水分，产生一单位能量\n建造储藏根来增加最大容量"
+		"磷", 
+		"-分为缺少、普通、丰富三级\n-普通：建造能量消耗降低50%%\n-丰富：日常能量消耗降低50%%\n-当前：%s" % Data.nutrition_p.get_level_str()
 	)
 	pass # Replace with function body.
 
@@ -151,8 +150,8 @@ func _on_container_p_mouse_exited():
 func _on_container_k_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerK, 
-		"能量", 
-		"-即碳水化合物\n-由光合作用产生，消耗一单位水分，产生一单位能量\n建造储藏根来增加最大容量"
+		"钾", 
+		"-分为缺少、普通、丰富三级\n-普通：能量储存上限提高50%%\n-丰富：能量储存没有上限\n-当前：%s" % Data.nutrition_k.get_level_str()
 	)
 	pass # Replace with function body.
 

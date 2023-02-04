@@ -5,6 +5,7 @@ signal new_roots_line_built(roots_line)
 signal new_stem_line_built(stem_line)
 signal new_leaf_built(leaf)
 signal new_storage_roots_built(storage_roots)
+signal leaf_fallen(leaf)
 
 @onready var _Roots = %Roots
 @onready var _Stem = %Stem

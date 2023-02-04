@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbk15m06vn7sr"]
+[gd_scene load_steps=22 format=3 uid="uid://bbk15m06vn7sr"]
 
 [ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
 [ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_fdex0"]
@@ -35,9 +35,6 @@ corner_radius_bottom_left = 16
 expand_margin_left = 8.0
 expand_margin_right = 8.0
 shadow_size = 4
-
-[sub_resource type="LabelSettings" id="LabelSettings_pie44"]
-font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_t3etr"]
 font_size = 18
@@ -207,15 +204,16 @@ layout_mode = 2
 
 [node name="ContainerGrowthPoint" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o6jt5")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -223,25 +221,18 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 4
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "成长值"
-label_settings = SubResource("LabelSettings_pie44")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -253,6 +244,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_x3o1a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_u6wci")
 value = 50.0
@@ -273,10 +265,12 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -288,6 +282,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ntyad")
 theme_override_styles/fill = SubResource("StyleBoxFlat_orqsw")
 value = 50.0
@@ -338,9 +333,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ButtonExpandBuildingMenu" type="Button" parent="MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
@@ -359,6 +356,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer2/VBoxContainer/ContainerBuildingSize"]
 layout_mode = 2
@@ -447,6 +445,8 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
 text = "叶"
 
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ButtonExpandGrowthPoint" to="." method="_on_button_expand_growth_point_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ButtonExpandBuildingMenu" to="." method="_on_button_expand_building_menu_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonS" to="." method="_on_button_s_pressed"]
