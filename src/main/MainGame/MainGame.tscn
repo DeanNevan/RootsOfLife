@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
 [ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
 [ext_resource type="PackedScene" uid="uid://cp0hpvpqcv20m" path="res://src/main/MainGame/GameWorld/instances/Test/GameWorldTest.tscn" id="6_wqi6f"]
-[ext_resource type="PackedScene" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
+[ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vffmr"]
@@ -139,7 +139,7 @@ polygon = PackedVector2Array(-747, 13, -1322, 11, -1286, -605, -926, -1192, -258
 
 [node name="Line2D" type="Line2D" parent="MainGameFog"]
 z_as_relative = false
-width = 200.0
+width = 100.0
 default_color = Color(0.498039, 0.498039, 0.498039, 1)
 begin_cap_mode = 1
 end_cap_mode = 1
