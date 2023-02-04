@@ -9,15 +9,6 @@ func _init():
 	hint_title = "水"
 	hint_content = "根系只要接触，提供+%d水分/h，你很幸运" % water_per_hour
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. '_delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func _on_area_terrain_area_entered(area):
 	var object : Object = area
 	if area is DetectArea2D:

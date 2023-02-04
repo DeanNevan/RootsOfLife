@@ -23,6 +23,8 @@ var enable_texture := true:
 var hint_title := "区域"
 var hint_content := "NULL"
 
+var is_float_window_active := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enable_texture = true
@@ -31,6 +33,9 @@ func _ready():
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if is_float_window_active:
+		if !_Fog.get_cell_source_id(0, _Fog.local_to_map(get_global_mouse_position())) == -1:
+			GUI._FloatWindow.inactivate(self)
 	pass
 
 func init_all():
@@ -89,7 +94,9 @@ func init_polygon_texture():
 func _on_area_terrain_mouse_entered():
 	if _Fog.get_cell_source_id(0, _Fog.local_to_map(get_global_mouse_position())) == -1:
 		GUI._FloatWindow.activate(self, hint_title, hint_content)
+		is_float_window_active = true
 
 
 func _on_area_terrain_mouse_exited():
 	GUI._FloatWindow.inactivate(self)
+	is_float_window_active = false
