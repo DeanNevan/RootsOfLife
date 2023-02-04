@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var gradient : Gradient
-
+var percent_in_period := 0.0
 func _ready():
 	pass # Replace with function body.
 
@@ -12,7 +12,7 @@ func _process(_delta):
 	$Light.color = gradient.sample(percent)
 	if percent > 0.738 or percent < 0.238:
 		show()
-		var percent_in_period : float = 0.0
+		percent_in_period = 0.0
 		var total := 1 - (0.738 - 0.238)
 		if percent > 0.738:
 			percent_in_period = (percent - 0.738) / total

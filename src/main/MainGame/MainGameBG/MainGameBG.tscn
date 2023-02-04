@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvm1hp8yogdeq"]
+[gd_scene load_steps=21 format=3 uid="uid://bvm1hp8yogdeq"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameBG/MainGameBG.gd" id="1_flx2d"]
 [ext_resource type="Texture2D" uid="uid://nkpjjfuh5a13" path="res://assets/art/white_pixel.png" id="2_cyenq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://br3mxukoo221l" path="res://assets/art/star_04.png" id="7_hdbu6"]
 [ext_resource type="Material" uid="uid://cuv7k53h3ypdo" path="res://assets/shader/star.tres" id="8_h0t6i"]
 [ext_resource type="Texture2D" uid="uid://xtgpoy88bmfm" path="res://assets/art/star_02.png" id="8_yhpmc"]
+[ext_resource type="PackedScene" uid="uid://0gq2hef42bds" path="res://src/main/SunlightManager/SunlightManager.tscn" id="11_oe00c"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_e6l2p"]
 
@@ -104,3 +105,5 @@ scale_amount_min = 0.08
 scale_amount_max = 0.12
 scale_amount_curve = SubResource("Curve_oitmn")
 color_ramp = SubResource("Gradient_r17eh")
+
+[node name="SunlightManager" parent="." instance=ExtResource("11_oe00c")]

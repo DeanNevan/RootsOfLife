@@ -48,6 +48,8 @@ var plant : Plant:
 			plant.connect("leaf_fallen", _on_leaf_fallen)
 		emit_signal("plant_changed")
 
+var game_world : GameWorld
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_all()
@@ -60,6 +62,7 @@ func _process(_delta):
 
 func init_all():
 	sunlight.value = 0
+	sunlight.capacity = 9999
 	energy.capacity = 100
 	energy.value = 100
 	water.capacity = 100

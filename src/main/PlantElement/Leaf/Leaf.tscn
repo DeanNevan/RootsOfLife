@@ -5,3 +5,6 @@
 
 [node name="Leaf" instance=ExtResource("1_bopkc")]
 script = ExtResource("1_p8nrc")
+
+[node name="DetectArea" parent="." index="0"]
+collision_layer = 3

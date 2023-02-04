@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0gq2hef42bds"]
+
+[ext_resource type="Script" path="res://src/main/SunlightManager/SunlightManager.gd" id="1_brdeu"]
+
+[node name="SunlightManager" type="Node2D"]
+script = ExtResource("1_brdeu")
+
+[node name="RayCasts" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="RayCasts"]

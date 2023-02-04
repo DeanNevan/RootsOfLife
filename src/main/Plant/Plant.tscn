@@ -24,6 +24,7 @@ unique_name_in_owner = true
 
 [node name="AreaMouseDrawer" type="Area2D" parent="."]
 unique_name_in_owner = true
+monitorable = false
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMouseDrawer"]

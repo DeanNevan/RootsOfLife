@@ -4,8 +4,11 @@ class_name GameWorld
 @onready var _Terrains = %Terrains
 @onready var _WorldArea = %WorldArea
 
+@onready var world_rect := Rect2(Vector2(-1500, -1500), Vector2(3000, 3000))
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Data.game_world = self
 	pass # Replace with function body.
 
 
