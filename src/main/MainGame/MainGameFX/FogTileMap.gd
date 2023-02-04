@@ -13,7 +13,7 @@ func _process(delta):
 func defog(points):
 	for i in range(points.size() - 1):
 		var point_a = points[i]
-		var point_b = points[i-1]
+		var point_b = points[i+1]
 		var xtiles = intersect_segment_with_tilemap(point_a, point_b)
 		for tile in xtiles:
 			self.set_cell(0, tile + Vector2i(0,0), -1)
