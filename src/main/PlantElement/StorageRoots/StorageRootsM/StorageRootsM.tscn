@@ -1,7 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwinug0k4gpnl"]
+[gd_scene load_steps=6 format=3 uid="uid://bwinug0k4gpnl"]
 
 [ext_resource type="PackedScene" uid="uid://bhjd1v0gl0hjt" path="res://src/main/PlantElement/StorageRoots/StorageRoots.tscn" id="1_uo2cl"]
 [ext_resource type="Script" path="res://src/main/PlantElement/StorageRoots/StorageRootsM/StorageRootsM.gd" id="2_m0xt2"]
+[ext_resource type="Texture2D" uid="uid://ckjk4xjq047jq" path="res://assets/art/spot.png" id="3_cy261"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dawj"]
+polygon = PackedVector2Array(-73, -121, -115, -70, -131, -16, -185, -11, -184, 12, -138, 9, -120, 75, -69, 125, 48, 121, 93, 78, 119, 0, 93, -56, 48, -70, 20, -94, -17, -121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ndd"]
+size = Vector2(22.0343, 13.9845)
 
 [node name="StorageRootsM" instance=ExtResource("1_uo2cl")]
 script = ExtResource("2_m0xt2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectArea" index="0"]
+position = Vector2(56, 0)
+scale = Vector2(0.35, 0.35)
+polygon = PackedVector2Array(-73, -121, -115, -70, -131, -16, -134.286, -14.2857, -134.286, 5.71429, -138, 9, -120, 75, -69, 125, 48, 121, 93, 78, 119, 0, 93, -56, 48, -70, 20, -94, -17, -121)
+
+[node name="Texture" parent="." index="1"]
+position = Vector2(56, 0)
+scale = Vector2(0.35, 0.35)
+
+[node name="LightOccluder" parent="Texture" index="0"]
+occluder = SubResource("OccluderPolygon2D_3dawj")
+
+[node name="PolygonBorder" parent="Texture" index="1"]
+points = PackedVector2Array(-73, -121, -115, -70, -131, -16, -185, -11, -184, 12, -138, 9, -120, 75, -69, 125, 48, 121, 93, 78, 119, 0, 93, -56, 48, -70, 20, -94, -17, -121, -73, -121)
+width = 18.0
+
+[node name="PolygonTexture" parent="Texture" index="2"]
+polygon = PackedVector2Array(-73, -121, -115, -70, -131, -16, -185, -11, -184, 12, -138, 9, -120, 75, -69, 125, 48, 121, 93, 78, 119, 0, 93, -56, 48, -70, 20, -94, -17, -121)
+
+[node name="OriginAreaTexture" parent="OriginArea" index="0"]
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("3_cy261")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OriginArea" index="1"]
+position = Vector2(0.0177054, -0.000834897)
+rotation = -0.0471239
+shape = SubResource("RectangleShape2D_77ndd")

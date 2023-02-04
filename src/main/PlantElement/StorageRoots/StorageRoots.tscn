@@ -5,3 +5,9 @@
 
 [node name="StorageRoots" instance=ExtResource("1_d7gvt")]
 script = ExtResource("1_k6ii0")
+
+[node name="PolygonBorder" parent="Texture" index="1"]
+default_color = Color(0.552941, 0.443137, 0.376471, 1)
+
+[node name="PolygonTexture" parent="Texture" index="2"]
+color = Color(0.72549, 0.603922, 0.466667, 1)

@@ -27,6 +27,7 @@ occluder = SubResource("OccluderPolygon2D_mfkn7")
 
 [node name="PolygonBorder" parent="Texture" index="1"]
 points = PackedVector2Array(0, -13.3333, 0, 0, 46.6667, 0, 40, 20, 46.6667, 53.3333, 73.3333, 73.3333, 113.333, 80, 153.333, 73.3333, 186.667, 53.3333, 220, 33.3333, 260, 20, 326.667, 0, 266.667, -13.3333, 226.667, -33.3333, 186.667, -60, 133.333, -73.3333, 80, -66.6667, 53.3333, -53.3333, 40, -20, 46.6667, -13.3333, 0, -13.333)
+width = 18.0
 default_color = Color(0.247059, 0.611765, 0.345098, 1)
 
 [node name="PolygonTexture" parent="Texture" index="2"]
