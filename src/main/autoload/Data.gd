@@ -11,6 +11,8 @@ var nutrition_n := NutritionN.new()
 var nutrition_p := NutritionP.new()
 var nutrition_k := NutritionK.new()
 
+var is_pause_leaf_fall := false 
+
 #根系成长值(1米=100像素=1成长值，S/M/L储藏根=3/6/9成长值)
 var roots_growth_point := 0.0:
 	set(_roots_growth_point):
@@ -70,6 +72,7 @@ func init_all():
 	nutrition_k.value = 0
 	roots_growth_point = 0
 	stem_growth_point = 0
+	is_pause_leaf_fall = false
 	pass
 
 func _on_new_roots_line_built(new_line : RootsLine):

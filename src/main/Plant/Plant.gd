@@ -64,6 +64,7 @@ func _unhandled_input(event):
 								if Data.energy.try_consume(building_plant_element.energy_cost):
 									building_plant_element.finish_build()
 									emit_signal("new_leaf_built", building_plant_element)
+									building_plant_element.connect("fall_requested", _on_leaf_fall_requested)
 									building_plant_element = null
 									request_building_leaf()
 								else:
@@ -314,3 +315,8 @@ func _on_timer_drawing_timeout():
 							alert_cost_fail()
 							return
 	pass # Replace with function body.
+
+func _on_leaf_fall_requested(leaf : Leaf):
+	emit_signal("leaf_fallen", leaf)
+	leaf.fall()
+	pass
