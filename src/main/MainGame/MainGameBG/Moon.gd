@@ -20,7 +20,7 @@ func _process(_delta):
 			percent_in_period = (1 - 0.738 + percent) / total
 		
 		var radian : float = PI+PI * (1 - percent_in_period)
-		position = 1000 * Vector2.RIGHT.rotated(radian)
+		position = 800 * Vector2.RIGHT.rotated(radian)
 	else:
 		hide()
 	#get_viewport_rect().size

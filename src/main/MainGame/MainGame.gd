@@ -90,3 +90,9 @@ func _on_main_game_ui_building_canceled():
 		_Plant.build_size = Global.BuildingSize.NONE
 		_Plant.stop_building()
 	pass # Replace with function body.
+
+
+func _on_plant_clear_fog_requested():
+	for i in $MainGameFog/FogTileMap.get_used_cells(0):
+		$MainGameFog/FogTileMap.set_cell(0, i, -1)
+	pass # Replace with function body.

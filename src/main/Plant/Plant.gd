@@ -5,6 +5,7 @@ signal new_roots_line_built(roots_line)
 signal new_stem_line_built(stem_line)
 signal new_leaf_built(leaf)
 signal new_storage_roots_built(storage_roots)
+signal clear_fog_requested
 signal leaf_fallen(leaf)
 
 @onready var _Roots = %Roots
@@ -41,11 +42,16 @@ var tree_like_lines_shapes := {}
 var is_building_plant_element := false
 var building_plant_element : PlantElement
 
+var normal_energy_cost := 0.0
+
+var is_nutrition_k_working := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stop_building()
 	Data.plant = self
 	GameTime.connect("hour_passed", _on_hour_passed)
+	Data.connect("growth_point_changed", _on_growth_point_changed)
 	pass # Replace with function body.
 
 func _unhandled_input(event):
@@ -322,6 +328,13 @@ func _on_leaf_fall_requested(leaf : Leaf):
 	leaf.fall()
 	pass
 
+func _on_growth_point_changed():
+	var total_growth_point : float = Data.roots_growth_point + Data.stem_growth_point
+	Data.energy.decrease_speed -= normal_energy_cost
+	normal_energy_cost = (total_growth_point / 10) * Data.normal_energy_cost_effeciency
+	Data.energy.decrease_speed += normal_energy_cost
+	pass
+
 func _on_hour_passed():
 	Data.water.update()
 	
@@ -364,4 +377,33 @@ func _on_hour_passed():
 	Data.nutrition_k.update()
 	Data.nutrition_p.update()
 	
+	if Data.nutrition_n.level == 0:
+		Data.photosynthesis_effeciency = 1
+		Data.is_pause_leaf_fall = false
+	elif Data.nutrition_n.level == 1:
+		Data.photosynthesis_effeciency = 1.5
+		Data.is_pause_leaf_fall = false
+	elif Data.nutrition_n.level >= 2:
+		Data.photosynthesis_effeciency = 1.5
+		Data.is_pause_leaf_fall = true
+	
+	if Data.nutrition_p.level == 0:
+		Data.normal_energy_cost_effeciency = 1
+	elif Data.nutrition_p.level == 1:
+		Data.normal_energy_cost_effeciency = 0.5
+	elif Data.nutrition_p.level >= 2:
+		Data.normal_energy_cost_effeciency = 0.0
+	
+	if Data.nutrition_k.level == 0:
+		if is_nutrition_k_working:
+			is_nutrition_k_working = false
+			Data.water.capacity -= 100
+		Data.is_neglect_energy_capacity = false
+	elif Data.nutrition_k.level == 1:
+		if !is_nutrition_k_working:
+			is_nutrition_k_working = true
+			Data.water.capacity += 100
+		Data.is_neglect_energy_capacity = false
+	elif Data.nutrition_k.level >= 2:
+		emit_signal("clear_fog_requested")
 	pass

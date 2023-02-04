@@ -190,3 +190,4 @@ mouse_filter = 2
 [connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]
 [connection signal="building_canceled" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_canceled"]
 [connection signal="building_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_requested"]
+[connection signal="clear_fog_requested" from="Plant" to="." method="_on_plant_clear_fog_requested"]

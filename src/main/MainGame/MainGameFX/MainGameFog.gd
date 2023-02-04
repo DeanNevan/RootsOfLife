@@ -22,9 +22,9 @@ func _ready():
 		texturerect.texture = vp_tex
 
 func _on_viewport_size_changed():
-	size = get_parent().get_viewport().size * 0.25
+	size = get_parent().get_viewport().size
 
 func _process(_delta):
 	if is_instance_valid(following_camera):
 		camera.position = following_camera.position
-		camera.zoom = following_camera.zoom * 0.25
+		camera.zoom = following_camera.zoom

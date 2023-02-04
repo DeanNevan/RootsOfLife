@@ -3,6 +3,7 @@ extends Node
 signal roots_growth_point_changed
 signal stem_growth_point_changed
 signal plant_changed
+signal growth_point_changed
 
 var sunlight := Sunlight.new()
 var energy := Energy.new()
@@ -12,6 +13,10 @@ var nutrition_p := NutritionP.new()
 var nutrition_k := NutritionK.new()
 
 var photosynthesis_effeciency := 1.0
+var normal_energy_cost_effeciency := 1.0:
+	set(_normal_energy_cost_effeciency):
+		normal_energy_cost_effeciency = _normal_energy_cost_effeciency
+		emit_signal("growth_point_changed")
 
 var is_pause_leaf_fall := false 
 var is_neglect_energy_capacity := false 
@@ -21,11 +26,13 @@ var roots_growth_point := 0.0:
 	set(_roots_growth_point):
 		roots_growth_point = _roots_growth_point
 		emit_signal("roots_growth_point_changed")
+		emit_signal("growth_point_changed")
 #茎系成长值(1米=100像素=1成长值，S/M/L叶子=3/6/9成长值)
 var stem_growth_point := 0.0:
 	set(_stem_growth_point):
 		stem_growth_point = _stem_growth_point
 		emit_signal("stem_growth_point_changed")
+		emit_signal("growth_point_changed")
 
 var roots_goal := 100.0:
 	set(_roots_goal):

@@ -1,15 +1,9 @@
 extends MarginContainer
 
 enum Stage{
-	HIGH,
+	LOW,
 	MEDIUM,
-	LOW
-}
-
-var PERCENT_RANGE_TO_STAGE := {
-	Vector2(0.000, 0.333) : Stage.LOW,
-	Vector2(0.333, 0.666) : Stage.MEDIUM,
-	Vector2(0.666, 1.000) : Stage.HIGH,
+	HIGH,
 }
 
 var STAGE_TO_COLOR := {
@@ -50,12 +44,7 @@ func _process(_delta):
 	pass
 
 func _on_nutrition_n_data_changed():
-	var percent : float = float(Data.nutrition_n.value) / Data.nutrition_n.capacity
-	var stage := Stage.LOW
-	for i in PERCENT_RANGE_TO_STAGE:
-		if i.x < percent and i.y > percent:
-			stage = PERCENT_RANGE_TO_STAGE[i]
-			break
+	var stage : int = clamp(Data.nutrition_n.level, 0, 2)
 	_UnitsN.modulate = STAGE_TO_COLOR[stage]
 	match stage:
 		Stage.LOW:
@@ -73,12 +62,7 @@ func _on_nutrition_n_data_changed():
 	pass
 
 func _on_nutrition_k_data_changed():
-	var percent : float = float(Data.nutrition_k.value) / Data.nutrition_k.capacity
-	var stage := Stage.LOW
-	for i in PERCENT_RANGE_TO_STAGE:
-		if i.x < percent and i.y > percent:
-			stage = PERCENT_RANGE_TO_STAGE[i]
-			break
+	var stage : int = clamp(Data.nutrition_k.level, 0, 2)
 	_UnitsK.modulate = STAGE_TO_COLOR[stage]
 	match stage:
 		Stage.LOW:
@@ -96,12 +80,7 @@ func _on_nutrition_k_data_changed():
 	pass
 
 func _on_nutrition_p_data_changed():
-	var percent : float = float(Data.nutrition_p.value) / Data.nutrition_p.capacity
-	var stage := Stage.LOW
-	for i in PERCENT_RANGE_TO_STAGE:
-		if i.x < percent and i.y > percent:
-			stage = PERCENT_RANGE_TO_STAGE[i]
-			break
+	var stage : int = clamp(Data.nutrition_p.level, 0, 2)
 	_UnitsP.modulate = STAGE_TO_COLOR[stage]
 	match stage:
 		Stage.LOW:
@@ -123,7 +102,7 @@ func _on_container_n_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerN, 
 		"氮", 
-		"-分为缺少、普通、丰富三级\n-普通：增效光合作用50%%\n-丰富：叶子暂停脱落\n-当前：%s" % Data.nutrition_n.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：增效光合作用50%%\n-丰富：叶子暂停脱落\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_n.get_level_str()
 	)
 	pass # Replace with function body.
 
@@ -137,7 +116,7 @@ func _on_container_p_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerP, 
 		"磷", 
-		"-分为缺少、普通、丰富三级\n-普通：建造能量消耗降低50%%\n-丰富：日常能量消耗降低50%%\n-当前：%s" % Data.nutrition_p.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：日常能量消耗降低50%%\n-丰富：日常能量消耗降低100%%\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_p.get_level_str()
 	)
 	pass # Replace with function body.
 
@@ -151,7 +130,7 @@ func _on_container_k_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerK, 
 		"钾", 
-		"-分为缺少、普通、丰富三级\n-普通：能量储存上限提高50%%\n-丰富：能量储存没有上限\n-当前：%s" % Data.nutrition_k.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：水分储量提高100\n-丰富：迷雾全开\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_k.get_level_str()
 	)
 	pass # Replace with function body.
 
