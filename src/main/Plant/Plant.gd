@@ -38,6 +38,9 @@ var drawing_unsafe_objects := []
 var objects_in_mouse_area := []
 var tree_like_lines_shapes := {}
 
+var is_building_plant_element := false
+var building_plant_element : PlantElement
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stop_building()
@@ -54,6 +57,17 @@ func _unhandled_input(event):
 				else:
 					if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
 						request_stop_draw_treelike_line()
+					if build_type == Global.BuildingType.LEAF:
+						if is_instance_valid(building_plant_element):
+							var result : bool = building_plant_element.can_build()
+							if result:
+								if Data.energy.try_consume(building_plant_element.energy_cost):
+									building_plant_element.finish_build()
+									emit_signal("new_leaf_built", building_plant_element)
+									building_plant_element = null
+									request_building_leaf()
+								else:
+									alert_cost_fail()
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -62,7 +76,23 @@ func _process(_delta):
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	_AreaMouseDrawer.global_position = get_global_mouse_position()
-	pass
+	if is_building_plant_element:
+		if is_instance_valid(building_plant_element):
+			building_plant_element.global_position = get_global_mouse_position()
+
+func request_building_leaf():
+	if is_instance_valid(building_plant_element):
+		building_plant_element.queue_free()
+	if build_size == Global.BuildingSize.S:
+		building_plant_element = scene_leaf_s.instantiate()
+	if build_size == Global.BuildingSize.M:
+		building_plant_element = scene_leaf_m.instantiate()
+	if build_size == Global.BuildingSize.L:
+		building_plant_element = scene_leaf_l.instantiate()
+	if is_instance_valid(building_plant_element):
+		_Leaves.add_child(building_plant_element)
+		is_building_plant_element = true
+		building_plant_element.begin_build()
 
 func start_building():
 	is_building = true
@@ -70,16 +100,20 @@ func start_building():
 		_SpriteMouseDrawer.modulate = Color.SADDLE_BROWN if build_type == Global.BuildingType.ROOTS_LINE else Color.GREEN
 		_AreaMouseDrawer.show()
 	else:
+		if build_type == Global.BuildingType.LEAF:
+			request_building_leaf()
 		_AreaMouseDrawer.hide()
 	pass
 
 func stop_building():
 	is_building = false
 	_AreaMouseDrawer.hide()
+	is_building_plant_element = true
+	if is_instance_valid(building_plant_element):
+		building_plant_element.queue_free()
 	pass
 
 func request_start_draw_treelike_line():
-	print(tree_like_lines_shapes)
 	var closet_distance : float = 999
 	var split_point_a : Vector2
 	var split_point_b : Vector2

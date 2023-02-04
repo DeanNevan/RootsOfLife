@@ -133,25 +133,25 @@ func _on_button_leaf_pressed():
 
 func _on_button_s_pressed():
 	build_size = Global.BuildingSize.S
-	update_ui_growth_point()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
 func _on_button_m_pressed():
 	build_size = Global.BuildingSize.M
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
 func _on_button_l_pressed():
 	build_size = Global.BuildingSize.L
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 
 func _on_button_expand_growth_point_pressed():
 	is_showing_growth_point = !is_showing_growth_point
-	update_ui()
+	update_ui_building_menu()
 	pass # Replace with function body.
 
 func _on_roots_growth_point_changed():
@@ -215,7 +215,7 @@ func _on_button_storage_roots_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonStorageRoots, 
 		"储藏根", 
-		"-用于储存更多的能量\n-必须建造在根系附近\n-小：+20能量储存\n-中：+40能量储存\n-大：+60能量储存"
+		"-用于储存更多的能量\n-必须建造在根系附近\n-按住Q/E来旋转它\n-小：+20能量储存 耗能10\n-中：+40能量储存 耗能20\n-大：+60能量储存 耗能30"
 	)
 	pass # Replace with function body.
 
@@ -229,7 +229,7 @@ func _on_button_leaf_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonLeaf, 
 		"叶子", 
-		"-用于接收光照\n-不同尺寸的叶子大小不同\n-必须建造在茎系附近\n-按住R来旋转它"
+		"-用于接收光照\n-不同尺寸的叶子大小不同\n-必须建造在茎系附近\n-按住Q/E来旋转它\n-小：耗能10\n-中：耗能20\n-大：耗能30"
 	)
 	pass # Replace with function body.
 
