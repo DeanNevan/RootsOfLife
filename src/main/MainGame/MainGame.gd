@@ -18,6 +18,12 @@ func _ready():
 	Data.init_all()
 	game_world.init_all()
 	start_seed()
+	await get_tree().process_frame
+	var rect : Rect2 = Data.game_world.world_rect
+	_MainCamera.limit_left = rect.position.x
+	_MainCamera.limit_right = rect.end.x
+	_MainCamera.limit_top = rect.position.y
+	_MainCamera.limit_bottom = rect.end.y
 	pass # Replace with function body.
 
 func _unhandled_input(event):

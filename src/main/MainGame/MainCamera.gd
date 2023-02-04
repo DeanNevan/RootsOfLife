@@ -20,13 +20,16 @@ func _set_position(p):
 		position_max_limit = Vector2(limit_right, limit_bottom) - camera_size
 		position_min_limit = Vector2(limit_left , limit_top)
 	elif anchor_mode ==  ANCHOR_MODE_DRAG_CENTER:
-		position_max_limit = Vector2(limit_right, limit_bottom) - camera_size/2
-		position_min_limit = Vector2(limit_left , limit_top) + camera_size
+		position_max_limit = Vector2(limit_right, limit_bottom) - camera_size / 2
+		position_min_limit = Vector2(limit_left , limit_top) + camera_size / 2
   
 	if(position_max_limit < position_min_limit):
 		return false
 
 	position = p
+	
+	print(position_max_limit)
+	print(position_min_limit)
 
 	if(position.x > position_max_limit.x):
 		position.x = position_max_limit.x

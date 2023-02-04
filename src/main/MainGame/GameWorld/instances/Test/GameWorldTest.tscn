@@ -14,6 +14,7 @@
 
 [node name="GameWorldTest" instance=ExtResource("1_5h0m1")]
 script = ExtResource("2_lsibn")
+world_rect = Rect2(-1520, -1520, 3000, 3000)
 
 [node name="TerrainDirtS" parent="Terrains" index="0" instance=ExtResource("3_cllty")]
 position = Vector2(95, -69)
