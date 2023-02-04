@@ -1,6 +1,8 @@
 extends Line2D
 class_name TreeLikeLine
 
+signal changed(line)
+
 enum Status {
 	BUILDING, 
 	NORMAL
@@ -108,6 +110,7 @@ func build_new_point(_point : Vector2, _check_cost := false) -> bool:
 		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
 		widen(length)
 		_Fog.defog(points)
+	emit_signal("changed", self)
 	return true
 
 func widen(added_thickness):

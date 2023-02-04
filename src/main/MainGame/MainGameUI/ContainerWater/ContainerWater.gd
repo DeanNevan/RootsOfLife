@@ -14,7 +14,7 @@ func _process(_delta):
 	pass
 
 func _on_water_data_changed():
-	var change_speed_str := str(Data.water.get_change_speed())
+	var change_speed_str := str(Data.water.get_change_speed()).pad_decimals(1)
 	if Data.water.get_change_speed() >= 0:
 		change_speed_str = "+" + change_speed_str
 	_LabelWater.text = "%d(%s)" % [

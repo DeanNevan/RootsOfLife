@@ -18,7 +18,7 @@ func check_origin_valid() -> bool:
 	return false
 
 func check_building_collsion() -> bool:
-	print(in_detect_area_objects)
+	#print(in_detect_area_objects)
 	for i in in_detect_area_objects:
 		if i is StemLine or i is TerrainBarrier or i is RootsLine or i is Leaf or i is StorageRoots:
 			return false

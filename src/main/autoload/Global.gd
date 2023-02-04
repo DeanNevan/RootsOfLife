@@ -16,6 +16,13 @@ enum BuildingSize {
 
 var fog_thickness = 200
 
+func get_polyline_length(polyline : PackedVector2Array) -> float:
+	var length := 0.0
+	if polyline.size() >= 2:
+		for i in polyline.size() - 1:
+			length += (polyline[i + 1] - polyline[i]).length()
+	return length
+
 func convert_target_position(target : Node2D, local_pos : Vector2 = Vector2()) -> Vector2:
 	return convert_target_position2(target.get_viewport_transform(), target.get_global_transform(), local_pos)
 
