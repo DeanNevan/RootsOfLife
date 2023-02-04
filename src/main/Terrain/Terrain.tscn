@@ -5,6 +5,7 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mblcm"]
 resource_local_to_scene = true
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
 
 [node name="Terrain" type="Polygon2D"]
 script = ExtResource("1_8gv04")

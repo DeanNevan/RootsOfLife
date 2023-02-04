@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cor5raih46oms"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/TreeLikeLine.gd" id="1_oac7p"]
+[ext_resource type="Script" path="res://src/main/TreeLike/TreeLikeLine.gd" id="1_oac7p"]
 [ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_0daqk"]
 
 [node name="TreeLikeLine" type="Line2D"]

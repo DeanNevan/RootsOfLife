@@ -15,7 +15,7 @@ var drawing_unsafe_objects := []
 var areas := []
 var tree_like_lines_shapes := {}
 
-var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn")
+var scene_roots_line : PackedScene = preload("res://src/main/TreeLike/Roots/RootsLine.tscn")
 
 @onready var _Roots = %Roots
 @onready var _AreaMouseDrawer = %AreaMouseDrawer
@@ -34,12 +34,10 @@ func _unhandled_input(event):
 			else:
 				request_stop_draw_roots_line()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _physics_process(_delta):
 	_AreaMouseDrawer.global_position = get_global_mouse_position()
 	pass
-
-func 
 
 func request_start_draw_roots_line():
 	var closet_distance : float = 999

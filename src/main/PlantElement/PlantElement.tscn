@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4r2oxwexlac6"]
+[gd_scene load_steps=4 format=3 uid="uid://b4r2oxwexlac6"]
 
 [ext_resource type="Script" path="res://src/main/PlantElement/PlantElement.gd" id="1_u4fpl"]
+[ext_resource type="Script" path="res://src/main/utils/DetectArea2D.gd" id="2_ivn6k"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j2whp"]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
 
 [node name="PlantElement" type="Node2D"]
 script = ExtResource("1_u4fpl")
+
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
+unique_name_in_owner = true
+occluder = SubResource("OccluderPolygon2D_j2whp")
+
+[node name="Texture" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PolygonBorder" type="Line2D" parent="Texture"]
+unique_name_in_owner = true
+
+[node name="PolygonTexture" type="Polygon2D" parent="Texture"]
+unique_name_in_owner = true
+
+[node name="DetectArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ivn6k")
+object_node_path = NodePath("..")
+
+[node name="OriginArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+monitorable = false
+
+[node name="OriginAreaTexture" type="Sprite2D" parent="OriginArea"]
+unique_name_in_owner = true
+
+[connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
+[connection signal="area_exited" from="DetectArea" to="." method="_on_detect_area_area_exited"]
+[connection signal="area_entered" from="OriginArea" to="." method="_on_origin_area_area_entered"]
+[connection signal="area_exited" from="OriginArea" to="." method="_on_origin_area_area_exited"]

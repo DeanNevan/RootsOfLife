@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xuwq7s3v0fxd"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://src/main/Plant/Plant.gd" id="1_snymy"]
-[ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/PlantElement/TreeLike/Roots/Roots.tscn" id="2_8copk"]
-[ext_resource type="PackedScene" uid="uid://cyto50cry4boi" path="res://src/main/PlantElement/TreeLike/Stem/Stem.tscn" id="3_3i71b"]
+[ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/TreeLike/Roots/Roots.tscn" id="2_8copk"]
+[ext_resource type="PackedScene" uid="uid://cyto50cry4boi" path="res://src/main/TreeLike/Stem/Stem.tscn" id="3_3i71b"]
 [ext_resource type="Texture2D" uid="uid://ckjk4xjq047jq" path="res://assets/art/spot.png" id="4_yjivy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyjkj"]

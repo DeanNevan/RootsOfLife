@@ -29,8 +29,8 @@ func _ready():
 	thickness = calculate_length()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	pass
 
 #func defog(): #似乎不行，没有有效的在image上绘制的手段

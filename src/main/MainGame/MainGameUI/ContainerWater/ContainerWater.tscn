@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://w36hti3p8leb"]
+[gd_scene load_steps=3 format=3 uid="uid://w36hti3p8leb"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/ContainerWater/ContainerWater.gd" id="1_0lg5f"]
+[ext_resource type="Texture2D" uid="uid://6gcn04ftpvr5" path="res://assets/art/water.png" id="2_p47k2"]
 
 [node name="ContainerWater" type="HBoxContainer"]
 size_flags_horizontal = 3
 script = ExtResource("1_0lg5f")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "水："
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_p47k2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="LabelWater" type="Label" parent="."]
 unique_name_in_owner = true

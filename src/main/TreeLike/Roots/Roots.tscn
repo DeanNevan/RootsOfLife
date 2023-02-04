@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bvpccon01cm7m" path="res://src/main/TreeLike/TreeLike.tscn" id="1_j1k34"]
+[ext_resource type="Script" path="res://src/main/TreeLike/Roots/Roots.gd" id="2_pjqwe"]
+
+[node name="Roots" instance=ExtResource("1_j1k34")]
+script = ExtResource("2_pjqwe")

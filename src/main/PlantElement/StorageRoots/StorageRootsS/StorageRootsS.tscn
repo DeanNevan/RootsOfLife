@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://25okdqhip3pt"]
+[gd_scene load_steps=4 format=3 uid="uid://25okdqhip3pt"]
 
 [ext_resource type="Script" path="res://src/main/PlantElement/StorageRoots/StorageRootsS/StorageRootsS.gd" id="1_ob3dw"]
 [ext_resource type="PackedScene" uid="uid://bhjd1v0gl0hjt" path="res://src/main/PlantElement/StorageRoots/StorageRoots.tscn" id="1_vidv8"]
+[ext_resource type="Texture2D" uid="uid://cggi63suyamc1" path="res://assets/art/storage_roots.png" id="3_wxf3b"]
 
 [node name="StorageRootsS" instance=ExtResource("1_vidv8")]
 script = ExtResource("1_ob3dw")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_wxf3b")

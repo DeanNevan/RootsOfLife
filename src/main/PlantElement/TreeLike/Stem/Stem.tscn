@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyto50cry4boi"]
-
-[ext_resource type="PackedScene" uid="uid://bvpccon01cm7m" path="res://src/main/PlantElement/TreeLike/TreeLike.tscn" id="1_2dojy"]
-[ext_resource type="Script" path="res://src/main/PlantElement/TreeLike/Stem/Stem.gd" id="2_511wv"]
-
-[node name="Stem" instance=ExtResource("1_2dojy")]
-script = ExtResource("2_511wv")

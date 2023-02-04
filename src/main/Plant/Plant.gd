@@ -16,8 +16,8 @@ signal leaf_fallen(leaf)
 @onready var _RayDrawing = %RayDrawing
 @onready var _SpriteMouseDrawer = %SpriteMouseDrawer
 
-var scene_roots_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn")
-var scene_stem_line : PackedScene = preload("res://src/main/PlantElement/TreeLike/Stem/StemLine.tscn")
+var scene_roots_line : PackedScene = preload("res://src/main/TreeLike/Roots/RootsLine.tscn")
+var scene_stem_line : PackedScene = preload("res://src/main/TreeLike/Stem/StemLine.tscn")
 var scene_leaf_s : PackedScene = preload("res://src/main/PlantElement/Leaf/LeafS/LeafS.tscn")
 var scene_leaf_m : PackedScene = preload("res://src/main/PlantElement/Leaf/LeafM/LeafM.tscn")
 var scene_leaf_l : PackedScene = preload("res://src/main/PlantElement/Leaf/LeafL/LeafL.tscn")
@@ -55,12 +55,12 @@ func _unhandled_input(event):
 					if build_type == Global.BuildingType.ROOTS_LINE or build_type == Global.BuildingType.STEM_LINE:
 						request_stop_draw_treelike_line()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _physics_process(_delta):
 	_AreaMouseDrawer.global_position = get_global_mouse_position()
 	pass
 

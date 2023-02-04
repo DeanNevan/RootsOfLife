@@ -6,8 +6,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	var percent : float = GameTime.get_percent_in_day()
 	$Light.color = gradient.sample(percent)
 	if percent > 0.164 or percent < 0.783:

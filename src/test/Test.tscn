@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbal8eglc5wnr"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://src/test/Test.gd" id="1_ljoxw"]
-[ext_resource type="PackedScene" uid="uid://c3n2y6n7phv8v" path="res://src/main/PlantElement/TreeLike/Roots/Roots.tscn" id="2_wyl0j"]
-[ext_resource type="PackedScene" uid="uid://dmx5rkb7w3r37" path="res://src/main/PlantElement/TreeLike/Roots/RootsLine.tscn" id="3_immfo"]
+[ext_resource type="PackedScene" path="res://src/main/TreeLike/Roots/Roots.tscn" id="2_wyl0j"]
+[ext_resource type="PackedScene" path="res://src/main/TreeLike/Roots/RootsLine.tscn" id="3_immfo"]
 [ext_resource type="PackedScene" uid="uid://jihoqu0f2lic" path="res://src/main/Terrain/TerrainBarrier/TerrainBarrier.tscn" id="4_ng7eu"]
 [ext_resource type="Script" path="res://src/test/FogSprite.gd" id="5_1wn41"]
 

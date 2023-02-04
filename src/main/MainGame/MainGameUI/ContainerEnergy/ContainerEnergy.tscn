@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cro81a2vap03y"]
+[gd_scene load_steps=3 format=3 uid="uid://cro81a2vap03y"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameUI/ContainerEnergy/ContainerEnergy.gd" id="1_ms7rr"]
+[ext_resource type="Texture2D" uid="uid://hnobxmsvosn7" path="res://assets/art/energy.png" id="2_u3ydn"]
 
 [node name="ContainerEnergy" type="HBoxContainer"]
 size_flags_horizontal = 3
 script = ExtResource("1_ms7rr")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "能量："
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_u3ydn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="LabelEnergy" type="Label" parent="."]
 unique_name_in_owner = true

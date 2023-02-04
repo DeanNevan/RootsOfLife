@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://qgrct8i63mi1"]
+
+[ext_resource type="Script" path="res://src/main/TreeLike/TreeLike.gd" id="2_ppfvb"]
+
+[node name="TreeLike" type="Node2D"]
+script = ExtResource("2_ppfvb")
+
+[node name="Origin" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TreeLikeLines" type="Node2D" parent="."]
+unique_name_in_owner = true

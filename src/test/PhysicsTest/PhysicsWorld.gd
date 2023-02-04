@@ -40,11 +40,11 @@ class Spring:
 		rest_angle = atan2(m2.pos.y - m1.pos.y, m2.pos.x - m1.pos.x)
 
 	func update(dt):
-		var delta = self.m2.pos - self.m1.pos
-		var distance = delta.length()
-		var direction = delta.normalized()
+		var _delta = self.m2.pos - self.m1.pos
+		var distance = _delta.length()
+		var direction = _delta.normalized()
 
-		var current_angle = atan2(delta.y, delta.x)
+		var current_angle = atan2(_delta.y, _delta.x)
 		var angle_delta = current_angle - self.rest_angle
 
 		var bending_force = -BENDING_STRENGTH * angle_delta * direction
@@ -63,10 +63,10 @@ class Spring:
 #	for i in range(9):
 #		springs.append(Spring.new(masses[i], masses[i+1]))
 #
-#func _process(delta):
+#func _process(_delta):
 #	for i in range(10):
 #		for spring in springs:
-#			spring.update(delta)
+#			spring.update(_delta)
 #	self.queue_redraw()
 #
 #func _draw():

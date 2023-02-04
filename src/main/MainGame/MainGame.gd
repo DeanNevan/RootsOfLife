@@ -29,8 +29,8 @@ func _unhandled_input(event):
 				elif !event.pressed and !is_seeding:
 					start_seed()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	if is_seeding:
 		_Seed.global_position = get_global_mouse_position()
 #	var screen_coord := Global.convert_target_position2(

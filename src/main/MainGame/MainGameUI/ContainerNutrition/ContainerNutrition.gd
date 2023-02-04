@@ -45,8 +45,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	pass
 
 func _on_nutrition_n_data_changed():

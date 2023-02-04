@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://diih20og4coqe"]
 
-[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="1_te7h3"]
 [ext_resource type="Script" path="res://src/main/MainGame/Seed/Seed.gd" id="1_viyfa"]
+[ext_resource type="Texture2D" uid="uid://d2ex5716gx0vb" path="res://assets/art/seed.png" id="2_ap2lw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a88c"]
 radius = 16.1245
@@ -14,8 +14,9 @@ gravity_scale = 0.0
 script = ExtResource("1_viyfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 11)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_te7h3")
+texture = ExtResource("2_ap2lw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7a88c")

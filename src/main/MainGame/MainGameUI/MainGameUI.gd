@@ -34,8 +34,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	pass
 
 func update_ui():
@@ -179,4 +179,61 @@ func _on_container_growth_point_mouse_entered():
 
 func _on_container_growth_point_mouse_exited():
 	GUI._FloatWindow.inactivate(_ContainerGrowthPoint)
+	pass # Replace with function body.
+
+
+func _on_button_roots_line_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ButtonRootsLine, 
+		"根系", 
+		"-用画笔建造根系\n-根必须依附于另一条根，并且沿途不能遇到障碍物\n-每米消耗1能量"
+	)
+	pass # Replace with function body.
+
+
+func _on_button_roots_line_mouse_exited():
+	GUI._FloatWindow.inactivate(_ButtonRootsLine)
+	pass # Replace with function body.
+
+
+func _on_button_stem_line_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ButtonStemLine, 
+		"茎系", 
+		"-用画笔建造茎系\n-茎必须依附于另一条茎，并且沿途不能遇到障碍物\n-每米消耗1能量"
+	)
+	pass # Replace with function body.
+
+
+func _on_button_stem_line_mouse_exited():
+	GUI._FloatWindow.inactivate(_ButtonStemLine)
+	pass # Replace with function body.
+
+
+
+func _on_button_storage_roots_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ButtonStorageRoots, 
+		"储藏根", 
+		"-用于储存更多的能量\n-必须建造在根系附近\n-小：+20能量储存\n-中：+40能量储存\n-大：+60能量储存"
+	)
+	pass # Replace with function body.
+
+
+func _on_button_storage_roots_mouse_exited():
+	GUI._FloatWindow.inactivate(_ButtonStorageRoots)
+	pass # Replace with function body.
+
+
+func _on_button_leaf_mouse_entered():
+	GUI._FloatWindow.activate(
+		_ButtonLeaf, 
+		"叶子", 
+		"-用于接收光照\n-不同尺寸的叶子大小不同\n-必须建造在茎系附近\n-按住R来旋转它"
+	)
+	pass # Replace with function body.
+
+
+func _on_button_leaf_mouse_exited():
+	GUI._FloatWindow.inactivate(_ButtonLeaf)
 	pass # Replace with function body.

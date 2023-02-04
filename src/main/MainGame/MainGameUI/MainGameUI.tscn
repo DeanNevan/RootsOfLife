@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbk15m06vn7sr"]
+[gd_scene load_steps=26 format=3 uid="uid://bbk15m06vn7sr"]
 
 [ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
 [ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_fdex0"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c81lb03lbh715" path="res://src/main/MainGame/MainGameUI/ContainerNutrition/ContainerNutrition.tscn" id="4_oycl3"]
 [ext_resource type="Texture2D" uid="uid://cegt6mtowaegm" path="res://assets/art/icon/up.png" id="9_8iml4"]
 [ext_resource type="Texture2D" uid="uid://b1408q6t6dq8n" path="res://assets/art/icon/down.png" id="9_t4e2h"]
+[ext_resource type="Texture2D" uid="uid://cwq2af68mxyho" path="res://assets/art/roots_line.png" id="11_i6tyg"]
+[ext_resource type="Texture2D" uid="uid://cggi63suyamc1" path="res://assets/art/storage_roots.png" id="12_iuaka"]
+[ext_resource type="Texture2D" uid="uid://bob3etid8eu74" path="res://assets/art/stick2.png" id="13_on4m6"]
+[ext_resource type="Texture2D" uid="uid://cfcnt565hkhw0" path="res://assets/art/leaf.png" id="14_qrbb7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu7ao"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
@@ -364,10 +368,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rotcv")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/ContainerBuildingSize"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer"]
 layout_mode = 2
@@ -395,7 +399,6 @@ text = "大"
 
 [node name="ContainerBuildingType" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -406,10 +409,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rotcv")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/ContainerBuildingType"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer"]
 layout_mode = 2
@@ -419,14 +422,17 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-text = "根"
+icon = ExtResource("11_i6tyg")
+icon_alignment = 1
+expand_icon = true
 
 [node name="ButtonStorageRoots" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-text = "储"
+icon = ExtResource("12_iuaka")
+expand_icon = true
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -436,14 +442,16 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-text = "茎"
+icon = ExtResource("13_on4m6")
+expand_icon = true
 
 [node name="ButtonLeaf" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-text = "叶"
+icon = ExtResource("14_qrbb7")
+expand_icon = true
 
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_exited"]
@@ -452,7 +460,15 @@ text = "叶"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonS" to="." method="_on_button_s_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonM" to="." method="_on_button_m_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonL" to="." method="_on_button_l_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonRootsLine" to="." method="_on_button_roots_line_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonRootsLine" to="." method="_on_button_roots_line_mouse_exited"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonRootsLine" to="." method="_on_button_roots_line_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStorageRoots" to="." method="_on_button_storage_roots_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStorageRoots" to="." method="_on_button_storage_roots_mouse_exited"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStorageRoots" to="." method="_on_button_storage_roots_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStemLine" to="." method="_on_button_stem_line_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStemLine" to="." method="_on_button_stem_line_mouse_exited"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonStemLine" to="." method="_on_button_stem_line_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_mouse_exited"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_pressed"]

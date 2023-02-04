@@ -9,8 +9,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	modulate = gradient.sample(GameTime.get_percent_in_day())
 
 func _on_viewport_size_changed():

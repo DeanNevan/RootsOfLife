@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsmobpke4meh1"]
+[gd_scene load_steps=4 format=3 uid="uid://bsmobpke4meh1"]
 
 [ext_resource type="PackedScene" uid="uid://bpcqc6bek6fgq" path="res://src/main/PlantElement/Leaf/Leaf.tscn" id="1_41dsk"]
 [ext_resource type="Script" path="res://src/main/PlantElement/Leaf/LeafS/LeafS.gd" id="2_dp3dg"]
+[ext_resource type="Texture2D" uid="uid://ckjk4xjq047jq" path="res://assets/art/spot.png" id="4_yxo7i"]
 
 [node name="LeafS" instance=ExtResource("1_41dsk")]
 script = ExtResource("2_dp3dg")
+
+[node name="Texture" parent="." index="1"]
+scale = Vector2(0.15, 0.15)
+
+[node name="PolygonTexture" type="Polygon2D" parent="." index="2"]
+
+[node name="OriginAreaTexture" parent="OriginArea" index="0"]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.173, 0.173)
+texture = ExtResource("4_yxo7i")

@@ -46,7 +46,7 @@ func _set_position(p):
 func _ready():
 	InputManager.connect("any_gesture", _on_input)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("view_up"):
 		_set_position(position - (Vector2(0, move_event_speed)*1.0/zoom).rotated(rotation))
 	if Input.is_action_pressed("view_down"):

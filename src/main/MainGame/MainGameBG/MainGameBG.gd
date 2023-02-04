@@ -8,9 +8,9 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. '_delta' is the elapsed time since the previous frame.
 
-func _process(delta):
+func _process(_delta):
 	var camera : Camera2D = get_viewport().get_camera_2d()
 	if is_instance_valid(camera):
 		global_position = camera.global_position

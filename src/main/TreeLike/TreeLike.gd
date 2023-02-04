@@ -1,4 +1,4 @@
-extends PlantElement
+extends Node2D
 class_name TreeLike
 
 @onready var _Origin = %Origin
@@ -11,8 +11,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. '_delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	pass
 
 func get_origin() -> Marker2D:
