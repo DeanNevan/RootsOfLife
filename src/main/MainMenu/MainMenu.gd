@@ -13,8 +13,8 @@ func _ready():
 	GUI._FloatWindow.init_all()
 	_ButtonStartGame.disabled = true
 	for i in _ContainerGameWorldChooseElement.get_children():
-		var element : GameWorldChooseElement = i
-		i.connect("select_requested", _on_element_select_requested)
+		if i is GameWorldChooseElement:
+			i.connect("select_requested", _on_element_select_requested)
 	pass # Replace with function body.
 
 
@@ -30,7 +30,8 @@ func _on_element_select_requested(element : GameWorldChooseElement):
 	Data.scene_game_world = element.scene_game_world
 	_ButtonStartGame.disabled = false
 	for i in _ContainerGameWorldChooseElement.get_children():
-		i.unselect()
+		if i is GameWorldChooseElement:
+			i.unselect()
 	element.select()
 	pass
 

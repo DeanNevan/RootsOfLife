@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=22 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
+[ext_resource type="Texture2D" uid="uid://qdtll1majnqr" path="res://assets/art/bggggg.jpg" id="2_5fygi"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
 [ext_resource type="PackedScene" uid="uid://ejm7hf7uxhq8" path="res://src/main/MainGame/GameWorld/instances/Plain/GameWorldPlain.tscn" id="3_7kfrr"]
 [ext_resource type="Texture2D" uid="uid://dwkcx341bdoio" path="res://src/main/MainGame/GameWorld/instances/Plain/thumbnail.png" id="4_i3x5d"]
@@ -43,6 +44,10 @@ corner_radius_bottom_right = 4
 [sub_resource type="LabelSettings" id="LabelSettings_rl3ex"]
 font_size = 22
 
+[sub_resource type="LabelSettings" id="LabelSettings_qbag1"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -61,6 +66,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5fygi")
+expand_mode = 1
 
 [node name="WindowMaker" type="MarginContainer" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
@@ -122,14 +137,18 @@ text = "关闭"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -242.0
-offset_right = 270.0
+offset_left = -290.0
+offset_top = -366.0
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sekj7")
 
@@ -147,6 +166,7 @@ size_flags_vertical = 8
 [node name="ContainerGameWorldChooseElement" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
 columns = 3
 
 [node name="GameWorldChooseElement" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
@@ -184,7 +204,10 @@ hint_content = "-普通
 -资源一般
 -成长值目标较高"
 
-[node name="GameWorldChooseElement4" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement"]
+layout_mode = 2
+
+[node name="GameWorldChooseElement6" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
 layout_mode = 2
 scene_game_world = ExtResource("9_em1vl")
 texture = ExtResource("10_nqk1l")
@@ -212,7 +235,7 @@ custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.501961, 0.854902, 0.34902, 1)
-text = "             开始"
+text = "                                     开始"
 alignment = 0
 script = ExtResource("11_8p7yv")
 
@@ -220,9 +243,9 @@ script = ExtResource("11_8p7yv")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.866667, 0.611765, 0.4, 1)
-text = "             关于"
+text = "                         关于"
 alignment = 0
 script = ExtResource("11_8p7yv")
 
@@ -230,21 +253,18 @@ script = ExtResource("11_8p7yv")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
 text = "退出"
 script = ExtResource("11_8p7yv")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
+offset_top = -54.0
+offset_right = 137.0
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer2"]
@@ -261,9 +281,17 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 text = "123123123"
 label_settings = SubResource("LabelSettings_rl3ex")
-horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("14_lky02")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 119.0
+offset_right = 370.0
+offset_bottom = 207.0
+text = "生命之根"
+label_settings = SubResource("LabelSettings_qbag1")
 
 [connection signal="pressed" from="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer/ButtonCloseMaker" to="." method="_on_button_close_maker_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
