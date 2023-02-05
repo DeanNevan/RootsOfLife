@@ -11,6 +11,8 @@ extends Node
 @export var DIRT_XL_WATER := 1.0
 @export var WATER_WATER := 5.0
 
+@export var LIFE_HOUR := 72
+
 @export var WATER_CAPACITY := 50.0
 @export var ENERGY_CAPACITY := 100.0
 
@@ -23,7 +25,7 @@ extends Node
 @export var GROWTH_POINT_ROOTS_LINE_LENGTH := 100.0
 @export var GROWTH_POINT_STEM_LINE_LENGTH := 100.0
 
-@export var NORMAL_ENERGY_COST_RATE := 0.8
+@export var NORMAL_ENERGY_COST_RATE := 0.75
 @export var PHOTOSYNTHESIS_RATE := 1.0
 
 @export var N_PHOTOSYNTHESIS_EFFECIENCY := 1.5

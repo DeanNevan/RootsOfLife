@@ -55,7 +55,6 @@ func _ready():
 	
 	await get_tree().create_timer(5).timeout
 	
-	_LabelSeed.show()
 	_LabelTip.hide()
 	
 	pass # Replace with function body.

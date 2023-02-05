@@ -14,6 +14,7 @@ func _init():
 
 func _ready():
 	GameTime.connect("hour_passed", _on_hour_passed)
+	total_life_hour = Config.LIFE_HOUR
 
 func _on_hour_passed():
 	if !Data.is_pause_leaf_fall and status == Status.NORMAL and !is_falling:
