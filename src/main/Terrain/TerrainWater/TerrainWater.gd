@@ -20,6 +20,7 @@ func _on_area_terrain_area_entered(area):
 		if !is_working:
 			is_working = true
 			Data.water.increase_speed += water_per_hour
+			Audio.play_open()
 	pass # Replace with function body.
 
 

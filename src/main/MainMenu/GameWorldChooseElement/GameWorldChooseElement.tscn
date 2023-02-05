@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://11ihgdceflc0"]
+[gd_scene load_steps=4 format=3 uid="uid://11ihgdceflc0"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.gd" id="1_3alqh"]
 [ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="2_sgphh"]
+[ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="3_si0b4"]
 
 [node name="GameWorldChooseElement" type="MarginContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -9,9 +10,11 @@ script = ExtResource("1_3alqh")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+toggle_mode = true
 icon = ExtResource("2_sgphh")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_si0b4")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2

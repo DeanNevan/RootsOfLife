@@ -76,6 +76,7 @@ func _unhandled_input(event):
 									building_plant_element.connect("fall_requested", _on_leaf_fall_requested)
 									building_plant_element = null
 									request_building_leaf()
+									Audio.play_open()
 								else:
 									alert_cost_fail()
 					if build_type == Global.BuildingType.STORAGE_ROOTS:
@@ -87,6 +88,7 @@ func _unhandled_input(event):
 									emit_signal("new_storage_roots_built", building_plant_element)
 									building_plant_element = null
 									request_building_storage_roots()
+									Audio.play_open()
 								else:
 									alert_cost_fail()
 
@@ -244,12 +246,15 @@ func seed_ok(pos : Vector2, normal : Vector2):
 	roots_line.finish_build()
 	stem_line.finish_build()
 	
+	Audio.play_scroll()
+	
 	emit_signal("new_roots_line_built", roots_line)
 	emit_signal("new_stem_line_built", stem_line)
 	
 	pass
 
 func alert_cost_fail():
+	Audio.play_error()
 	pass
 
 func _on_area_mouse_drawer_area_entered(area):
@@ -326,6 +331,7 @@ func _on_timer_drawing_timeout():
 						if !result:
 							alert_cost_fail()
 							return
+						Audio.play_scroll()
 	pass # Replace with function body.
 
 func _on_leaf_fall_requested(leaf : Leaf):

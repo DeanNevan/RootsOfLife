@@ -28,6 +28,7 @@ func _ready():
 	pass
 
 func start_work():
+	Audio.play_open()
 	pass
 
 func stop_work():

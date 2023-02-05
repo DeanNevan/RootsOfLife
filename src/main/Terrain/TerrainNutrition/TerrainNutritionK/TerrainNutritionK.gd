@@ -9,12 +9,14 @@ func _ready():
 	update_hint_content()
 
 func start_work():
+	super.start_work()
 	if !is_working:
 		Data.nutrition_k.level += 1
 		is_working = true
 	pass
 
 func stop_work():
+	super.stop_work()
 	if is_working:
 		Data.nutrition_k.level -= 1
 		is_working = false

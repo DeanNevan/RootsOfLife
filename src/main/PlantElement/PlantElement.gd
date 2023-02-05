@@ -39,6 +39,7 @@ func _unhandled_input(event):
 func _process(_delta):
 	if is_rotating and status == Status.BUILDING:
 		rotation_degrees += _delta * rotation_speed
+		Audio.play_scroll()
 
 func set_status(_status : Status):
 	status = _status

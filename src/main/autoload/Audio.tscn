@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp2207ysg2lma"]
+
+[ext_resource type="Script" path="res://src/main/autoload/Audio.gd" id="1_fsn3f"]
+[ext_resource type="AudioStream" uid="uid://c33wlkjvf713x" path="res://assets/audio/button_in.ogg" id="2_gult6"]
+[ext_resource type="AudioStream" uid="uid://cwjatro58sblt" path="res://assets/audio/open.ogg" id="3_0t36b"]
+[ext_resource type="AudioStream" uid="uid://053v2qjwjtdo" path="res://assets/audio/scroll.ogg" id="3_wxj0x"]
+[ext_resource type="AudioStream" uid="uid://bvrps42vx6tuh" path="res://assets/audio/select.ogg" id="4_k0i72"]
+[ext_resource type="AudioStream" uid="uid://cofe0hwqrpuhp" path="res://assets/audio/error.ogg" id="5_e1lvg"]
+[ext_resource type="AudioStream" uid="uid://c6fhwgo1btdel" path="res://assets/audio/switch.ogg" id="6_f51iu"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_fsn3f")
+
+[node name="ButtonIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gult6")
+
+[node name="Open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0t36b")
+
+[node name="Scroll" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wxj0x")
+volume_db = -10.0
+
+[node name="Select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_k0i72")
+
+[node name="Error" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e1lvg")
+
+[node name="Switch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_f51iu")

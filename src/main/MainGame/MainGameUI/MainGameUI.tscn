@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbk15m06vn7sr"]
+[gd_scene load_steps=30 format=3 uid="uid://bbk15m06vn7sr"]
 
 [ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
 [ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_fdex0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c81lb03lbh715" path="res://src/main/MainGame/MainGameUI/ContainerNutrition/ContainerNutrition.tscn" id="4_oycl3"]
 [ext_resource type="Texture2D" uid="uid://cegt6mtowaegm" path="res://assets/art/icon/up.png" id="9_8iml4"]
 [ext_resource type="Texture2D" uid="uid://b1408q6t6dq8n" path="res://assets/art/icon/down.png" id="9_t4e2h"]
+[ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="10_7gycj"]
 [ext_resource type="Texture2D" uid="uid://b3ag2moniaym2" path="res://assets/art/roots.png" id="11_u3ayj"]
 [ext_resource type="Texture2D" uid="uid://cggi63suyamc1" path="res://assets/art/storage_roots.png" id="12_iuaka"]
 [ext_resource type="Texture2D" uid="uid://iigr4r5dig52" path="res://assets/art/stem.png" id="13_e8i75"]
@@ -332,6 +333,7 @@ size_flags_vertical = 2
 icon = ExtResource("9_t4e2h")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="MarginContainerScore" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 100)
@@ -346,12 +348,14 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "退出"
+script = ExtResource("10_7gycj")
 
 [node name="ButtonHelp" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "帮助"
+script = ExtResource("10_7gycj")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 150)
@@ -377,6 +381,7 @@ size_flags_vertical = 10
 icon = ExtResource("9_8iml4")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="ContainerBuildingSize" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
@@ -407,6 +412,7 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_8577w")
 text = "小"
+script = ExtResource("10_7gycj")
 
 [node name="ButtonM" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -414,6 +420,7 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_8577w")
 text = "中"
+script = ExtResource("10_7gycj")
 
 [node name="ButtonL" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -421,6 +428,7 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_8577w")
 text = "大"
+script = ExtResource("10_7gycj")
 
 [node name="ContainerBuildingType" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
@@ -450,6 +458,7 @@ button_group = SubResource("ButtonGroup_pmrnp")
 icon = ExtResource("11_u3ayj")
 icon_alignment = 2
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="ButtonStorageRoots" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -458,6 +467,7 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
 icon = ExtResource("12_iuaka")
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -469,6 +479,7 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
 icon = ExtResource("13_e8i75")
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="ButtonLeaf" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -477,6 +488,7 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
 icon = ExtResource("14_qrbb7")
 expand_icon = true
+script = ExtResource("10_7gycj")
 
 [node name="WindowHelp" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -535,6 +547,7 @@ custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "关闭"
+script = ExtResource("10_7gycj")
 
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_exited"]

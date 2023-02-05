@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvuqeam713wd4"]
+[gd_scene load_steps=16 format=3 uid="uid://dvuqeam713wd4"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
 [ext_resource type="PackedScene" uid="uid://diih20og4coqe" path="res://src/main/MainGame/Seed/Seed.tscn" id="2_sdm1l"]
 [ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
 [ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
+[ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="6_nq0xj"]
 [ext_resource type="PackedScene" uid="uid://ciwpavwshnjgw" path="res://src/main/MainGame/MainCamera/MainCamera.tscn" id="7_2kyuu"]
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
@@ -189,6 +190,7 @@ custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "关闭"
+script = ExtResource("6_nq0xj")
 
 [node name="GameWorld" type="Node2D" parent="."]
 

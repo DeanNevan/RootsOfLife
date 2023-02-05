@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=16 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bclm5xbgwuucv" path="res://src/main/MainGame/GameWorld/instances/Beach/thumbnail.png" id="8_ch8hx"]
 [ext_resource type="PackedScene" uid="uid://dkh7n0shskhiw" path="res://src/main/MainGame/GameWorld/instances/Ruin/GameWorldRuin.tscn" id="9_em1vl"]
 [ext_resource type="Texture2D" uid="uid://bah56vcc2rq38" path="res://src/main/MainGame/GameWorld/instances/Ruin/thumbnail.png" id="10_nqk1l"]
+[ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="11_8p7yv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex5yq"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
@@ -138,6 +139,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.501961, 0.854902, 0.34902, 1)
 text = "             开始"
 alignment = 0
+script = ExtResource("11_8p7yv")
 
 [node name="ButtonMaker" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -148,6 +150,7 @@ theme_override_colors/font_color = Color(0.866667, 0.611765, 0.4, 1)
 disabled = true
 text = "             关于"
 alignment = 0
+script = ExtResource("11_8p7yv")
 
 [node name="ButtonExit" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -156,6 +159,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
 text = "退出"
+script = ExtResource("11_8p7yv")
 
 [node name="WindowMaker" type="MarginContainer" parent="."]
 visible = false
