@@ -45,7 +45,7 @@ const float u_kernel[9] = float[9](0.06136, 0.24477, 0.38774, 0.24477, 0.06136, 
 void fragment() {
 	COLOR.a = 1.0;
 //	vec4 col = texture(TEXTURE, UV);
-	vec2 off = TEXTURE_PIXEL_SIZE * 8.0;
+	vec2 off = TEXTURE_PIXEL_SIZE * 4.0;
 	vec4 col = texture(TEXTURE, UV) + 
 //	texture(TEXTURE, UV + off * vec2(1.0,1.0)) +
 //	texture(TEXTURE, UV - off * vec2(1.0,-1.0)) +

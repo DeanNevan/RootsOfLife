@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGameFX/FogParticle.gd" id="1_x1gne"]
 
-[sub_resource type="Curve" id="Curve_yauo4"]
+[sub_resource type="Curve" id="Curve_hs6ig"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -10,6 +10,7 @@ point_count = 2
 z_index = 3
 z_as_relative = false
 emitting = false
+amount = 4
 one_shot = true
 explosiveness = 0.5
 fract_delta = false
@@ -17,8 +18,8 @@ emission_shape = 4
 emission_points = PackedVector2Array(16, 16, 48, 16, 16, 48, 48, 48)
 emission_colors = PackedColorArray()
 scale_amount_min = 0.0
-scale_amount_max = 32.0
-scale_amount_curve = SubResource("Curve_yauo4")
+scale_amount_max = 24.0
+scale_amount_curve = SubResource("Curve_hs6ig")
 script = ExtResource("1_x1gne")
 
 [node name="Timer" type="Timer" parent="."]
