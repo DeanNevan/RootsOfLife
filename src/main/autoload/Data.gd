@@ -40,7 +40,7 @@ var roots_goal := 100.0:
 		emit_signal("roots_growth_point_changed")
 var stem_goal := 100.0:
 	set(_stem_goal):
-		_stem_goal = _stem_goal
+		stem_goal = _stem_goal
 		emit_signal("stem_growth_point_changed")
 
 var fog

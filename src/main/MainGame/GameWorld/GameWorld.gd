@@ -11,8 +11,6 @@ class_name GameWorld
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Data.roots_goal = roots_growth_goal
-	Data.stem_goal = stem_growth_goal
 	for i in _Terrains.get_children():
 		i.fog = _FogTileMap
 	pass # Replace with function body.

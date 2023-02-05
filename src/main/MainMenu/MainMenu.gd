@@ -4,6 +4,7 @@ extends Control
 @onready var _ButtonStartGame = %ButtonStartGame
 @onready var _ButtonMaker = %ButtonMaker
 @onready var _ButtonExit = %ButtonExit
+@onready var _WindowMaker = %WindowMaker
 
 var selected_element : GameWorldChooseElement
 
@@ -39,9 +40,15 @@ func _on_button_start_game_pressed():
 
 
 func _on_button_maker_pressed():
+	_WindowMaker.show()
 	pass # Replace with function body.
 
 
 func _on_button_exit_pressed():
 	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_button_close_maker_pressed():
+	_WindowMaker.hide()
 	pass # Replace with function body.

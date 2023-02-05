@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
@@ -13,12 +13,7 @@
 [ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="11_8p7yv"]
 [ext_resource type="PackedScene" uid="uid://tevtfglih7n2" path="res://src/main/MainGame/GameWorld/instances/Cliff/GameWorldCliff.tscn" id="11_qkfg5"]
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sekj7"]
-bg_color = Color(0.364706, 0.364706, 0.364706, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 16
-corner_radius_bottom_right = 4
+[ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="14_lky02"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxyng"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -39,6 +34,15 @@ outline_color = Color(0.835294, 0.592157, 0.392157, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_qopwv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sekj7"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 16
+corner_radius_bottom_right = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_rl3ex"]
+font_size = 22
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -57,6 +61,64 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="WindowMaker" type="MarginContainer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/WindowMaker"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxyng")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowMaker"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/WindowMaker/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "制作信息"
+label_settings = SubResource("LabelSettings_qoioj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/bold_font = SubResource("FontVariation_qopwv")
+bbcode_enabled = true
+text = "[center]---程序/策划---[/center]
+[center]醉牛[/center]
+[center]0Point[/center]
+[center]---美术---[/center]
+[center]YUIHIUY[/center]"
+
+[node name="ButtonCloseMaker" type="Button" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "关闭"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -160,7 +222,6 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.866667, 0.611765, 0.4, 1)
-disabled = true
 text = "             关于"
 alignment = 0
 script = ExtResource("11_8p7yv")
@@ -174,55 +235,37 @@ theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
 text = "退出"
 script = ExtResource("11_8p7yv")
 
-[node name="WindowMaker" type="MarginContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(400, 250)
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -125.0
-offset_right = 200.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="WindowMaker"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cxyng")
-
-[node name="MarginContainer" type="MarginContainer" parent="WindowMaker"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="WindowMaker/MarginContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="WindowMaker/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer2"]
 layout_mode = 2
-text = "制作信息"
-label_settings = SubResource("LabelSettings_qoioj")
-horizontal_alignment = 1
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LabelRandomTips" type="Label" parent="CanvasLayer/Control/MarginContainer2/MarginContainer"]
+layout_mode = 2
+text = "123123123"
+label_settings = SubResource("LabelSettings_rl3ex")
+horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("14_lky02")
 
-[node name="HSeparator" type="HSeparator" parent="WindowMaker/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="WindowMaker/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/bold_font = SubResource("FontVariation_qopwv")
-bbcode_enabled = true
-text = "[center]---程序---[/center]
-[center]醉牛[/center]
-[center]OPoint[/center]"
-
+[connection signal="pressed" from="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer/ButtonCloseMaker" to="." method="_on_button_close_maker_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonMaker" to="." method="_on_button_maker_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]

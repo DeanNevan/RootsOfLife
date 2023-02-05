@@ -21,9 +21,9 @@ var is_succeed := false
 func _ready():
 	Data.connect("growth_point_changed", _on_growth_point_changed)
 	GUI._FloatWindow.init_all()
-	Data.init_all()
 	GameTime.timestamp = 0
 	GameTime.start()
+	Data.init_all()
 	Data.camera = _MainCamera
 	_MainCamera.make_current()
 	
@@ -42,6 +42,9 @@ func _ready():
 	$MainGameFog.tilemap = fog_tile_map
 	$MainGameFog.following_camera = _MainCamera
 	$MainGameFog.init_all()
+	
+	Data.roots_goal = game_world.roots_growth_goal
+	Data.stem_goal = game_world.stem_growth_goal
 	
 	game_world.init_all()
 	start_seed()

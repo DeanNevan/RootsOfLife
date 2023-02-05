@@ -106,4 +106,6 @@ scale_amount_max = 0.12
 scale_amount_curve = SubResource("Curve_oitmn")
 color_ramp = SubResource("Gradient_r17eh")
 
-[node name="SunlightManager" parent="." instance=ExtResource("11_oe00c")]
+[node name="Node" type="Node" parent="."]
+
+[node name="SunlightManager" parent="Node" instance=ExtResource("11_oe00c")]
