@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
 [ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="15_2fpst"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g806q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7atxh"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
 border_width_left = 3
 border_width_top = 3
@@ -28,23 +28,23 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_cawaj"]
+[sub_resource type="LabelSettings" id="LabelSettings_o83lu"]
 font_size = 24
 outline_size = 2
 outline_color = Color(0.835294, 0.592157, 0.392157, 1)
 
-[sub_resource type="FontVariation" id="FontVariation_b0sh6"]
+[sub_resource type="FontVariation" id="FontVariation_4r0xo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q4uv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtueq"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 16
 corner_radius_bottom_right = 4
 
-[sub_resource type="LabelSettings" id="LabelSettings_rbvsm"]
+[sub_resource type="LabelSettings" id="LabelSettings_f5lq2"]
 font_size = 22
 
-[sub_resource type="LabelSettings" id="LabelSettings_vr1ep"]
+[sub_resource type="LabelSettings" id="LabelSettings_siobc"]
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
@@ -96,7 +96,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/WindowMaker"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_g806q")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7atxh")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowMaker"]
 layout_mode = 2
@@ -111,7 +111,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "制作信息"
-label_settings = SubResource("LabelSettings_cawaj")
+label_settings = SubResource("LabelSettings_o83lu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -121,7 +121,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/bold_font = SubResource("FontVariation_b0sh6")
+theme_override_fonts/bold_font = SubResource("FontVariation_4r0xo")
 bbcode_enabled = true
 text = "[center]---程序/策划---[/center]
 [center]醉牛[/center]
@@ -150,7 +150,7 @@ grow_vertical = 0
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer"]
 visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1q4uv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtueq")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
@@ -235,7 +235,7 @@ custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.501961, 0.854902, 0.34902, 1)
-text = "                                     开始"
+text = "                                     开 始"
 alignment = 0
 script = ExtResource("11_8p7yv")
 
@@ -245,7 +245,7 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.866667, 0.611765, 0.4, 1)
-text = "                         关于"
+text = "                         关 于"
 alignment = 0
 script = ExtResource("11_8p7yv")
 
@@ -255,7 +255,7 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
-text = "退出"
+text = "退 出"
 script = ExtResource("11_8p7yv")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control"]
@@ -280,7 +280,7 @@ theme_override_constants/margin_bottom = 10
 [node name="LabelRandomTips" type="Label" parent="CanvasLayer/Control/MarginContainer2/MarginContainer"]
 layout_mode = 2
 text = "123123123"
-label_settings = SubResource("LabelSettings_rbvsm")
+label_settings = SubResource("LabelSettings_f5lq2")
 vertical_alignment = 1
 script = ExtResource("15_2fpst")
 
@@ -291,7 +291,7 @@ offset_top = 119.0
 offset_right = 370.0
 offset_bottom = 207.0
 text = "生命之根"
-label_settings = SubResource("LabelSettings_vr1ep")
+label_settings = SubResource("LabelSettings_siobc")
 
 [connection signal="pressed" from="CanvasLayer/Control/WindowMaker/MarginContainer/VBoxContainer/ButtonCloseMaker" to="." method="_on_button_close_maker_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
