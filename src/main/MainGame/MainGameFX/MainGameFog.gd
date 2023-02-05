@@ -17,6 +17,8 @@ func _ready():
 	get_parent().get_viewport().connect("size_changed", _on_viewport_size_changed)
 	_on_viewport_size_changed()
 	
+
+func init_all():
 	if is_instance_valid(tilemap) and is_instance_valid(texturerect):
 		var vp_tex = self.get_texture()
 		texturerect.texture = vp_tex

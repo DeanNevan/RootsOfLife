@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://11ihgdceflc0"]
+
+[ext_resource type="Script" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.gd" id="1_3alqh"]
+[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="2_sgphh"]
+
+[node name="GameWorldChooseElement" type="MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+script = ExtResource("1_3alqh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("2_sgphh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CheckBox" type="CheckBox" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

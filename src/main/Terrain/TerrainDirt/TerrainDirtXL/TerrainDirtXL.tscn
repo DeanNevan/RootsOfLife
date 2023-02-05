@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://02or2brmlvou"]
+[gd_scene load_steps=4 format=3 uid="uid://02or2brmlvou"]
 
 [ext_resource type="PackedScene" uid="uid://cfrslkhweko36" path="res://src/main/Terrain/TerrainDirt/TerrainDirt.tscn" id="1_0w67t"]
 [ext_resource type="Script" path="res://src/main/Terrain/TerrainDirt/TerrainDirtXL/TerrainDirtXL.gd" id="2_of2ib"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u7mx8"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
+
 [node name="TerrainDirtXL" instance=ExtResource("1_0w67t")]
 color = Color(0.384314, 0.301961, 0.27451, 1)
 script = ExtResource("2_of2ib")
+
+[node name="LightOccluder" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_u7mx8")
 
 [node name="PolygonTexture" parent="." index="1"]
 color = Color(0.384314, 0.301961, 0.27451, 1)

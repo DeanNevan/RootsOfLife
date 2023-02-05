@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm8b0hi7iv4ac"]
+[gd_scene load_steps=9 format=3 uid="uid://bm8b0hi7iv4ac"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/GameWorld/GameWorld.gd" id="1_lq7a4"]
 [ext_resource type="Script" path="res://src/main/utils/ToolPolygonOptimizer.gd" id="2_5xbta"]
 [ext_resource type="PackedScene" uid="uid://bk24qfoku12qf" path="res://src/main/MainGame/GameWorld/WorldArea.tscn" id="2_obmsw"]
-[ext_resource type="Texture2D" uid="uid://bdd5bwvs46yf4" path="res://icon.svg" id="4_b73us"]
+[ext_resource type="PackedScene" uid="uid://f6cl7tnsorts" path="res://src/main/MainGame/MainGameFX/FogTileMap.tscn" id="4_wkquc"]
+[ext_resource type="Texture2D" uid="uid://delfuqh5vh08v" path="res://assets/art/effect/fog_tileset.png" id="5_t1o1k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oqnli"]
 font_size = 24
 font_color = Color(0.886275, 0, 0.141176, 1)
 outline_size = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5714c"]
+texture = ExtResource("5_t1o1k")
+texture_region_size = Vector2i(64, 64)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_obw2d"]
+resource_local_to_scene = true
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_5714c")
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_lq7a4")
@@ -23,7 +38,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_b73us")
 
 [node name="Label" type="Label" parent="Sprite2D"]
 offset_left = -59.0
@@ -32,3 +46,7 @@ offset_right = 59.0
 offset_bottom = 18.0
 text = "这是128px"
 label_settings = SubResource("LabelSettings_oqnli")
+
+[node name="FogTileMap" parent="." instance=ExtResource("4_wkquc")]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_obw2d")

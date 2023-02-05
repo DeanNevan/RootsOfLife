@@ -1,19 +1,31 @@
 extends Node2D
 class_name MainGame
 
-@export var game_world_node_path : NodePath
-@onready var game_world : GameWorld = get_node(game_world_node_path)
+var game_world : GameWorld
 @onready var _MainCamera : Camera2D = %MainCamera
 @onready var _Seed = %Seed
 @onready var _Plant = %Plant
 @onready var _LabelSeed = %LabelSeed
 @onready var _LabelSeedRE = %LabelSeedRE
 
+var fog_tile_map
+
 var is_seeding := false
 var is_seed_ok := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_world = Data.scene_game_world.instantiate()
+	Data.game_world = game_world
+	$GameWorld.add_child(game_world)
+	fog_tile_map = game_world._FogTileMap
+	game_world.remove_child(fog_tile_map)
+	$MainGameFog.add_child(fog_tile_map)
+	Data.fog = fog_tile_map
+	_Plant.fog = fog_tile_map
+	$MainGameFog.tilemap = fog_tile_map
+	$MainGameFog.init_all()
+	
 	GameTime.start()
 	Data.init_all()
 	game_world.init_all()
@@ -93,6 +105,6 @@ func _on_main_game_ui_building_canceled():
 
 
 func _on_plant_clear_fog_requested():
-	for i in $MainGameFog/FogTileMap.get_used_cells(0):
-		$MainGameFog/FogTileMap.set_cell(0, i, -1)
+	for i in fog_tile_map.get_used_cells(0):
+		fog_tile_map.set_cell(0, i, -1)
 	pass # Replace with function body.

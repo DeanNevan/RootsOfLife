@@ -9,7 +9,8 @@ var enable_texture := true:
 		else:
 			self_modulate.a = 0
 
-@onready var _Fog = get_node("/root/MainGame/MainGameFog/FogTileMap")
+var fog
+
 @onready var _AreaTerrain = %AreaTerrain
 @onready var _StaticBody = %StaticBody
 @onready var _PolygonTexture = %PolygonTexture
@@ -34,7 +35,7 @@ func _ready():
 # Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if is_float_window_active:
-		if !_Fog.get_cell_source_id(0, _Fog.local_to_map(get_global_mouse_position())) == -1:
+		if !fog.get_cell_source_id(0, fog.local_to_map(get_global_mouse_position())) == -1:
 			GUI._FloatWindow.inactivate(self)
 	pass
 
@@ -92,7 +93,7 @@ func init_polygon_texture():
 		_PolygonTexture.color = color
 
 func _on_area_terrain_mouse_entered():
-	if _Fog.get_cell_source_id(0, _Fog.local_to_map(get_global_mouse_position())) == -1:
+	if fog.get_cell_source_id(0, fog.local_to_map(get_global_mouse_position())) == -1:
 		GUI._FloatWindow.activate(self, hint_title, hint_content)
 		is_float_window_active = true
 

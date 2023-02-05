@@ -37,7 +37,7 @@ func _on_hour_passed():
 	pass
 
 func update_hint_content():
-	hint_content = "提供营养元素，但储量有限\n根系只要接触，+1级营养\n储量：%d(每小时-%d)" % [capacity, SPEED]
+	hint_content = "-提供营养元素，但储量有限\n-根系只要接触，+1级营养\n-储量：%d(每小时-%d)" % [capacity, SPEED]
 	if is_instance_valid(GUI._FloatWindow):
 		if GUI._FloatWindow.current_asker == self:
 			GUI._FloatWindow.activate(self, hint_title, hint_content)

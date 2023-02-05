@@ -17,6 +17,8 @@ signal leaf_fallen(leaf)
 @onready var _RayDrawing = %RayDrawing
 @onready var _SpriteMouseDrawer = %SpriteMouseDrawer
 
+var fog
+
 var scene_roots_line : PackedScene = preload("res://src/main/TreeLike/Roots/RootsLine.tscn")
 var scene_stem_line : PackedScene = preload("res://src/main/TreeLike/Stem/StemLine.tscn")
 var scene_leaf_s : PackedScene = preload("res://src/main/PlantElement/Leaf/LeafS/LeafS.tscn")
@@ -190,6 +192,7 @@ func request_start_draw_treelike_line():
 	drawing_line_parent = line_ab[0] #line_a
 	is_drawing = true
 	drawing_line.parent_line = drawing_line_parent
+	drawing_line.fog = fog
 	
 	if build_type == Global.BuildingType.ROOTS_LINE:
 		_Roots.add_line(drawing_line)
@@ -226,6 +229,8 @@ func seed_ok(pos : Vector2, normal : Vector2):
 	_Roots.add_line(roots_line)
 	var stem_line : StemLine = scene_stem_line.instantiate()
 	_Stem.add_line(stem_line)
+	roots_line.fog = fog
+	stem_line.fog = fog
 	
 	roots_line.begin_build()
 	stem_line.begin_build()

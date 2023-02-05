@@ -9,8 +9,8 @@ enum Status {
 }
 var status : Status = Status.BUILDING
 
+var fog
 
-@onready var _Fog = get_node("/root/MainGame/MainGameFog/FogTileMap")
 @onready var _AreaLine = %AreaLine
 @onready var _LineTexture = %LineTexture
 @onready var _LineTextureBorder = %LineTextureBorder
@@ -35,7 +35,7 @@ func _ready():
 	thickness = calculate_length()
 	
 #	self.remove_child(_LineTextureOccluder)
-#	_Fog.add_child(_LineTextureOccluder)
+#	fog.add_child(_LineTextureOccluder)
 
 
 # Called every frame. '_delta' is the elapsed time since the previous frame.
@@ -109,7 +109,7 @@ func build_new_point(_point : Vector2, _check_cost := false) -> bool:
 		# 最后一个点和倒数第二个点连线长度
 		var length = points[points.size() - 1].distance_to(points[points.size() - 2])
 		widen(length)
-		_Fog.defog(points)
+		fog.defog(points)
 	emit_signal("changed", self)
 	return true
 

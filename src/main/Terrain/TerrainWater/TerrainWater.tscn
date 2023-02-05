@@ -21,5 +21,9 @@ color = Color(0.431373, 0.862745, 0.964706, 0.588235)
 [node name="LineBorder" parent="." index="3"]
 default_color = Color(0.431373, 0.862745, 0.964706, 1)
 
+[node name="StaticBody" parent="." index="5"]
+collision_layer = 0
+collision_mask = 0
+
 [connection signal="area_entered" from="AreaTerrain" to="." method="_on_area_terrain_area_entered"]
 [connection signal="area_exited" from="AreaTerrain" to="." method="_on_area_terrain_area_exited"]

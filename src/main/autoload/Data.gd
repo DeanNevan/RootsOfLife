@@ -43,6 +43,8 @@ var stem_goal := 100.0:
 		_stem_goal = _stem_goal
 		emit_signal("stem_growth_point_changed")
 
+var fog
+
 var plant : Plant:
 	set(_plant):
 		plant = _plant
@@ -57,6 +59,8 @@ var plant : Plant:
 		if !plant.is_connected("leaf_fallen", _on_leaf_fallen):
 			plant.connect("leaf_fallen", _on_leaf_fallen)
 		emit_signal("plant_changed")
+
+var scene_game_world : PackedScene
 
 var game_world : GameWorld
 
@@ -73,9 +77,9 @@ func _process(_delta):
 func init_all():
 	sunlight.value = 0
 	sunlight.capacity = 9999
-	energy.capacity = 100
+	energy.capacity = Config.ENERGY_CAPACITY
 	energy.value = Config.ENERGY_CAPACITY
-	water.capacity = 100
+	water.capacity = Config.WATER_CAPACITY
 	water.value = Config.WATER_CAPACITY
 	nutrition_n.capacity = 100
 	nutrition_n.value = 0
@@ -83,8 +87,8 @@ func init_all():
 	nutrition_p.value = 0
 	nutrition_k.capacity = 100
 	nutrition_k.value = 0
-	roots_growth_point = 100.0
-	stem_growth_point = 100.0
+	roots_growth_point = 0.0
+	stem_growth_point = 0.0
 	is_pause_leaf_fall = false
 	pass
 

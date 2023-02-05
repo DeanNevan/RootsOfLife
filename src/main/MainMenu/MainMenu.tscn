@@ -1,0 +1,180 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfvkw7akjolai"]
+
+[ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
+[ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
+[ext_resource type="PackedScene" uid="uid://ejm7hf7uxhq8" path="res://src/main/MainGame/GameWorld/instances/Plain/GameWorldPlain.tscn" id="3_7kfrr"]
+[ext_resource type="Texture2D" uid="uid://dwkcx341bdoio" path="res://src/main/MainGame/GameWorld/instances/Plain/thumbnail.png" id="4_i3x5d"]
+[ext_resource type="PackedScene" uid="uid://b8dkc6aqx6vm2" path="res://src/main/MainGame/GameWorld/instances/Basin/GameWorldBasin.tscn" id="4_inw46"]
+[ext_resource type="PackedScene" uid="uid://ib5xnavjst4k" path="res://src/main/MainGame/GameWorld/instances/Beach/GameWorldBeach.tscn" id="5_ge4ef"]
+[ext_resource type="Texture2D" uid="uid://cqti6s2txakrr" path="res://src/main/MainGame/GameWorld/instances/Basin/thumbnail.png" id="6_tsfgm"]
+[ext_resource type="Texture2D" uid="uid://bclm5xbgwuucv" path="res://src/main/MainGame/GameWorld/instances/Beach/thumbnail.png" id="8_ch8hx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arfht"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.866667, 0.611765, 0.4, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_axuh4"]
+font_size = 24
+outline_size = 2
+outline_color = Color(0.835294, 0.592157, 0.392157, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_16wgr"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8bpdb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -242.0
+offset_right = 270.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ContainerGameWorldChooseElement" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="GameWorldChooseElement" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+layout_mode = 2
+scene_game_world = ExtResource("3_7kfrr")
+texture = ExtResource("4_i3x5d")
+hint_title = "平原"
+hint_content = "-简单
+-地图小
+-资源丰富
+-成长值目标比较低"
+
+[node name="GameWorldChooseElement2" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+layout_mode = 2
+scene_game_world = ExtResource("4_inw46")
+texture = ExtResource("6_tsfgm")
+hint_title = "盆地"
+hint_content = "-普通
+-地图中等
+-资源一般
+-成长值目标一般"
+
+[node name="GameWorldChooseElement3" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+layout_mode = 2
+scene_game_world = ExtResource("5_ge4ef")
+texture = ExtResource("8_ch8hx")
+hint_title = "沙滩"
+hint_content = "-普通
+-地图较大
+-资源一般
+-成长值目标较高"
+
+[node name="ButtonStartGame" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.501961, 0.854902, 0.34902, 1)
+text = "             开始"
+alignment = 0
+
+[node name="ButtonMaker" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.866667, 0.611765, 0.4, 1)
+disabled = true
+text = "             关于"
+alignment = 0
+
+[node name="ButtonExit" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
+text = "退出"
+
+[node name="WindowMaker" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="WindowMaker"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_arfht")
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowMaker"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowMaker/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "制作信息"
+label_settings = SubResource("LabelSettings_axuh4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WindowMaker/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/bold_font = SubResource("FontVariation_16wgr")
+bbcode_enabled = true
+text = "[center]---程序---[/center]
+[center]醉牛[/center]
+[center]OPoint[/center]"
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonMaker" to="." method="_on_button_maker_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]

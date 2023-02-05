@@ -23,8 +23,10 @@ func add_line(line : TreeLikeLine):
 
 func split_line(line, new_point, split_point_a, split_point_b) -> Array: #返回值用于设为drawing_line的parent
 	var new_line_a = scene_line.instantiate()
+	new_line_a.fog = Data.fog
 	add_line(new_line_a)
 	var new_line_b = scene_line.instantiate()
+	new_line_b.fog = Data.fog
 	add_line(new_line_b)
 	
 	var building_line = new_line_a

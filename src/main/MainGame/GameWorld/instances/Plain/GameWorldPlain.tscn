@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=3 uid="uid://ejm7hf7uxhq8"]
+
+[ext_resource type="PackedScene" uid="uid://bm8b0hi7iv4ac" path="res://src/main/MainGame/GameWorld/GameWorld.tscn" id="1_66r5k"]
+[ext_resource type="Script" path="res://src/main/MainGame/GameWorld/instances/Plain/GameWorldPlain.gd" id="2_mbdqb"]
+[ext_resource type="PackedScene" uid="uid://vifwxdhmx1cx" path="res://src/main/Terrain/TerrainDirt/TerrainDirtS/TerrainDirtS.tscn" id="3_auxb3"]
+[ext_resource type="PackedScene" uid="uid://dtqin5xn8drs5" path="res://src/main/Terrain/TerrainDirt/TerrainDirtM/TerrainDirtM.tscn" id="4_1fg4k"]
+[ext_resource type="PackedScene" uid="uid://bb8q1jqanpesm" path="res://src/main/Terrain/TerrainDirt/TerrainDirtL/TerrainDirtL.tscn" id="5_7hnw8"]
+[ext_resource type="PackedScene" uid="uid://02or2brmlvou" path="res://src/main/Terrain/TerrainDirt/TerrainDirtXL/TerrainDirtXL.tscn" id="6_i120r"]
+[ext_resource type="PackedScene" uid="uid://dqstmeaf71y03" path="res://src/main/Terrain/TerrainWater/TerrainWater.tscn" id="7_ixd24"]
+[ext_resource type="PackedScene" uid="uid://jihoqu0f2lic" path="res://src/main/Terrain/TerrainBarrier/TerrainBarrier.tscn" id="8_3pk2u"]
+[ext_resource type="PackedScene" uid="uid://bafrt4ph1e3w4" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionK/TerrainNutritionK.tscn" id="9_pkbwt"]
+[ext_resource type="PackedScene" uid="uid://bsqyhn1d8ou78" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionN/TerrainNutritionN.tscn" id="10_7uvns"]
+[ext_resource type="PackedScene" uid="uid://dbyni7eswyigw" path="res://src/main/Terrain/TerrainNutrition/TerrainNutritionP/TerrainNutritionP.tscn" id="11_hkea8"]
+[ext_resource type="Texture2D" uid="uid://delfuqh5vh08v" path="res://assets/art/effect/fog_tileset.png" id="12_hutg3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5714c"]
+texture = ExtResource("12_hutg3")
+texture_region_size = Vector2i(64, 64)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_plmn1"]
+resource_local_to_scene = true
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_5714c")
+
+[node name="GameWorldPlain" instance=ExtResource("1_66r5k")]
+script = ExtResource("2_mbdqb")
+world_rect = Rect2(-500, -700, 1000, 1260)
+
+[node name="TerrainDirtS" parent="Terrains" index="0" instance=ExtResource("3_auxb3")]
+polygon = PackedVector2Array(-502, 0, -176, 0, 504, 72, 464, 200, -128, 104, -328, 192, -384, 296, -504, 296)
+
+[node name="TerrainDirtM" parent="Terrains" index="1" instance=ExtResource("4_1fg4k")]
+polygon = PackedVector2Array(-216, 144, 448, 296, 464, 200, -128, 96)
+
+[node name="TerrainDirtM2" parent="Terrains" index="2" instance=ExtResource("4_1fg4k")]
+polygon = PackedVector2Array(-504, 296, -504, 424, -328, 424, -328, 392, -424, 360, -384, 288)
+
+[node name="TerrainDirtL" parent="Terrains" index="3" instance=ExtResource("5_7hnw8")]
+polygon = PackedVector2Array(-216, 136, 472, 296, 328, 392, -152, 280)
+
+[node name="TerrainDirtXL" parent="Terrains" index="4" instance=ExtResource("6_i120r")]
+polygon = PackedVector2Array(-152, 280, -208, 368, 272, 520, 328, 392)
+
+[node name="TerrainDirtXL2" parent="Terrains" index="5" instance=ExtResource("6_i120r")]
+polygon = PackedVector2Array(272, 576, -128, 576, -272, 528, -328, 424, -328, 392, -240, 424)
+
+[node name="TerrainBarrier" parent="Terrains" index="6" instance=ExtResource("8_3pk2u")]
+color = Color(0.52549, 0.52549, 0.52549, 1)
+polygon = PackedVector2Array(504, 72, 456, 208, 440, 304, 320, 392, 264, 544, 280, 584, 408, 584, 504, 584)
+texture_color_override = true
+
+[node name="TerrainBarrier2" parent="Terrains" index="7" instance=ExtResource("8_3pk2u")]
+color = Color(0.560784, 0.560784, 0.560784, 1)
+polygon = PackedVector2Array(-328, 184, -424, 360, -240, 432, -152, 280, -208, 136)
+texture_color_override = true
+
+[node name="TerrainBarrier3" parent="Terrains" index="8" instance=ExtResource("8_3pk2u")]
+color = Color(0.560784, 0.560784, 0.560784, 1)
+polygon = PackedVector2Array(-128, 576, -272, 528, -328, 424, -504, 424, -504, 576)
+texture_color_override = true
+
+[node name="TerrainBarrier4" parent="Terrains" index="9" instance=ExtResource("8_3pk2u")]
+color = Color(0.552941, 0.443137, 0.376471, 1)
+polygon = PackedVector2Array(-432, 0, -416, -64, -416, -128, -432, -192, -368, -192, -384, -128, -384, -64, -376, 0)
+texture_color_override = true
+
+[node name="TerrainBarrier6" parent="Terrains" index="10" instance=ExtResource("8_3pk2u")]
+color = Color(0.552941, 0.443137, 0.376471, 1)
+polygon = PackedVector2Array(-384, -128, -352, -128, -328, -136, -320, -120, -352, -112, -384, -104)
+texture_color_override = true
+
+[node name="TerrainBarrier5" parent="Terrains" index="11" instance=ExtResource("8_3pk2u")]
+color = Color(0.454902, 0.623529, 0.25098, 1)
+polygon = PackedVector2Array(-424, -152, -488, -160, -512, -224, -504, -280, -448, -328, -384, -336, -320, -312, -296, -256, -304, -200, -336, -160, -384, -152)
+texture_color_override = true
+
+[node name="TerrainBarrier7" parent="Terrains" index="12" instance=ExtResource("8_3pk2u")]
+color = Color(0.372549, 0.513726, 0.2, 1)
+polygon = PackedVector2Array(-352, -128, -344, -160, -336, -160, -304, -200, -264, -192, -256, -160, -264, -128, -272, -96, -328, -80, -352, -112)
+texture_color_override = true
+
+[node name="TerrainWater" parent="Terrains" index="13" instance=ExtResource("7_ixd24")]
+polygon = PackedVector2Array(-168, 0, 504, 72, 504, 8)
+
+[node name="TerrainWater2" parent="Terrains" index="14" instance=ExtResource("7_ixd24")]
+polygon = PackedVector2Array(-202, 367, 274, 517, 265, 544, 277, 576, 264, 576, -237, 425)
+
+[node name="TerrainNutritionK" parent="Terrains" index="15" instance=ExtResource("9_pkbwt")]
+polygon = PackedVector2Array(-432, 48, -488, 120, -384, 112)
+max_capacity = 1200
+
+[node name="TerrainNutritionK2" parent="Terrains" index="16" instance=ExtResource("9_pkbwt")]
+polygon = PackedVector2Array(-48, 248, -40, 328, 24, 288, 8, 256)
+max_capacity = 1200
+
+[node name="TerrainNutritionN" parent="Terrains" index="17" instance=ExtResource("10_7uvns")]
+polygon = PackedVector2Array(304, 128, 336, 176, 376, 128, 336, 104)
+max_capacity = 1000
+
+[node name="TerrainNutritionP" parent="Terrains" index="18" instance=ExtResource("11_hkea8")]
+polygon = PackedVector2Array(-24, 40, 24, 88, -8, 88, -40, 112, -40, 88, -56, 56)
+max_capacity = 1000
+
+[node name="TerrainNutritionP2" parent="Terrains" index="19" instance=ExtResource("11_hkea8")]
+polygon = PackedVector2Array(216, 440, 240, 480, 264, 448)
+max_capacity = 600
+
+[node name="TerrainNutritionN2" parent="Terrains" index="20" instance=ExtResource("10_7uvns")]
+polygon = PackedVector2Array(-264, 456, -248, 488, -232, 472)
+max_capacity = 500
+
+[node name="TerrainNutritionK3" parent="Terrains" index="21" instance=ExtResource("9_pkbwt")]
+polygon = PackedVector2Array(-464, 376, -448, 400, -424, 352, -456, 336)
+max_capacity = 800
+
+[node name="Sprite2D" parent="." index="3"]
+visible = false
+
+[node name="FogTileMap" parent="." index="4"]
+tile_set = SubResource("TileSet_plmn1")
+layer_0/tile_data = PackedInt32Array(131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 131072, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, 524295, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 589825, 0, 0, 589824, 0, 0, 655359, 0, 0, 655358, 0, 0, 655357, 0, 0, 655356, 0, 0, 655355, 0, 0, 655354, 0, 0, 655353, 0, 0, 655352, 0, 0, 655351, 0, 0, 589815, 0, 0, 524279, 0, 0, 458743, 0, 0, 393207, 0, 0, 327671, 0, 0, 262135, 0, 0, 196599, 0, 0, 131063, 0, 0, 393213, 0, 0, 327677, 0, 0, 262141, 0, 0, 196605, 0, 0, 196604, 0, 0, 196603, 0, 0, 196602, 0, 0, 196601, 0, 0, 196600, 0, 0, 262136, 0, 0, 327672, 0, 0, 393208, 0, 0, 458744, 0, 0, 524280, 0, 0, 589816, 0, 0, 589817, 0, 0, 524281, 0, 0, 458745, 0, 0, 393209, 0, 0, 327673, 0, 0, 262137, 0, 0, 262138, 0, 0, 327674, 0, 0, 393210, 0, 0, 458746, 0, 0, 524282, 0, 0, 589818, 0, 0, 589819, 0, 0, 524283, 0, 0, 458747, 0, 0, 393211, 0, 0, 327675, 0, 0, 262139, 0, 0, 262140, 0, 0, 327676, 0, 0, 393212, 0, 0, 458748, 0, 0, 524284, 0, 0, 589820, 0, 0, 589821, 0, 0, 524285, 0, 0, 458749, 0, 0, 458750, 0, 0, 393214, 0, 0, 327678, 0, 0, 262142, 0, 0, 196606, 0, 0, 196607, 0, 0, 262143, 0, 0, 327679, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 524286, 0, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 196609, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 524290, 0, 0, 458754, 0, 0, 393218, 0, 0, 327682, 0, 0, 262146, 0, 0, 196610, 0, 0, 196611, 0, 0, 262147, 0, 0, 327683, 0, 0, 393219, 0, 0, 458755, 0, 0, 524291, 0, 0, 524292, 0, 0, 458756, 0, 0, 393220, 0, 0, 327684, 0, 0, 262148, 0, 0, 196612, 0, 0, 196613, 0, 0, 262149, 0, 0, 327685, 0, 0, 393221, 0, 0, 458757, 0, 0, 524293, 0, 0, 524294, 0, 0, 458758, 0, 0, 393222, 0, 0, 327686, 0, 0, 262150, 0, 0, 196614, 0, 0, 65536, 0, 0, 65537, 131072, 0)

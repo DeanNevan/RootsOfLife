@@ -22,7 +22,7 @@ func start():
 
 func release() -> bool:
 	for i in areas:
-		if i is Terrain:
+		if i is Terrain and !(i is TerrainWater):
 			return false
 	is_seeding = false
 	gravity_scale = 1

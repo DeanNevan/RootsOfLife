@@ -45,6 +45,7 @@ func _set_position(p):
 
 func _ready():
 	InputManager.connect("any_gesture", _on_input)
+	_set_position(Vector2())
 
 func _process(_delta):
 	if Input.is_action_pressed("view_up"):
@@ -77,7 +78,7 @@ func _move(event):
 
 func _zoom(event):
 	var li = event.distance
-	var lf = event.distance + event.relative
+	var lf = event.distance + event.relative * 0.5
 	var zi = 1.0/zoom.x
 	
 	var zf = (li*zi)/lf
