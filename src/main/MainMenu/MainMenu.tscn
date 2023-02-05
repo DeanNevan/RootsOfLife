@@ -15,19 +15,30 @@
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
 [ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="14_1v855"]
 
+<<<<<<< Updated upstream
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxa1j"]
+=======
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig02q"]
+>>>>>>> Stashed changes
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 16
 corner_radius_bottom_right = 4
 
+<<<<<<< HEAD
 [sub_resource type="LabelSettings" id="LabelSettings_3exwv"]
 font_size = 22
 font_color = Color(0.815686, 0.615686, 0.388235, 1)
 outline_size = 2
 outline_color = Color(0.690196, 0.431373, 0.105882, 1)
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> 6e13f8e4ba6db9ed07ac01e006cf65a9dde3b9d3
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1ird"]
+=======
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1amnu"]
+>>>>>>> Stashed changes
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
 border_width_left = 3
 border_width_top = 3
@@ -39,12 +50,20 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
+<<<<<<< Updated upstream
 [sub_resource type="LabelSettings" id="LabelSettings_mgwd7"]
+=======
+[sub_resource type="LabelSettings" id="LabelSettings_cdjvu"]
+>>>>>>> Stashed changes
 font_size = 24
 outline_size = 2
 outline_color = Color(0.835294, 0.592157, 0.392157, 1)
 
+<<<<<<< Updated upstream
 [sub_resource type="FontVariation" id="FontVariation_n7y4i"]
+=======
+[sub_resource type="FontVariation" id="FontVariation_kbb26"]
+>>>>>>> Stashed changes
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -76,7 +95,11 @@ grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
+<<<<<<< Updated upstream
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxa1j")
+=======
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig02q")
+>>>>>>> Stashed changes
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
@@ -223,7 +246,11 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="WindowMaker"]
 layout_mode = 2
+<<<<<<< Updated upstream
 theme_override_styles/panel = SubResource("StyleBoxFlat_c1ird")
+=======
+theme_override_styles/panel = SubResource("StyleBoxFlat_1amnu")
+>>>>>>> Stashed changes
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowMaker"]
 layout_mode = 2
@@ -238,7 +265,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "制作信息"
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_mgwd7")
+=======
+label_settings = SubResource("LabelSettings_cdjvu")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -248,7 +279,11 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+<<<<<<< Updated upstream
 theme_override_fonts/bold_font = SubResource("FontVariation_n7y4i")
+=======
+theme_override_fonts/bold_font = SubResource("FontVariation_kbb26")
+>>>>>>> Stashed changes
 bbcode_enabled = true
 text = "[center]---程序---[/center]
 [center]醉牛[/center]
