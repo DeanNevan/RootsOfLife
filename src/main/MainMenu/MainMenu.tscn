@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=18 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
@@ -13,28 +13,14 @@
 [ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="11_8p7yv"]
 [ext_resource type="PackedScene" uid="uid://tevtfglih7n2" path="res://src/main/MainGame/GameWorld/instances/Cliff/GameWorldCliff.tscn" id="11_qkfg5"]
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
-[ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="14_1v855"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxa1j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb0ub"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 16
 corner_radius_bottom_right = 4
 
-<<<<<<< HEAD
-[sub_resource type="LabelSettings" id="LabelSettings_3exwv"]
-font_size = 22
-font_color = Color(0.815686, 0.615686, 0.388235, 1)
-outline_size = 2
-outline_color = Color(0.690196, 0.431373, 0.105882, 1)
-
-=======
-<<<<<<< Updated upstream
->>>>>>> 6e13f8e4ba6db9ed07ac01e006cf65a9dde3b9d3
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1ird"]
-=======
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1amnu"]
->>>>>>> Stashed changes
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxnmy"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
 border_width_left = 3
 border_width_top = 3
@@ -46,20 +32,12 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-<<<<<<< Updated upstream
-[sub_resource type="LabelSettings" id="LabelSettings_mgwd7"]
-=======
-[sub_resource type="LabelSettings" id="LabelSettings_cdjvu"]
->>>>>>> Stashed changes
+[sub_resource type="LabelSettings" id="LabelSettings_2gwkx"]
 font_size = 24
 outline_size = 2
 outline_color = Color(0.835294, 0.592157, 0.392157, 1)
 
-<<<<<<< Updated upstream
-[sub_resource type="FontVariation" id="FontVariation_n7y4i"]
-=======
-[sub_resource type="FontVariation" id="FontVariation_kbb26"]
->>>>>>> Stashed changes
+[sub_resource type="FontVariation" id="FontVariation_jqs58"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -91,11 +69,7 @@ grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
-<<<<<<< Updated upstream
-theme_override_styles/panel = SubResource("StyleBoxFlat_oxa1j")
-=======
-theme_override_styles/panel = SubResource("StyleBoxFlat_ig02q")
->>>>>>> Stashed changes
+theme_override_styles/panel = SubResource("StyleBoxFlat_fb0ub")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
@@ -200,30 +174,6 @@ theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
 text = "退出"
 script = ExtResource("11_8p7yv")
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="LabelRandomTip" type="Label" parent="CanvasLayer/Control/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "123123123"
-label_settings = SubResource("LabelSettings_3exwv")
-horizontal_alignment = 2
-script = ExtResource("14_1v855")
-
 [node name="WindowMaker" type="MarginContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(400, 250)
@@ -242,7 +192,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="WindowMaker"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1amnu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxnmy")
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowMaker"]
 layout_mode = 2
@@ -257,7 +207,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "制作信息"
-label_settings = SubResource("LabelSettings_cdjvu")
+label_settings = SubResource("LabelSettings_2gwkx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -267,7 +217,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/bold_font = SubResource("FontVariation_kbb26")
+theme_override_fonts/bold_font = SubResource("FontVariation_jqs58")
 bbcode_enabled = true
 text = "[center]---程序---[/center]
 [center]醉牛[/center]

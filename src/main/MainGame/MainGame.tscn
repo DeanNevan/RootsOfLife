@@ -1,4 +1,12 @@
-@ -10,6 +10,7 @@
+[gd_scene load_steps=16 format=3 uid="uid://dvuqeam713wd4"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
+[ext_resource type="PackedScene" uid="uid://diih20og4coqe" path="res://src/main/MainGame/Seed/Seed.tscn" id="2_sdm1l"]
+[ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
+[ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
+[ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
+[ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="6_nq0xj"]
+[ext_resource type="PackedScene" uid="uid://ciwpavwshnjgw" path="res://src/main/MainGame/MainCamera/MainCamera.tscn" id="7_2kyuu"]
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
@@ -12,7 +20,11 @@ font_size = 64
 bg_color = Color(0.486275, 0.352941, 0.215686, 0.596078)
 border_width_left = 3
 border_width_top = 3
-@ -28,10 +38,17 @@ corner_radius_top_right = 32
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.866667, 0.611765, 0.4, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
@@ -23,7 +35,27 @@ font_size = 22
 code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
 
 shader_type canvas_item;
-@ -59,8 +76,13 @@ void fragment() {
+render_mode blend_mix;
+
+uniform vec4 color : source_color;
+uniform vec4 color2 : source_color;
+
+const float u_kernel[9] = float[9](0.06136, 0.24477, 0.38774, 0.24477, 0.06136, 0.24477, 0.38774, 0.24477, 0.06136);
+
+void fragment() {
+	COLOR.a = 1.0;
+//	vec4 col = texture(TEXTURE, UV);
+	vec2 off = TEXTURE_PIXEL_SIZE * 8.0;
+	vec4 col = texture(TEXTURE, UV) + 
+//	texture(TEXTURE, UV + off * vec2(1.0,1.0)) +
+//	texture(TEXTURE, UV - off * vec2(1.0,-1.0)) +
+//	texture(TEXTURE, UV + off * vec2(-1.0,1.0)) +
+	texture(TEXTURE, UV - off * vec2(1.0,1.0)) +
+	texture(TEXTURE, UV + off * vec2(1.0,0.0)) +
+	texture(TEXTURE, UV - off * vec2(1.0,0.0)) +
+	texture(TEXTURE, UV + off * vec2(0.0,1.0)) +
+	texture(TEXTURE, UV - off * vec2(0.0,1.0));
+	col = col / 5.0;
 	COLOR = col * color + col.a * color2;
 }"
 
@@ -32,7 +64,33 @@ shader = SubResource("Shader_4wga6")
 shader_parameter/color = Color(0.603922, 0.486275, 0.262745, 1)
 shader_parameter/color2 = Color(0.447059, 0.376471, 0.239216, 1)
 
-@ -94,7 +116,11 @@ unique_name_in_owner = true
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_72ykg")
+
+[node name="Seed" parent="." instance=ExtResource("2_sdm1l")]
+unique_name_in_owner = true
+
+[node name="MainGameBG" parent="." instance=ExtResource("3_pc0ol")]
+
+[node name="LayerUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LabelSeed" type="Label" parent="LayerUI/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "按下Space释放种子"
@@ -40,7 +98,10 @@ label_settings = SubResource("LabelSettings_f5i44")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-@ -105,7 +131,11 @@ layout_mode = 2
+[node name="LabelTip" type="Label" parent="LayerUI/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 text = "右上角可以查看帮助
 WASD或按住中键来移动视角
 滚轮缩放视角"
@@ -48,7 +109,8 @@ label_settings = SubResource("LabelSettings_f5i44")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-@ -114,7 +144,11 @@ unique_name_in_owner = true
+[node name="LabelSeedRE" type="Label" parent="LayerUI/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "按下Space回收种子，重新释放"
@@ -56,7 +118,16 @@ label_settings = SubResource("LabelSettings_f5i44")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-@ -131,7 +165,11 @@ offset_right = 20.0
+[node name="LabelTest" type="Label" parent="LayerUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -64,7 +135,28 @@ label_settings = SubResource("LabelSettings_nk4yq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-@ -160,7 +198,11 @@ grow_vertical = 2
+[node name="MainGameUI" parent="LayerUI" instance=ExtResource("3_6e0bd")]
+mouse_filter = 2
+
+[node name="LabelFPS" type="Label" parent="LayerUI"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_2lsnb")
+
+[node name="WindowSucceed" type="MarginContainer" parent="LayerUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
@@ -72,7 +164,21 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7peh8")
 
 [node name="MarginContainer" type="MarginContainer" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
-@ -182,7 +224,11 @@ text = "你达成了目标！
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LayerUI/WindowSucceed/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LayerUI/WindowSucceed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "你达成了目标！
+这株植物将继续成长。
+直到环境和其自身DNA的限制。
+
 你可以继续游玩。
 也可以在右上角退出到主选单。
 然后，种下另一根生命......"
@@ -80,7 +186,31 @@ label_settings = SubResource("LabelSettings_cbre0")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-@ -214,7 +260,11 @@ texturerect_path = NodePath("../Node/TextureRect")
+
+[node name="ButtonHelpClose" type="Button" parent="LayerUI/WindowSucceed/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "关闭"
+script = ExtResource("6_nq0xj")
+
+[node name="GameWorld" type="Node2D" parent="."]
+
+[node name="Plant" parent="." instance=ExtResource("7_3m3eh")]
+unique_name_in_owner = true
+
+[node name="CameraOrigin" type="Node2D" parent="."]
+
+[node name="MainCamera" parent="CameraOrigin" instance=ExtResource("7_2kyuu")]
+unique_name_in_owner = true
+
+[node name="MainGameFog" parent="." instance=ExtResource("9_03237")]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+texturerect_path = NodePath("../Node/TextureRect")
+
 [node name="Node" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Node"]
@@ -88,3 +218,13 @@ material = SubResource("ShaderMaterial_dyu6x")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]
+[connection signal="building_canceled" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_canceled"]
+[connection signal="building_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_requested"]
+[connection signal="quit_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_quit_requested"]
+[connection signal="pressed" from="LayerUI/WindowSucceed/MarginContainer/VBoxContainer/ButtonHelpClose" to="." method="_on_button_help_close_pressed"]
+[connection signal="clear_fog_requested" from="Plant" to="." method="_on_plant_clear_fog_requested"]
