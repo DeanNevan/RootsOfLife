@@ -13,6 +13,7 @@ script = ExtResource("1_fsn3f")
 
 [node name="ButtonIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_gult6")
+volume_db = -5.0
 
 [node name="Open" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_0t36b")

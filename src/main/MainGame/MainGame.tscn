@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ryndx"]
+[sub_resource type="LabelSettings" id="LabelSettings_570m4"]
 font_size = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_u6yeg"]
+[sub_resource type="LabelSettings" id="LabelSettings_r0obj"]
 font_size = 64
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcm2f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a868h"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
 border_width_left = 3
 border_width_top = 3
@@ -28,10 +28,10 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_qmrkm"]
+[sub_resource type="LabelSettings" id="LabelSettings_5k3gk"]
 font_size = 22
 
-[sub_resource type="Shader" id="Shader_q55y5"]
+[sub_resource type="Shader" id="Shader_ra7it"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
 
 shader_type canvas_item;
@@ -63,8 +63,8 @@ void fragment() {
 	COLOR.rgb = color.rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apd3x"]
-shader = SubResource("Shader_q55y5")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wiei"]
+shader = SubResource("Shader_ra7it")
 shader_parameter/color = Color(0.188895, 0.14189, 0.0857972, 1)
 
 [node name="MainGame" type="Node2D"]
@@ -93,7 +93,7 @@ offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "按下Space释放种子"
-label_settings = SubResource("LabelSettings_ryndx")
+label_settings = SubResource("LabelSettings_570m4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -112,7 +112,7 @@ offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "按下Space回收种子，重新释放"
-label_settings = SubResource("LabelSettings_ryndx")
+label_settings = SubResource("LabelSettings_570m4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,7 +129,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-label_settings = SubResource("LabelSettings_u6yeg")
+label_settings = SubResource("LabelSettings_r0obj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -158,7 +158,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lcm2f")
+theme_override_styles/panel = SubResource("StyleBoxFlat_a868h")
 
 [node name="MarginContainer" type="MarginContainer" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
@@ -180,7 +180,7 @@ text = "你达成了目标！
 你可以继续游玩。
 也可以在右上角退出到主选单。
 然后，种下另一根生命......"
-label_settings = SubResource("LabelSettings_qmrkm")
+label_settings = SubResource("LabelSettings_5k3gk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -212,7 +212,7 @@ texturerect_path = NodePath("../Node/TextureRect")
 [node name="Node" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Node"]
-material = SubResource("ShaderMaterial_apd3x")
+material = SubResource("ShaderMaterial_0wiei")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
