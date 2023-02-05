@@ -20,6 +20,7 @@ signal building_requested(build_type : Global.BuildingType, build_size : Global.
 @onready var _LabelRootsGrowthPoint = %LabelRootsGrowthPoint
 @onready var _ProgressBarStemGrowthPoint = %ProgressBarStemGrowthPoint
 @onready var _LabelStemGrowthPoint = %LabelStemGrowthPoint
+@onready var _WindowHelp = %WindowHelp
 
 var build_type := Global.BuildingType.NONE
 var build_size := Global.BuildingSize.NONE
@@ -257,4 +258,10 @@ func _on_button_quit_pressed():
 
 
 func _on_button_help_pressed():
+	_WindowHelp.show()
+	pass # Replace with function body.
+
+
+func _on_button_help_close_pressed():
+	_WindowHelp.hide()
 	pass # Replace with function body.

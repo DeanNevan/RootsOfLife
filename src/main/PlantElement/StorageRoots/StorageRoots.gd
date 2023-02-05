@@ -3,6 +3,9 @@ class_name StorageRoots
 
 var capacity_bonus := 1.0
 
+func _ready():
+	pass
+
 func _init():
 	texture_color_invalid = Color(1, 0.16000002622604, 0.17399978637695)
 

@@ -23,6 +23,15 @@ func _process(_delta):
 		global_position = get_safe_origin()
 	pass
 
+func init_all():
+	askers.clear()
+	askers_data.clear()
+	var is_asker_unchanged = false
+	current_asker = null
+	is_active = false
+	hide()
+	pass
+
 func get_safe_origin() -> Vector2:
 	var pos := get_global_mouse_position()
 	var sx := size.x

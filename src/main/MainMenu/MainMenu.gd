@@ -9,6 +9,7 @@ var selected_element : GameWorldChooseElement
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GUI._FloatWindow.init_all()
 	_ButtonStartGame.disabled = true
 	for i in _ContainerGameWorldChooseElement.get_children():
 		var element : GameWorldChooseElement = i

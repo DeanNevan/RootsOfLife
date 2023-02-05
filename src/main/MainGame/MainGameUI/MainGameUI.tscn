@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbk15m06vn7sr"]
+[gd_scene load_steps=29 format=3 uid="uid://bbk15m06vn7sr"]
 
 [ext_resource type="PackedScene" uid="uid://d0pxhecmjbdx6" path="res://src/main/MainGame/MainGameUI/ContainerSunlight/ContainerSunlight.tscn" id="1_7dmyl"]
 [ext_resource type="Theme" uid="uid://bu5yug4nxd3a2" path="res://assets/art/theme/default_theme.tres" id="1_fdex0"]
@@ -116,6 +116,23 @@ resource_local_to_scene = false
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pmrnp"]
 resource_local_to_scene = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv0hi"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.866667, 0.611765, 0.4, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptj7h"]
+font_size = 22
+
+[sub_resource type="FontVariation" id="FontVariation_ck0mo"]
 
 [node name="MainGameUI" type="Control"]
 layout_mode = 3
@@ -461,6 +478,64 @@ button_group = SubResource("ButtonGroup_pmrnp")
 icon = ExtResource("14_qrbb7")
 expand_icon = true
 
+[node name="WindowHelp" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="WindowHelp"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tv0hi")
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowHelp"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowHelp/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WindowHelp/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "帮助"
+label_settings = SubResource("LabelSettings_ptj7h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="WindowHelp/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WindowHelp/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/bold_font = SubResource("FontVariation_ck0mo")
+bbcode_enabled = true
+text = "1、左上角为时间指示
+2、正上方为光强、水分、能量、营养信息栏
+3、正上方展开按钮，展开后是成长值，建造植物元素都可以增加成长值，成长值满后视为通关
+4、下方展开按钮，展开后是建造菜单，其中：茎、根使用画笔建造，储藏根和叶子需要选择尺寸后，并且找到合适的位置才能建造
+5、更多信息可以通过鼠标悬停UI、地块来查看"
+
+[node name="ButtonHelpClose" type="Button" parent="WindowHelp/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "关闭"
+
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ButtonExpandGrowthPoint" to="." method="_on_button_expand_growth_point_pressed"]
@@ -482,3 +557,4 @@ expand_icon = true
 [connection signal="mouse_entered" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_mouse_exited"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer/ButtonLeaf" to="." method="_on_button_leaf_pressed"]
+[connection signal="pressed" from="WindowHelp/MarginContainer/VBoxContainer/ButtonHelpClose" to="." method="_on_button_help_close_pressed"]

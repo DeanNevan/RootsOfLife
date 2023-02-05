@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=15 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
@@ -8,6 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ib5xnavjst4k" path="res://src/main/MainGame/GameWorld/instances/Beach/GameWorldBeach.tscn" id="5_ge4ef"]
 [ext_resource type="Texture2D" uid="uid://cqti6s2txakrr" path="res://src/main/MainGame/GameWorld/instances/Basin/thumbnail.png" id="6_tsfgm"]
 [ext_resource type="Texture2D" uid="uid://bclm5xbgwuucv" path="res://src/main/MainGame/GameWorld/instances/Beach/thumbnail.png" id="8_ch8hx"]
+[ext_resource type="PackedScene" uid="uid://dkh7n0shskhiw" path="res://src/main/MainGame/GameWorld/instances/Ruin/GameWorldRuin.tscn" id="9_em1vl"]
+[ext_resource type="Texture2D" uid="uid://bah56vcc2rq38" path="res://src/main/MainGame/GameWorld/instances/Ruin/thumbnail.png" id="10_nqk1l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex5yq"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 16
+corner_radius_bottom_right = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arfht"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -55,21 +63,28 @@ anchor_bottom = 1.0
 offset_top = -242.0
 offset_right = 270.0
 grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex5yq")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ContainerGameWorldChooseElement" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="ContainerGameWorldChooseElement" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 
-[node name="GameWorldChooseElement" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+[node name="GameWorldChooseElement" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
 layout_mode = 2
 scene_game_world = ExtResource("3_7kfrr")
 texture = ExtResource("4_i3x5d")
@@ -79,7 +94,12 @@ hint_content = "-简单
 -资源丰富
 -成长值目标比较低"
 
-[node name="GameWorldChooseElement2" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement/GameWorldChooseElement"]
+layout_mode = 2
+text = "新手推荐"
+horizontal_alignment = 1
+
+[node name="GameWorldChooseElement2" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
 layout_mode = 2
 scene_game_world = ExtResource("4_inw46")
 texture = ExtResource("6_tsfgm")
@@ -89,17 +109,28 @@ hint_content = "-普通
 -资源一般
 -成长值目标一般"
 
-[node name="GameWorldChooseElement3" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+[node name="GameWorldChooseElement3" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
 layout_mode = 2
 scene_game_world = ExtResource("5_ge4ef")
 texture = ExtResource("8_ch8hx")
-hint_title = "沙滩"
+hint_title = "水滩"
 hint_content = "-普通
 -地图较大
 -资源一般
 -成长值目标较高"
 
-[node name="ButtonStartGame" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="GameWorldChooseElement4" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ContainerGameWorldChooseElement" instance=ExtResource("2_xopi8")]
+layout_mode = 2
+scene_game_world = ExtResource("9_em1vl")
+texture = ExtResource("10_nqk1l")
+hint_title = "废墟"
+hint_content = "-困难
+-地图较大
+-资源一般
+-地形复杂，障碍物多
+-成长值目标较高"
+
+[node name="ButtonStartGame" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
@@ -108,7 +139,7 @@ theme_override_colors/font_color = Color(0.501961, 0.854902, 0.34902, 1)
 text = "             开始"
 alignment = 0
 
-[node name="ButtonMaker" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="ButtonMaker" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
@@ -118,7 +149,7 @@ disabled = true
 text = "             关于"
 alignment = 0
 
-[node name="ButtonExit" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="ButtonExit" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -175,6 +206,6 @@ text = "[center]---程序---[/center]
 [center]醉牛[/center]
 [center]OPoint[/center]"
 
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonMaker" to="." method="_on_button_maker_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonMaker" to="." method="_on_button_maker_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]

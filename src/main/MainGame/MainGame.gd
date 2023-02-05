@@ -15,6 +15,7 @@ var is_seed_ok := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GUI._FloatWindow.init_all()
 	Data.init_all()
 	GameTime.timestamp = 0
 	GameTime.start()
