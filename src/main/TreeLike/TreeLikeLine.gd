@@ -92,7 +92,7 @@ func build_new_point(_point : Vector2, _check_cost := false) -> bool:
 		if points.size() >= 1:
 			var last_point : Vector2 = points[points.size() - 2]
 			var distance : float = (_point - last_point).length()
-			var cost : float = Data.energy.calculate_roots_line_cost(distance)
+			var cost : float = Data.energy.calculate_roots_line_cost(distance) * Config.TREE_LIKE_LINE_COST_RATE
 			var result : bool = Data.energy.try_consume(cost)
 			if !result:
 				return false

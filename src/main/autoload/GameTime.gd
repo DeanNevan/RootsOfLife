@@ -3,12 +3,6 @@ extends Node
 signal hour_passed
 signal day_passed
 
-enum Period{
-	
-}
-
-var STAMP_PER_HOUR := 120 # 60物理帧=1秒/一小时
-
 var timestamp := 0
 
 var day := 0
@@ -35,10 +29,10 @@ func start():
 	set_physics_process(true)
 
 func get_day() -> int:
-	return timestamp / (24 * STAMP_PER_HOUR)
+	return timestamp / (24 * Config.STAMP_PER_HOUR)
 
 func get_hour_in_day() -> int:
-	return (timestamp - (get_day() * 24 * STAMP_PER_HOUR)) / STAMP_PER_HOUR
+	return (timestamp - (get_day() * 24 * Config.STAMP_PER_HOUR)) / Config.STAMP_PER_HOUR
 
 func get_percent_in_day() -> float:
-	return (timestamp - (get_day() * 24 * STAMP_PER_HOUR)) / (STAMP_PER_HOUR * 24.0)
+	return (timestamp - (get_day() * 24 * Config.STAMP_PER_HOUR)) / (Config.STAMP_PER_HOUR * 24.0)

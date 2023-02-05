@@ -5,9 +5,11 @@ var water_per_hour := 5
 var is_working := false
 var in_area_roots_lines := []
 
-func _init():
+func _ready():
+	super._ready()
+	water_per_hour = Config.WATER_WATER
 	hint_title = "水"
-	hint_content = "根系只要接触，提供+%d水分/h，你很幸运" % water_per_hour
+	hint_content = "根系只要接触，提供+%.1f水分/h，你很幸运" % water_per_hour
 
 func _on_area_terrain_area_entered(area):
 	var object : Object = area

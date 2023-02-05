@@ -186,7 +186,7 @@ func _on_button_roots_line_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonRootsLine, 
 		"根系", 
-		"-用画笔建造根系\n-根必须依附于另一条根，并且沿途不能遇到障碍物\n-每米消耗1能量"
+		"-用画笔建造根系\n-根必须依附于另一条根，并且沿途不能遇到障碍物\n-每米消耗%.1f能量" % Config.TREE_LIKE_LINE_COST_RATE
 	)
 	pass # Replace with function body.
 
@@ -200,7 +200,7 @@ func _on_button_stem_line_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonStemLine, 
 		"茎系", 
-		"-用画笔建造茎系\n-茎必须依附于另一条茎，并且沿途不能遇到障碍物\n-每米消耗1能量"
+		"-用画笔建造茎系\n-茎必须依附于另一条茎，并且沿途不能遇到障碍物\n-每米消耗%.1f能量" % Config.TREE_LIKE_LINE_COST_RATE
 	)
 	pass # Replace with function body.
 
@@ -215,7 +215,14 @@ func _on_button_storage_roots_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonStorageRoots, 
 		"储藏根", 
-		"-用于储存更多的能量\n-必须建造在根系附近\n-按住Q/E来旋转它\n-小：+20能量储存 耗能10\n-中：+40能量储存 耗能20\n-大：+60能量储存 耗能30"
+		"-用于储存更多的能量\n-必须建造在根系附近\n-按住Q/E来旋转它\n-小：+%.1f能量储存 耗能%.1f\n-中：+%.1f能量储存 耗能%.1f\n-大：+%.1f能量储存 耗能%.1f" % [
+			Config.CAPACITY_STORAGE_ROOTS_S,
+			Config.COST_STORAGE_ROOTS_S,
+			Config.CAPACITY_STORAGE_ROOTS_M,
+			Config.COST_STORAGE_ROOTS_M,
+			Config.CAPACITY_STORAGE_ROOTS_L,
+			Config.COST_STORAGE_ROOTS_L,
+		]
 	)
 	pass # Replace with function body.
 
@@ -229,7 +236,11 @@ func _on_button_leaf_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ButtonLeaf, 
 		"叶子", 
-		"-用于接收光照\n-不同尺寸的叶子大小不同\n-必须建造在茎系附近\n-按住Q/E来旋转它\n-小：耗能10\n-中：耗能20\n-大：耗能30"
+		"-用于接收光照\n-不同尺寸的叶子大小不同\n-必须建造在茎系附近\n-按住Q/E来旋转它\n-小：耗能%.1f\n-中：耗能%.1f\n-大：耗能%.1f" % [
+			Config.COST_LEAF_S,
+			Config.COST_LEAF_M,
+			Config.COST_LEAF_L,
+		]
 	)
 	pass # Replace with function body.
 

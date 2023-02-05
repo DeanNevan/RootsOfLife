@@ -23,6 +23,7 @@ Data="*res://src/main/autoload/Data.gd"
 GameTime="*res://src/main/autoload/GameTime.tscn"
 InputManager="*res://src/main/autoload/InputManager.gd"
 GUI="*res://src/main/autoload/GUI.tscn"
+Config="*res://src/main/autoload/Config.tscn"
 
 [display]
 

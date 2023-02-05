@@ -63,7 +63,7 @@ polygon = PackedVector2Array(135, 1560, -518, 1349, -1323, 1153, -1508, 1141, -1
 texture_color_override = true
 
 [node name="TerrainNutritionK" parent="Terrains" index="11" instance=ExtResource("7_428ud")]
-polygon = PackedVector2Array(-1331, 198, -1378, 329, -1236, 376, -1207, 283)
+polygon = PackedVector2Array(-111, 146, -170, 205, -49, 293, 15, 231)
 
 [node name="TerrainNutritionK2" parent="Terrains" index="12" instance=ExtResource("7_428ud")]
 polygon = PackedVector2Array(298, 241, 304, 379, 452, 309)

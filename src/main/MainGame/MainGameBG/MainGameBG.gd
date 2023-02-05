@@ -20,11 +20,11 @@ func _process(_delta):
 		scale.y = 1 / camera.zoom.y
 	
 	if $Sun.visible:
-		$SunlightManager.sunlight_level_per_raycast = 1
+		$SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_SUN_PER_RAYCAST
 		$SunlightManager.percent = $Sun.percent_in_period
 		pass
 	elif $Moon.visible:
-		$SunlightManager.sunlight_level_per_raycast = 0.2
+		$SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_MOON_PER_RAYCAST
 		$SunlightManager.percent = $Moon.percent_in_period
 		pass
 	

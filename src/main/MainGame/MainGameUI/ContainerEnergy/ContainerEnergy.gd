@@ -28,7 +28,10 @@ func _on_mouse_entered():
 	GUI._FloatWindow.activate(
 		self, 
 		"能量", 
-		"-即碳水化合物\n-由光合作用产生，消耗1单位水分，产生1单位能量\n-建造储藏根来增加最大容量\n-植物成长值越大，日常消耗越大，当前消耗:%.3f" % Data.energy.decrease_speed
+		"-即碳水化合物\n-由光合作用产生，消耗1单位水分，产生%.1f单位能量\n-建造储藏根来增加最大容量\n-植物成长值越大，日常消耗越大，当前消耗:%.3f" % [
+			Config.PHOTOSYNTHESIS_RATE,
+			Data.energy.decrease_speed
+		]
 	)
 	pass # Replace with function body.
 

@@ -102,7 +102,10 @@ func _on_container_n_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerN, 
 		"氮", 
-		"-分为缺少、普通、丰富三级\n-普通：增效光合作用50%%\n-丰富：叶子暂停脱落\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_n.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：增效光合作用%.1f%%\n-丰富：叶子暂停脱落\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % [
+			(Config.N_PHOTOSYNTHESIS_EFFECIENCY - 1) * 100,
+			Data.nutrition_n.get_level_str()
+		]
 	)
 	pass # Replace with function body.
 
@@ -116,7 +119,11 @@ func _on_container_p_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerP, 
 		"磷", 
-		"-分为缺少、普通、丰富三级\n-普通：日常能量消耗降低50%%\n-丰富：日常能量消耗降低100%%\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_p.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：日常能量消耗降低%.1f%%\n-丰富：日常能量消耗降低%.1f%%\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % [
+			(1 - Config.P_ENERGY_COST_1) * 100,
+			(1 - Config.P_ENERGY_COST_2) * 100,
+			Data.nutrition_p.get_level_str()
+		]
 	)
 	pass # Replace with function body.
 
@@ -130,7 +137,10 @@ func _on_container_k_mouse_entered():
 	GUI._FloatWindow.activate(
 		_ContainerK, 
 		"钾", 
-		"-分为缺少、普通、丰富三级\n-普通：水分储量提高100\n-丰富：迷雾全开\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % Data.nutrition_k.get_level_str()
+		"-分为缺少、普通、丰富三级\n-普通：水分储量提高%.1f\n-丰富：迷雾全开\n-当前为%s\n-根系每接触1个区域，营养+1级\n-注意：同时拥有三个及以上的同一营养区域是浪费" % [
+			Config.K_CAPACITY_BONUS,
+			Data.nutrition_k.get_level_str()
+		]
 	)
 	pass # Replace with function body.
 

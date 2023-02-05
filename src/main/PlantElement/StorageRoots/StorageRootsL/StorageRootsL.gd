@@ -1,6 +1,7 @@
 extends StorageRoots
 class_name StorageRootsL
 
-func _init():
-	energy_cost = 30
-	capacity_bonus = 60.0
+func _ready():
+	super._ready()
+	energy_cost = Config.COST_STORAGE_ROOTS_L
+	capacity_bonus = Config.CAPACITY_STORAGE_ROOTS_L

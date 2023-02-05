@@ -74,50 +74,50 @@ func init_all():
 	sunlight.value = 0
 	sunlight.capacity = 9999
 	energy.capacity = 100
-	energy.value = 100
+	energy.value = Config.ENERGY_CAPACITY
 	water.capacity = 100
-	water.value = 100
+	water.value = Config.WATER_CAPACITY
 	nutrition_n.capacity = 100
 	nutrition_n.value = 0
 	nutrition_p.capacity = 100
 	nutrition_p.value = 0
 	nutrition_k.capacity = 100
 	nutrition_k.value = 0
-	roots_growth_point = 0
-	stem_growth_point = 0
+	roots_growth_point = 100.0
+	stem_growth_point = 100.0
 	is_pause_leaf_fall = false
 	pass
 
 func _on_new_roots_line_built(new_line : RootsLine):
 	var length : float = new_line.get_length()
-	roots_growth_point += length / 100.0
+	roots_growth_point += length / Config.GROWTH_POINT_ROOTS_LINE_LENGTH
 	
 
 func _on_new_stem_line_built(new_line : StemLine):
 	var length : float = new_line.get_length()
-	stem_growth_point += length / 100.0
+	stem_growth_point += length / Config.GROWTH_POINT_STEM_LINE_LENGTH
 
 func _on_new_leaf_built(leaf : Leaf):
 	if leaf is LeafS:
-		stem_growth_point += 3
+		stem_growth_point += Config.GROWTH_POINT_LEAF_S
 	if leaf is LeafM:
-		stem_growth_point += 6
+		stem_growth_point += Config.GROWTH_POINT_LEAF_M
 	if leaf is LeafL:
-		stem_growth_point += 9
+		stem_growth_point += Config.GROWTH_POINT_LEAF_L
 
 func _on_new_storage_roots_built(storage_roots : StorageRoots):
 	if storage_roots is StorageRootsS:
-		roots_growth_point += 3
+		roots_growth_point += Config.GROWTH_POINT_STORAGE_ROOTS_S
 	if storage_roots is StorageRootsM:
-		roots_growth_point += 6
+		roots_growth_point += Config.GROWTH_POINT_STORAGE_ROOTS_M
 	if storage_roots is StorageRootsL:
-		roots_growth_point += 9
+		roots_growth_point += Config.GROWTH_POINT_STORAGE_ROOTS_L
 
 func _on_leaf_fallen(leaf : Leaf):
 	if leaf is LeafS:
-		stem_growth_point -= 3
+		stem_growth_point -= Config.GROWTH_POINT_LEAF_S
 	if leaf is LeafM:
-		stem_growth_point -= 6
+		stem_growth_point -= Config.GROWTH_POINT_LEAF_M
 	if leaf is LeafL:
-		stem_growth_point -= 9
+		stem_growth_point -= Config.GROWTH_POINT_LEAF_L
 	pass

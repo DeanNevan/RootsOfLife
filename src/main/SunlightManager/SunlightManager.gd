@@ -9,7 +9,7 @@ var is_enabled := true
 var frame_count := 0
 var update_period_frame := 30
 
-@export var sunlight_level_per_raycast := 1.0
+var sunlight_level_per_raycast := 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
