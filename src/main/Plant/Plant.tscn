@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceeenkwxk5d0q"]
+[gd_scene load_steps=5 format=3 uid="uid://ceeenkwxk5d0q"]
 
 [ext_resource type="Script" path="res://src/main/Plant/Plant.gd" id="1_snymy"]
 [ext_resource type="PackedScene" path="res://src/main/TreeLike/Roots/Roots.tscn" id="2_8copk"]
 [ext_resource type="PackedScene" path="res://src/main/TreeLike/Stem/Stem.tscn" id="3_3i71b"]
-[ext_resource type="Texture2D" uid="uid://ckjk4xjq047jq" path="res://assets/art/spot.png" id="4_yjivy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyjkj"]
 
@@ -30,10 +29,15 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMouseDrawer"]
 shape = SubResource("CircleShape2D_yyjkj")
 
-[node name="SpriteMouseDrawer" type="Sprite2D" parent="AreaMouseDrawer"]
+[node name="SpriteMouseDrawer" type="Polygon2D" parent="AreaMouseDrawer"]
 unique_name_in_owner = true
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_yjivy")
+color = Color(0.498039, 0.498039, 0.498039, 1)
+polygon = PackedVector2Array(0, -15, -10, -10, -15, 0, -10, 10, 0, 15, 10, 10, 15, 0, 10, -10)
+
+[node name="SpriteMouseDrawer" type="Polygon2D" parent="AreaMouseDrawer/SpriteMouseDrawer"]
+scale = Vector2(0.45, 0.45)
+polygon = PackedVector2Array(0, -15, -10, -10, -15, 0, -10, 10, 0, 15, 10, 10, 15, 0, 10, -10)
 
 [node name="RayDrawing" type="RayCast2D" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm8b0hi7iv4ac"]
+[gd_scene load_steps=13 format=3 uid="uid://bm8b0hi7iv4ac"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/GameWorld/GameWorld.gd" id="1_lq7a4"]
 [ext_resource type="Script" path="res://src/main/utils/ToolPolygonOptimizer.gd" id="2_5xbta"]
@@ -11,6 +11,47 @@ font_size = 24
 font_color = Color(0.886275, 0, 0.141176, 1)
 outline_size = 2
 
+[sub_resource type="Shader" id="Shader_f0uxs"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D noise;
+
+varying vec2 coord;
+
+void vertex() {
+	coord = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy + vec2(2048.0);
+}
+
+void fragment() {
+	vec2 tile_num = vec2(128.0,128.0);
+	vec2 uv = coord / 4096.0;
+	vec2 uv2 = floor(uv*tile_num)/tile_num;
+    uv -= uv2;
+    uv *= tile_num;
+	float a = texture(noise, uv2 + vec2(step(1.0-uv.y,uv.x)/(2.0*tile_num.x),                     
+										step(uv.x,uv.y)/(2.0*tile_num.y)) ).r;
+	a = fract(a * 5.0 - TIME * 0.05);
+	a = a*a*a*a*a*a*a*a*a;
+	COLOR.rgb = vec3(a);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jbark"]
+noise_type = 5
+frequency = 0.689
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1lt6q"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_jbark")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_622aw"]
+shader = SubResource("Shader_f0uxs")
+shader_parameter/noise = SubResource("NoiseTexture2D_1lt6q")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5714c"]
 texture = ExtResource("5_t1o1k")
 texture_region_size = Vector2i(64, 64)
@@ -20,7 +61,7 @@ texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_obw2d"]
+[sub_resource type="TileSet" id="TileSet_v4kmi"]
 resource_local_to_scene = true
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_5714c")
@@ -49,4 +90,5 @@ label_settings = SubResource("LabelSettings_oqnli")
 
 [node name="FogTileMap" parent="." instance=ExtResource("4_wkquc")]
 unique_name_in_owner = true
-tile_set = SubResource("TileSet_obw2d")
+material = SubResource("ShaderMaterial_622aw")
+tile_set = SubResource("TileSet_v4kmi")
