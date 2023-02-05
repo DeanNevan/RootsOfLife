@@ -27,8 +27,8 @@ extends Node
 @export var PHOTOSYNTHESIS_RATE := 1.0
 
 @export var N_PHOTOSYNTHESIS_EFFECIENCY := 1.5
-@export var P_ENERGY_COST_1 := 0.5
-@export var P_ENERGY_COST_2 := 0.0
+@export var P_ENERGY_COST_1 := 0.666
+@export var P_ENERGY_COST_2 := 0.333
 @export var K_CAPACITY_BONUS := 50.0
 
 @export var TREE_LIKE_LINE_COST_RATE := 1.0

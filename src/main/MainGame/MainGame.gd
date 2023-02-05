@@ -5,6 +5,7 @@ var game_world : GameWorld
 @onready var _WindowSucceed = %WindowSucceed
 @onready var _MainCamera : Camera2D = %MainCamera
 @onready var _Seed = %Seed
+@onready var _LabelTip = %LabelTip
 @onready var _Plant = %Plant
 @onready var _LabelSeed = %LabelSeed
 @onready var _LabelSeedRE = %LabelSeedRE
@@ -25,6 +26,7 @@ func _ready():
 	_MainCamera.make_current()
 	
 	_WindowSucceed.hide()
+	
 	
 	game_world = Data.scene_game_world.instantiate()
 	Data.game_world = game_world
@@ -47,6 +49,15 @@ func _ready():
 	_MainCamera.limit_right = rect.end.x
 	_MainCamera.limit_top = rect.position.y
 	_MainCamera.limit_bottom = rect.end.y
+	
+	_LabelSeed.hide()
+	_LabelTip.show()
+	
+	await get_tree().create_timer(5).timeout
+	
+	_LabelSeed.show()
+	_LabelTip.hide()
+	
 	pass # Replace with function body.
 
 func _unhandled_input(event):

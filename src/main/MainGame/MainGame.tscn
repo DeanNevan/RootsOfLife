@@ -97,6 +97,27 @@ label_settings = SubResource("LabelSettings_nuy2i")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LabelTip" type="Label" parent="LayerUI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "右上角可以查看帮助
+WASD或按住中键来移动视角
+滚轮缩放视角"
+label_settings = SubResource("LabelSettings_nuy2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LabelSeedRE" type="Label" parent="LayerUI"]
 unique_name_in_owner = true
 visible = false
