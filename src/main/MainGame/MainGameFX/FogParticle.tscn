@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdq57omsu33ly"]
+
+[sub_resource type="Curve" id="Curve_lxs6h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="FogParticle" type="CPUParticles2D"]
+z_index = 3
+z_as_relative = false
+emitting = false
+one_shot = true
+explosiveness = 0.5
+fract_delta = false
+emission_shape = 4
+emission_points = PackedVector2Array(16, 16, 48, 16, 16, 48, 48, 48)
+emission_colors = PackedColorArray()
+scale_amount_min = 0.0
+scale_amount_max = 32.0
+scale_amount_curve = SubResource("Curve_lxs6h")
