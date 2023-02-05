@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfvkw7akjolai"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvkw7akjolai"]
 
 [ext_resource type="Script" path="res://src/main/MainMenu/MainMenu.gd" id="1_8bpdb"]
 [ext_resource type="PackedScene" uid="uid://11ihgdceflc0" path="res://src/main/MainMenu/GameWorldChooseElement/GameWorldChooseElement.tscn" id="2_xopi8"]
@@ -13,12 +13,19 @@
 [ext_resource type="Script" path="res://src/main/utils/ButtonWithAudio.gd" id="11_8p7yv"]
 [ext_resource type="PackedScene" uid="uid://tevtfglih7n2" path="res://src/main/MainGame/GameWorld/instances/Cliff/GameWorldCliff.tscn" id="11_qkfg5"]
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
+[ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="14_1v855"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxa1j"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 16
 corner_radius_bottom_right = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_3exwv"]
+font_size = 22
+font_color = Color(0.815686, 0.615686, 0.388235, 1)
+outline_size = 2
+outline_color = Color(0.690196, 0.431373, 0.105882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1ird"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -173,6 +180,30 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.462745, 0.262745, 0, 1)
 text = "退出"
 script = ExtResource("11_8p7yv")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LabelRandomTip" type="Label" parent="CanvasLayer/Control/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "123123123"
+label_settings = SubResource("LabelSettings_3exwv")
+horizontal_alignment = 2
+script = ExtResource("14_1v855")
 
 [node name="WindowMaker" type="MarginContainer" parent="."]
 visible = false
