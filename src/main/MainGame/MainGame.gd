@@ -50,12 +50,13 @@ func _ready():
 	_MainCamera.limit_top = rect.position.y
 	_MainCamera.limit_bottom = rect.end.y
 	
-	_LabelSeed.hide()
+	_LabelSeed.show()
 	_LabelTip.show()
 	
 	await get_tree().create_timer(5).timeout
 	
 	_LabelTip.hide()
+	
 	
 	pass # Replace with function body.
 
