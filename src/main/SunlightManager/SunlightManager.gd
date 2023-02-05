@@ -51,14 +51,14 @@ func init_all():
 	for i in $RayCasts.get_children():
 		i.queue_free()
 	ray_cast_count = 0
-	var y : int = rect.end.y + 100
-	while y >= rect.position.y:
+	var y : int = (rect.end.y + 100) + 500
+	while y >= rect.position.y - 500:
 		var ray_cast := RayCast2D.new()
 		$RayCasts.add_child(ray_cast)
 		ray_cast.collide_with_areas = true
 		ray_cast.collide_with_bodies = false
 		ray_cast.position = Vector2(rect.end.x + 100, y)
-		ray_cast.target_position = Vector2(-rect.size.x - 200, 0)
+		ray_cast.target_position = Vector2(-rect.size.x - 200, 0) * 1.5
 		#ray_cast.target_position = Vector2(-rect.size.x / 2, 0)
 		y -= distance_period
 		ray_cast_count += 1

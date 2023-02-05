@@ -48,6 +48,8 @@ var normal_energy_cost := 0.0
 
 var is_nutrition_k_working := false
 
+var is_seed_ok := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stop_building()
@@ -227,6 +229,11 @@ func request_stop_draw_treelike_line():
 	pass
 
 func seed_ok(pos : Vector2, normal : Vector2):
+	if is_seed_ok:
+		return
+	
+	is_seed_ok = true
+	
 	var roots_line : RootsLine = scene_roots_line.instantiate()
 	_Roots.add_line(roots_line)
 	var stem_line : StemLine = scene_stem_line.instantiate()

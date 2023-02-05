@@ -6,7 +6,7 @@ var viewport_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().process_frame
-	$SunlightManager.init_all()
+	$Node/SunlightManager.init_all()
 	pass # Replace with function body.
 
 
@@ -19,12 +19,12 @@ func _process(_delta):
 		scale.y = 1 / Data.camera.zoom.y
 	
 	if $Sun.visible:
-		$SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_SUN_PER_RAYCAST
-		$SunlightManager.percent = $Sun.percent_in_period
+		$Node/SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_SUN_PER_RAYCAST
+		$Node/SunlightManager.percent = $Sun.percent_in_period
 		pass
 	elif $Moon.visible:
-		$SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_MOON_PER_RAYCAST
-		$SunlightManager.percent = $Moon.percent_in_period
+		$Node/SunlightManager.sunlight_level_per_raycast = Config.SUNLIGHT_LEVEL_MOON_PER_RAYCAST
+		$Node/SunlightManager.percent = $Moon.percent_in_period
 		pass
 	
 
