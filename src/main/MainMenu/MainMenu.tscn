@@ -242,11 +242,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="WindowMaker"]
 layout_mode = 2
-<<<<<<< Updated upstream
-theme_override_styles/panel = SubResource("StyleBoxFlat_c1ird")
-=======
 theme_override_styles/panel = SubResource("StyleBoxFlat_1amnu")
->>>>>>> Stashed changes
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowMaker"]
 layout_mode = 2
@@ -261,11 +257,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "制作信息"
-<<<<<<< Updated upstream
-label_settings = SubResource("LabelSettings_mgwd7")
-=======
 label_settings = SubResource("LabelSettings_cdjvu")
->>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -275,11 +267,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="WindowMaker/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-<<<<<<< Updated upstream
-theme_override_fonts/bold_font = SubResource("FontVariation_n7y4i")
-=======
 theme_override_fonts/bold_font = SubResource("FontVariation_kbb26")
->>>>>>> Stashed changes
 bbcode_enabled = true
 text = "[center]---程序---[/center]
 [center]醉牛[/center]
