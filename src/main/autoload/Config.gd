@@ -2,8 +2,8 @@ extends Node
 
 @export var STAMP_PER_HOUR := 120
 
-@export var SUNLIGHT_LEVEL_SUN_PER_RAYCAST := 1.0
-@export var SUNLIGHT_LEVEL_MOON_PER_RAYCAST := 0.2
+@export var SUNLIGHT_LEVEL_SUN_PER_RAYCAST := 0.7
+@export var SUNLIGHT_LEVEL_MOON_PER_RAYCAST := 0.25
 
 @export var DIRT_S_WATER := 0.2
 @export var DIRT_M_WATER := 0.5
@@ -23,7 +23,7 @@ extends Node
 @export var GROWTH_POINT_ROOTS_LINE_LENGTH := 100.0
 @export var GROWTH_POINT_STEM_LINE_LENGTH := 100.0
 
-@export var NORMAL_ENERGY_COST_RATE := 1.0
+@export var NORMAL_ENERGY_COST_RATE := 0.8
 @export var PHOTOSYNTHESIS_RATE := 1.0
 
 @export var N_PHOTOSYNTHESIS_EFFECIENCY := 1.5
@@ -33,7 +33,7 @@ extends Node
 
 @export var TREE_LIKE_LINE_COST_RATE := 1.0
 
-@export var COST_LEAF_S := 15.0
+@export var COST_LEAF_S := 10.0
 @export var COST_LEAF_M := 20.0
 @export var COST_LEAF_L := 30.0
 @export var COST_STORAGE_ROOTS_S := 10.0
