@@ -2,13 +2,13 @@ extends Node
 
 @export var STAMP_PER_HOUR := 120
 
-@export var SUNLIGHT_LEVEL_SUN_PER_RAYCAST := 1.5
-@export var SUNLIGHT_LEVEL_MOON_PER_RAYCAST := 0.4
+@export var SUNLIGHT_LEVEL_SUN_PER_RAYCAST := 1.0
+@export var SUNLIGHT_LEVEL_MOON_PER_RAYCAST := 0.2
 
-@export var DIRT_S_WATER := 0.5
-@export var DIRT_M_WATER := 1.0
-@export var DIRT_L_WATER := 1.5
-@export var DIRT_XL_WATER := 2.0
+@export var DIRT_S_WATER := 0.2
+@export var DIRT_M_WATER := 0.5
+@export var DIRT_L_WATER := 0.8
+@export var DIRT_XL_WATER := 1.0
 @export var WATER_WATER := 5.0
 
 @export var WATER_CAPACITY := 50.0

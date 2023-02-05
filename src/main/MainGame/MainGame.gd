@@ -130,3 +130,8 @@ func _on_growth_point_changed():
 		_WindowSucceed.show()
 		pass
 	
+
+
+func _on_button_help_close_pressed():
+	_WindowSucceed.hide()
+	pass # Replace with function body.
