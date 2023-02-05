@@ -15,11 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://kdgn0avh2f28" path="res://src/main/MainGame/GameWorld/instances/Cliff/thumbnail.png" id="12_abclp"]
 [ext_resource type="Script" path="res://src/main/MainMenu/LabelRandomTip.gd" id="14_1v855"]
 
-<<<<<<< Updated upstream
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxa1j"]
-=======
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig02q"]
->>>>>>> Stashed changes
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 16
