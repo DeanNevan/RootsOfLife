@@ -2,6 +2,7 @@ extends Node2D
 class_name MainGame
 
 var game_world : GameWorld
+@onready var _WindowSucceed = %WindowSucceed
 @onready var _MainCamera : Camera2D = %MainCamera
 @onready var _Seed = %Seed
 @onready var _Plant = %Plant
@@ -15,12 +16,15 @@ var is_seed_ok := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Data.connect("growth_point_changed", _on_growth_point_changed)
 	GUI._FloatWindow.init_all()
 	Data.init_all()
 	GameTime.timestamp = 0
 	GameTime.start()
 	Data.camera = _MainCamera
 	_MainCamera.make_current()
+	
+	_WindowSucceed.hide()
 	
 	game_world = Data.scene_game_world.instantiate()
 	Data.game_world = game_world
@@ -120,3 +124,9 @@ func _on_plant_clear_fog_requested():
 func _on_main_game_ui_quit_requested():
 	Global.change_scene_to(self, Data.scene_main_menu)
 	pass # Replace with function body.
+
+func _on_growth_point_changed():
+	if Data.stem_growth_point >= Data.stem_goal and Data.roots_growth_point >= Data.roots_goal:
+		_WindowSucceed.show()
+		pass
+	

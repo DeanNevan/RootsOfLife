@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://c81lb03lbh715" path="res://src/main/MainGame/MainGameUI/ContainerNutrition/ContainerNutrition.tscn" id="4_oycl3"]
 [ext_resource type="Texture2D" uid="uid://cegt6mtowaegm" path="res://assets/art/icon/up.png" id="9_8iml4"]
 [ext_resource type="Texture2D" uid="uid://b1408q6t6dq8n" path="res://assets/art/icon/down.png" id="9_t4e2h"]
-[ext_resource type="Texture2D" uid="uid://cwq2af68mxyho" path="res://assets/art/roots_line.png" id="11_i6tyg"]
+[ext_resource type="Texture2D" uid="uid://b3ag2moniaym2" path="res://assets/art/roots.png" id="11_u3ayj"]
 [ext_resource type="Texture2D" uid="uid://cggi63suyamc1" path="res://assets/art/storage_roots.png" id="12_iuaka"]
-[ext_resource type="Texture2D" uid="uid://bob3etid8eu74" path="res://assets/art/stick2.png" id="13_on4m6"]
+[ext_resource type="Texture2D" uid="uid://iigr4r5dig52" path="res://assets/art/stem.png" id="13_e8i75"]
 [ext_resource type="Texture2D" uid="uid://cfcnt565hkhw0" path="res://assets/art/leaf.png" id="14_qrbb7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu7ao"]
@@ -447,8 +447,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-icon = ExtResource("11_i6tyg")
-icon_alignment = 1
+icon = ExtResource("11_u3ayj")
+icon_alignment = 2
 expand_icon = true
 
 [node name="ButtonStorageRoots" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]
@@ -467,7 +467,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pmrnp")
-icon = ExtResource("13_on4m6")
+icon = ExtResource("13_e8i75")
 expand_icon = true
 
 [node name="ButtonLeaf" type="CheckBox" parent="MarginContainer2/VBoxContainer/ContainerBuildingType/MarginContainer/HBoxContainer"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvuqeam713wd4"]
+[gd_scene load_steps=15 format=3 uid="uid://dvuqeam713wd4"]
 
 [ext_resource type="Script" path="res://src/main/MainGame/MainGame.gd" id="1_72ykg"]
 [ext_resource type="PackedScene" uid="uid://diih20og4coqe" path="res://src/main/MainGame/Seed/Seed.tscn" id="2_sdm1l"]
@@ -14,6 +14,21 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6yeg"]
 font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcm2f"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.866667, 0.611765, 0.4, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_qmrkm"]
+font_size = 22
 
 [sub_resource type="Shader" id="Shader_q55y5"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
@@ -124,6 +139,56 @@ mouse_filter = 2
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_2lsnb")
+
+[node name="WindowSucceed" type="MarginContainer" parent="LayerUI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="LayerUI/WindowSucceed"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lcm2f")
+
+[node name="MarginContainer" type="MarginContainer" parent="LayerUI/WindowSucceed"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LayerUI/WindowSucceed/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LayerUI/WindowSucceed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "你达成了目标！
+这株植物将继续成长。
+直到环境和其自身DNA的限制。
+
+你可以继续游玩。
+也可以在右上角退出到主选单。
+然后，种下另一根生命......"
+label_settings = SubResource("LabelSettings_qmrkm")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonHelpClose" type="Button" parent="LayerUI/WindowSucceed/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "关闭"
 
 [node name="GameWorld" type="Node2D" parent="."]
 
