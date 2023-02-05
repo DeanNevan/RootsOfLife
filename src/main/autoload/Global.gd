@@ -16,6 +16,9 @@ enum BuildingSize {
 
 var fog_thickness = 200
 
+func change_scene_to(old_scene : Node, new_scene : PackedScene):
+	get_tree().change_scene_to_packed(new_scene)
+
 func get_polyline_length(polyline : PackedVector2Array) -> float:
 	var length := 0.0
 	if polyline.size() >= 2:

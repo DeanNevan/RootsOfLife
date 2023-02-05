@@ -324,10 +324,17 @@ size_flags_vertical = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainerScore"]
 layout_mode = 2
 
-[node name="ButtonSettings" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "设置"
+text = "退出"
+
+[node name="ButtonHelp" type="Button" parent="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "帮助"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 150)
@@ -457,6 +464,8 @@ expand_icon = true
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ContainerGrowthPoint" to="." method="_on_container_growth_point_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/VBoxContainer2/ButtonExpandGrowthPoint" to="." method="_on_button_expand_growth_point_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainerScore/VBoxContainer/ButtonHelp" to="." method="_on_button_help_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ButtonExpandBuildingMenu" to="." method="_on_button_expand_building_menu_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonS" to="." method="_on_button_s_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ContainerBuildingSize/MarginContainer/HBoxContainer/ButtonM" to="." method="_on_button_m_pressed"]

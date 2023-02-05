@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/main/MainGame/LabelFPS.gd" id="3_2lsnb"]
 [ext_resource type="PackedScene" uid="uid://bbk15m06vn7sr" path="res://src/main/MainGame/MainGameUI/MainGameUI.tscn" id="3_6e0bd"]
 [ext_resource type="PackedScene" uid="uid://bvm1hp8yogdeq" path="res://src/main/MainGame/MainGameBG/MainGameBG.tscn" id="3_pc0ol"]
-[ext_resource type="Script" path="res://src/main/MainGame/MainCamera.gd" id="5_lvrwb"]
+[ext_resource type="PackedScene" uid="uid://ciwpavwshnjgw" path="res://src/main/MainGame/MainCamera/MainCamera.tscn" id="7_2kyuu"]
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
@@ -132,17 +132,8 @@ unique_name_in_owner = true
 
 [node name="CameraOrigin" type="Node2D" parent="."]
 
-[node name="MainCamera" type="Camera2D" parent="CameraOrigin"]
+[node name="MainCamera" parent="CameraOrigin" instance=ExtResource("7_2kyuu")]
 unique_name_in_owner = true
-zoom = Vector2(1.5, 1.5)
-limit_left = -1500
-limit_top = -1500
-limit_right = 1500
-limit_bottom = 1500
-position_smoothing_speed = 50.0
-script = ExtResource("5_lvrwb")
-MIN_ZOOM = 0.3
-movement_gesture = 2
 
 [node name="MainGameFog" parent="." instance=ExtResource("9_03237")]
 disable_3d = true
@@ -150,7 +141,6 @@ transparent_bg = true
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 texturerect_path = NodePath("../Node/TextureRect")
-following_camera_path = NodePath("../CameraOrigin/MainCamera")
 
 [node name="Node" type="CanvasLayer" parent="."]
 
@@ -166,4 +156,5 @@ mouse_filter = 2
 [connection signal="seed_ok" from="Seed" to="." method="_on_seed_seed_ok"]
 [connection signal="building_canceled" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_canceled"]
 [connection signal="building_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_building_requested"]
+[connection signal="quit_requested" from="LayerUI/MainGameUI" to="." method="_on_main_game_ui_quit_requested"]
 [connection signal="clear_fog_requested" from="Plant" to="." method="_on_plant_clear_fog_requested"]

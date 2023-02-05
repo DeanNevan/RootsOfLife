@@ -1,5 +1,6 @@
 extends Control
 
+signal quit_requested
 signal building_canceled
 signal building_requested(build_type : Global.BuildingType, build_size : Global.BuildingSize)
 
@@ -247,4 +248,13 @@ func _on_button_leaf_mouse_entered():
 
 func _on_button_leaf_mouse_exited():
 	GUI._FloatWindow.inactivate(_ButtonLeaf)
+	pass # Replace with function body.
+
+
+func _on_button_quit_pressed():
+	emit_signal("quit_requested")
+	pass # Replace with function body.
+
+
+func _on_button_help_pressed():
 	pass # Replace with function body.

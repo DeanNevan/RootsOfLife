@@ -13,12 +13,11 @@ func _ready():
 func _process(_delta):
 	modulate = gradient.sample(GameTime.get_percent_in_day())
 	
-	var camera : Camera2D = get_viewport().get_camera_2d()
-	if is_instance_valid(camera):
+	if is_instance_valid(Data.camera):
 #		var new_amount = int(100.0 / camera.zoom.x / camera.zoom.y)
 #		if new_amount != $ParticlesStar1.amount:
 #			$ParticlesStar1.amount = new_amount
-		$ParticlesStar1.material.set_shader_parameter("camera_zoom", camera.zoom)
+		$ParticlesStar1.material.set_shader_parameter("camera_zoom", Data.camera.zoom)
 
 func _on_viewport_size_changed():
 	var size : Vector2 = get_viewport_rect().size

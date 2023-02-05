@@ -1,19 +1,15 @@
 extends SubViewport
 
 
-@export var tilemap_path : NodePath
 var tilemap : TileMap
 @export var texturerect_path : NodePath
 var texturerect : TextureRect
-@export var following_camera_path : NodePath
 var following_camera : Camera2D
 @onready var camera = $Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = get_node(tilemap_path)
 	texturerect = get_node(texturerect_path)
-	following_camera = get_node(following_camera_path)
 	get_parent().get_viewport().connect("size_changed", _on_viewport_size_changed)
 	_on_viewport_size_changed()
 	

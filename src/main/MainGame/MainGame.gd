@@ -15,6 +15,12 @@ var is_seed_ok := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Data.init_all()
+	GameTime.timestamp = 0
+	GameTime.start()
+	Data.camera = _MainCamera
+	_MainCamera.make_current()
+	
 	game_world = Data.scene_game_world.instantiate()
 	Data.game_world = game_world
 	$GameWorld.add_child(game_world)
@@ -24,10 +30,10 @@ func _ready():
 	Data.fog = fog_tile_map
 	_Plant.fog = fog_tile_map
 	$MainGameFog.tilemap = fog_tile_map
+	$MainGameFog.tilemap = fog_tile_map
+	$MainGameFog.following_camera = _MainCamera
 	$MainGameFog.init_all()
 	
-	GameTime.start()
-	Data.init_all()
 	game_world.init_all()
 	start_seed()
 	await get_tree().process_frame
@@ -107,4 +113,9 @@ func _on_main_game_ui_building_canceled():
 func _on_plant_clear_fog_requested():
 	for i in fog_tile_map.get_used_cells(0):
 		fog_tile_map.set_cell(0, i, -1)
+	pass # Replace with function body.
+
+
+func _on_main_game_ui_quit_requested():
+	Global.change_scene_to(self, Data.scene_main_menu)
 	pass # Replace with function body.

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciwpavwshnjgw"]
+
+[ext_resource type="Script" path="res://src/main/MainGame/MainCamera/MainCamera.gd" id="1_rjf2w"]
+
+[node name="MainCamera" type="Camera2D"]
+zoom = Vector2(1.5, 1.5)
+limit_left = -1500
+limit_top = -1500
+limit_right = 1500
+limit_bottom = 1500
+position_smoothing_speed = 50.0
+script = ExtResource("1_rjf2w")
+MAX_ZOOM = 5.0
+MIN_ZOOM = 0.3
+movement_gesture = 2

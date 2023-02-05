@@ -21,7 +21,7 @@ func _process(delta):
 	pass
 
 func change_to_main_game():
-	get_tree().change_scene_to_packed(preload("res://src/main/MainGame/MainGame.tscn"))
+	Global.change_scene_to(self, Data.scene_main_game)
 
 func _on_element_select_requested(element : GameWorldChooseElement):
 	selected_element = element

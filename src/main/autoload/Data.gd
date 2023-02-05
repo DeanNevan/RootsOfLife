@@ -64,6 +64,11 @@ var scene_game_world : PackedScene
 
 var game_world : GameWorld
 
+var camera : Camera2D
+
+var scene_main_game := preload("res://src/main/MainGame/MainGame.tscn")
+var scene_main_menu := preload("res://src/main/MainMenu/MainMenu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_all()
