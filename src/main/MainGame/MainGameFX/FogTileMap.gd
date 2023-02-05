@@ -1,5 +1,7 @@
 extends TileMap
 
+@onready var particle_scene = preload("res://src/main/MainGame/MainGameFX/FogParticle.tscn")
+#@onready var particle = $FogParticle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,11 +18,20 @@ func defog(points):
 		var point_b = points[i+1]
 		var xtiles = intersect_segment_with_tilemap(point_a, point_b)
 		for tile in xtiles:
-			self.set_cell(0, tile + Vector2i(0,0), -1)
-			self.set_cell(0, tile + Vector2i(1,0), -1)
-			self.set_cell(0, tile + Vector2i(0,1), -1)
-			self.set_cell(0, tile + Vector2i(-1,0), -1)
-			self.set_cell(0, tile + Vector2i(0,-1), -1)
+			dig(0, tile + Vector2i(0,0), -1)
+			dig(0, tile + Vector2i(1,0), -1)
+			dig(0, tile + Vector2i(0,1), -1)
+			dig(0, tile + Vector2i(-1,0), -1)
+			dig(0, tile + Vector2i(0,-1), -1)
+
+func dig(_layer, pos, _id):
+	if self.get_cell_source_id(_layer, pos) != -1:
+		var particle = particle_scene.instantiate()
+		particle.position = pos * 64.0
+#		particle..connect
+		particle.emitting = true
+		self.add_child(particle)
+		self.set_cell(_layer, pos, _id)
 
 func intersect_segment_with_tilemap(segment_start, segment_end):
 	var rect = self.get_used_rect()

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ceeenkwxk5d0q" path="res://src/main/Plant/Plant.tscn" id="7_3m3eh"]
 [ext_resource type="PackedScene" uid="uid://dn0k7nhdqt3jr" path="res://src/main/MainGame/MainGameFX/MainGameFog.tscn" id="9_03237"]
 
+<<<<<<< Updated upstream
 [sub_resource type="LabelSettings" id="LabelSettings_n5ps7"]
 font_size = 32
 
@@ -17,6 +18,15 @@ font_size = 32
 font_size = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6uuc"]
+=======
+[sub_resource type="LabelSettings" id="LabelSettings_f5i44"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nk4yq"]
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7peh8"]
+>>>>>>> Stashed changes
 bg_color = Color(0.486275, 0.352941, 0.215686, 0.596078)
 border_width_left = 3
 border_width_top = 3
@@ -28,10 +38,17 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
+<<<<<<< Updated upstream
 [sub_resource type="LabelSettings" id="LabelSettings_va5ns"]
 font_size = 22
 
 [sub_resource type="Shader" id="Shader_xms51"]
+=======
+[sub_resource type="LabelSettings" id="LabelSettings_cbre0"]
+font_size = 22
+
+[sub_resource type="Shader" id="Shader_4wga6"]
+>>>>>>> Stashed changes
 code = "// NOTE: Shader automatically converted from Godot Engine 4.0.beta17's CanvasItemMaterial.
 
 shader_type canvas_item;
@@ -59,8 +76,13 @@ void fragment() {
 	COLOR = col * color + col.a * color2;
 }"
 
+<<<<<<< Updated upstream
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uti7l"]
 shader = SubResource("Shader_xms51")
+=======
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyu6x"]
+shader = SubResource("Shader_4wga6")
+>>>>>>> Stashed changes
 shader_parameter/color = Color(0.603922, 0.486275, 0.262745, 1)
 shader_parameter/color2 = Color(0.447059, 0.376471, 0.239216, 1)
 
@@ -94,7 +116,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "按下Space释放种子"
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_n5ps7")
+=======
+label_settings = SubResource("LabelSettings_f5i44")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -105,7 +131,11 @@ layout_mode = 2
 text = "右上角可以查看帮助
 WASD或按住中键来移动视角
 滚轮缩放视角"
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_n5ps7")
+=======
+label_settings = SubResource("LabelSettings_f5i44")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -114,7 +144,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "按下Space回收种子，重新释放"
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_n5ps7")
+=======
+label_settings = SubResource("LabelSettings_f5i44")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -131,7 +165,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_acwd8")
+=======
+label_settings = SubResource("LabelSettings_nk4yq")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -160,7 +198,11 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
+<<<<<<< Updated upstream
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6uuc")
+=======
+theme_override_styles/panel = SubResource("StyleBoxFlat_7peh8")
+>>>>>>> Stashed changes
 
 [node name="MarginContainer" type="MarginContainer" parent="LayerUI/WindowSucceed"]
 layout_mode = 2
@@ -182,7 +224,11 @@ text = "你达成了目标！
 你可以继续游玩。
 也可以在右上角退出到主选单。
 然后，种下另一根生命......"
+<<<<<<< Updated upstream
 label_settings = SubResource("LabelSettings_va5ns")
+=======
+label_settings = SubResource("LabelSettings_cbre0")
+>>>>>>> Stashed changes
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -214,7 +260,11 @@ texturerect_path = NodePath("../Node/TextureRect")
 [node name="Node" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Node"]
+<<<<<<< Updated upstream
 material = SubResource("ShaderMaterial_uti7l")
+=======
+material = SubResource("ShaderMaterial_dyu6x")
+>>>>>>> Stashed changes
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
