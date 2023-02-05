@@ -6,12 +6,12 @@ extends Node
 @export var SUNLIGHT_LEVEL_MOON_PER_RAYCAST := 0.35
 
 @export var DIRT_S_WATER := 0.2
-@export var DIRT_M_WATER := 0.4
-@export var DIRT_L_WATER := 0.6
-@export var DIRT_XL_WATER := 0.8
+@export var DIRT_M_WATER := 0.3
+@export var DIRT_L_WATER := 0.4
+@export var DIRT_XL_WATER := 0.6
 @export var WATER_WATER := 5.0
 
-@export var LIFE_HOUR := 72
+@export var LIFE_HOUR := 60
 
 @export var WATER_CAPACITY := 50.0
 @export var ENERGY_CAPACITY := 100.0

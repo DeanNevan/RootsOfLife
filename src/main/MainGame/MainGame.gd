@@ -15,6 +15,8 @@ var fog_tile_map
 var is_seeding := false
 var is_seed_ok := false
 
+var is_succeed := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Data.connect("growth_point_changed", _on_growth_point_changed)
@@ -137,8 +139,9 @@ func _on_main_game_ui_quit_requested():
 	pass # Replace with function body.
 
 func _on_growth_point_changed():
-	if Data.stem_growth_point >= Data.stem_goal and Data.roots_growth_point >= Data.roots_goal:
+	if Data.stem_growth_point >= Data.stem_goal and Data.roots_growth_point >= Data.roots_goal and !is_succeed:
 		_WindowSucceed.show()
+		is_succeed = true
 		pass
 	
 
