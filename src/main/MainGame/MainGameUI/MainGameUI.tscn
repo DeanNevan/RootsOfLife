@@ -137,12 +137,12 @@ shadow_size = 4
 resource_local_to_scene = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv0hi"]
-bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+bg_color = Color(0.352941, 0.411765, 0.2, 0.596078)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.866667, 0.611765, 0.4, 1)
+border_color = Color(0.701961, 0.690196, 0.423529, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -511,7 +511,6 @@ script = ExtResource("10_7gycj")
 
 [node name="WindowHelp" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 1
 anchors_preset = 8

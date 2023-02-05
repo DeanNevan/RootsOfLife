@@ -61,7 +61,7 @@ texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_y1l02"]
+[sub_resource type="TileSet" id="TileSet_2wyqj"]
 resource_local_to_scene = true
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_5714c")
@@ -91,4 +91,4 @@ label_settings = SubResource("LabelSettings_oqnli")
 [node name="FogTileMap" parent="." instance=ExtResource("4_wkquc")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_622aw")
-tile_set = SubResource("TileSet_y1l02")
+tile_set = SubResource("TileSet_2wyqj")
